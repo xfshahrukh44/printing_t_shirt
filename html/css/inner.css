@@ -1,0 +1,385 @@
+/* about css start */
+
+.heading-sec {
+    position: relative;
+    z-index: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #141414;
+    margin-top: 65px;
+}
+
+.inner-headings h2 {
+    color: white;
+    font-size: 40px;
+    padding: 0px 60px;
+}
+.inner-about-sec {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+.inner-about-img img {
+    width: 100%;
+    height: 600px;
+}
+
+.inner-about-txt h3 {
+    font-family: 'Lato';
+    color: white;
+    padding-bottom: 20px;
+    font-size: 57px;
+}
+
+.inner-about-txt p {
+    color: #c0c0c0;
+    font-family: 'Lato';
+    width: 90%;
+    font-size: 18px;
+    line-height: 30px;
+}
+.inner-about-txt {
+    padding: 0px 20px;
+}
+/* about css end */
+
+
+
+
+
+
+/* product css start */
+.opt-sec-2-main a {
+    text-decoration: none;
+}
+
+
+
+.inner-product-sec {
+    background-color: black;
+    padding-top: 150px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+}
+
+.inner-product-sec .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.inner-product-sec .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-product-sec .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.inner-product-sec .swiper {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.inner-product-sec .swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+.inner-product-sec .mySwiper2 {
+    height: 80%;
+    width: 100%;
+}
+
+.inner-product-sec .mySwiper {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.inner-product-sec .mySwiper .swiper-slide {
+    width: 25%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.inner-product-sec .mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.inner-product-sec .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.quantity {
+    width: 25%;
+    background: none;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+    border: 1px solid #c0c0c0;
+    font-family: 'AvenirNextLTPro-Regular';
+}
+
+input.quantity__input.input-1 {
+    padding: 0;
+    margin: 0;
+    background: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    color: #c0c0c0;
+}
+
+a.minus-1 {
+    display: flex;
+    width: 100%;
+    height: 25px;
+    font-size: 40px;
+    align-items: center;
+    text-decoration: none;
+    color: #c0c0c0;
+}
+
+a.plus-1 {
+    display: flex;
+    width: 100%;
+    height: 25px;
+    font-size: 35px;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    color: #c0c0c0;
+}
+
+a.minus-1 span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+a.plus-1 span {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.inner-product-details h4 {
+    color: #c0c0c0;
+    font-family: 'Lato';
+    font-size: 16px;
+}
+
+.inner-product-details h2 {
+    color: #c0c0c0;
+}
+
+.inner-product-details h3 {
+    color: #c0c0c0;
+    font-family: 'Lato';
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+.inner-product-details h6 {
+    color: #c0c0c0;
+    font-family: 'Roboto';
+    margin-top: 25px;
+}
+
+.inner-product-details select {
+    background-color: transparent;
+    width: 46%;
+    color: #c0c0c0;
+    border-radius: unset;
+    height: 49px !important;
+}
+
+.cart-btn a.btn.btn-custom {
+    color: #c0c0c0;
+    border: 1px solid #c0c0c0;
+    border-radius: 0;
+    width: 85%;
+    padding: 12px 0px;
+    margin-top: 16px;
+}
+
+.cart-btn {
+    margin-top: 10px;
+}
+
+a.btn.btn-custom.white {
+    background-color: white;
+    color: black;
+}
+.category h4 {
+    color: #c0c0c0;
+    font-size: 35px;
+}
+
+.category ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.category ul li a {
+    color: #c0c0c0;
+    font-family: 'Lato';
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.category ul li {
+    padding-bottom: 5px;
+}
+/* product css end */
+
+
+
+/* blog css start */
+
+.for-inner {
+    background-color: black;
+}
+.opt-sec3-main a {
+    text-decoration: none;
+}
+/* blog css end */
+
+
+/* blog-inner css start */
+.blog-section{
+    background-image: url(../images/blog-img.jpg);
+    margin-top: 50px;
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-working{
+    padding: 50px 0 80px 0;
+    text-align: center;
+    transition: all ease .5s;
+}
+.blog-working p{
+    color: white;
+    text-align: justify;
+    padding-bottom: 35px;
+}
+.blog-working a{
+    background-color: #be1d1f;
+    border-radius: 3px;
+    padding: 10px 30px;
+    color: white;
+    transition: all ease .5s;
+    position: relative;
+    z-index: 0;
+    text-decoration: none;
+}
+.blog-working a i{
+    padding-right: 5px;
+    opacity: 0;
+    transition: all ease .5s;
+    position: absolute;
+    left: 7px;
+    top: 12px;
+}
+.blog-working a:hover i{
+    opacity: 1;
+    transition: all ease .5s;
+}
+/* blog-inner css end */
+
+
+
+
+/* contact-us css start */
+
+.contact-text{
+    background-color: #060606;
+    padding: 80px 0 100px 0;
+}
+.lable-txt input::placeholder{
+    color: #ffffff;
+}
+.lable-txt{
+    width: 100%;
+}
+section.contact-text input {
+    background: inherit;
+    border: 1px solid white;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    transition: 0.2s ease-in-out;
+    color: white;
+}
+section.contact-text input:hover{
+    border: 2px solid white;
+}
+section.contact-text input:active{
+    border: 2px solid white;
+}
+.lable-txt textarea{
+    width: 100%;
+    border: 1px solid white;
+    background-color: inherit;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    height: 150px !important;
+
+}
+.lable-txt textarea::placeholder{
+    color: white;
+}
+.lable-txt.gap {
+    padding-top: 25px;
+}
+.lable-anker a {
+    background-color: #141414;
+    padding: 15px 40px;
+    color: white;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.2s ease-in-out;
+}
+.lable-anker a:hover{
+    background-color: white;
+    color: #141414;
+}
+.lable-anker{
+    padding-top: 30px;
+}
+
+/* contact-us css end */

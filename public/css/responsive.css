@@ -1,0 +1,16 @@
+@media (max-width: 1440px) {
+  .navbar-nav {
+    gap: 60px;
+  }
+  .Digital-on .main-mega-menu {
+    right: 160px;
+  }
+  .box-col {
+    gap: 5px;
+  }
+
+  .box-col span {
+    width: 15px;
+    height: 15px;
+  }
+}
