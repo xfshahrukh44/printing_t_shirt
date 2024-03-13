@@ -270,9 +270,6 @@ class ProductController extends Controller
 //		$cart[$pro_id]['variation_price'] = $variation_total * $qty;
 		$cart[$pro_id]['variation_price'] = $variation_total * $cart[$pro_id]['qty'];
 
-
-		dump(Session::get('cart'));
-		dd($cart);
 		Session::put('cart', $cart);
 		Session::flash('message', 'Your Cart Updated Successfully');
 		Session::flash('alert-class', 'alert-success');
