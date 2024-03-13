@@ -160,7 +160,8 @@
                                                                     <div class="modal-body">
                                                                         <div class="pro-img-modal">
                                                                             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
-                                                                                 class="swiper mySwiper4 mySwiper_{{$product->id}}">
+{{--                                                                                 class="swiper mySwiper4 mySwiper_{{$product->id}}">--}}
+                                                                                 class="swiper ms4_{{$product->id}}">
                                                                                 <div
                                                                                     class="swiper-wrapper change-img">
                                                                                     <div
@@ -222,7 +223,8 @@
 
                                                                             </div>
                                                                             <div thumbsSlider=""
-                                                                                 class="swiper mySwiper3 select-img-slides">
+{{--                                                                                 class="swiper mySwiper3 select-img-slides">--}}
+                                                                                 class="swiper select-img-slides ms3_{{$product->id}}">
                                                                                 <div class="swiper-wrapper">
                                                                                     <div
                                                                                         class="swiper-slide">
@@ -1126,18 +1128,24 @@
 @endsection
 
 @section('js')
-{{--    <script type="text/javascript">--}}
-{{--        @foreach ($products as $product)--}}
-{{--            new Swiper(".mySwiper_{{$product->id}}", {--}}
-{{--                spaceBetween: 10,--}}
-{{--                navigation: {--}}
-{{--                    nextEl: ".swiper-button-next",--}}
-{{--                    prevEl: ".swiper-button-prev",--}}
-{{--                },--}}
-{{--                thumbs: {--}}
-{{--                    swiper: swiper,--}}
-{{--                },--}}
-{{--            });--}}
-{{--        @endforeach--}}
-{{--    </script>--}}
+    <script type="text/javascript">
+        @foreach ($products as $product)
+            var swiper = new Swiper(".ms3_{{$product->id}}", {
+                spaceBetween: 10,
+                slidesPerView: 6,
+                freeMode: true,
+                watchSlidesProgress: true,
+            });
+            var swiper2 = new Swiper(".ms4_{{$product->id}}", {
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                thumbs: {
+                    swiper: swiper,
+                },
+            });
+        @endforeach
+    </script>
 @endsection

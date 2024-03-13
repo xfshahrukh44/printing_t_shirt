@@ -156,7 +156,7 @@
 
                                         <div class="last-btn">
                                             <div class="back-btn">
-                                                <a href="index.php" class="btn light-blue-btn"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
+                                                <a href="{{url()->previous()}}" class="btn light-blue-btn"><i class="fa-solid fa-chevron-left"></i> Continue Shopping</a>
                                             </div>
                                             <div class="back-btn">
                                                 <a href="{{route('clear_cart')}}" class="btn light-blue-btn"> Clear Shopping Cart</a>

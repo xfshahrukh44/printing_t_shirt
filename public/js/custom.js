@@ -1,6 +1,6 @@
 
 
-// increment decrement js 
+// increment decrement js
 
 $(document).ready(function () {
   $('.minus-1').click(function (e) {
@@ -30,7 +30,9 @@ $(document).ready(function () {
 
 // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml2');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+if (textWrapper != null) {
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+}
 
 anime.timeline({loop: true})
   .add({
@@ -52,7 +54,10 @@ anime.timeline({loop: true})
 
   // Wrap every letter in a span
 var textWrapper = document.querySelector('.ml3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+if (textWrapper != null) {
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+}
 
 anime.timeline({loop: true})
   .add({

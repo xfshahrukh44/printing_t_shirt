@@ -82,7 +82,7 @@ $('.mega-menu-on').hover(function () {
 
 $(document).ready(function () {
   $('.category-mian-li').click(
-    function () {  
+    function () {
     $(this).find(".category-hover").slideToggle('fast')
     },
   )
@@ -136,7 +136,10 @@ function opentabs(evt , cityName) {
 
 }
 
-document.getElementById("showonly").click();
+if (document.getElementById("showonly")) {
+    document.getElementById("showonly").click();
+}
+
 
 
 

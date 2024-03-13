@@ -123,7 +123,7 @@
                         <div class="last-text">
                             <p>© 2023. All Rights Reserved. </p>
                         </div>
-                        
+
                         <div class="last-text">
                                 <a href="#">About Us  |</a>
                                 <a href="#"> FAQ’s  </a>
@@ -161,7 +161,7 @@
     </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="js/custom.js"></script>
-    
+
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -203,7 +203,7 @@
       },
     });
   </script>
-    
+
 </body>
 
 </html>
