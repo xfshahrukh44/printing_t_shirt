@@ -235,9 +235,11 @@ class ProductController extends Controller
 	}
 	public function updateCart()
 	{
+//	    dd($_POST);
 
 		$cart = Session::get('cart');
 		$pro_id = $_POST['product_id'];
+        $product_detail = DB::table('products')->where('id', $pro_id)->first();
 		$qty = $_POST['qty'];
 		$count = 0;
 		if (sizeof($_POST['row']) >= 1) {
@@ -262,12 +264,15 @@ class ProductController extends Controller
 
 		$variation_total = 0;
 		foreach ($cart[$pro_id]['variation'] as $key => $value) {
-			$variation_total += $value['attribute_price'];
+			$variation_total += floatval($value['attribute_price']);
 		}
 
-		$cart[$pro_id]['variation_price'] = $variation_total * $qty;
+//		$cart[$pro_id]['variation_price'] = $variation_total * $qty;
+		$cart[$pro_id]['variation_price'] = $variation_total * $cart[$pro_id]['qty'];
 
 
+		dump(Session::get('cart'));
+		dd($cart);
 		Session::put('cart', $cart);
 		Session::flash('message', 'Your Cart Updated Successfully');
 		Session::flash('alert-class', 'alert-success');

@@ -35,7 +35,7 @@ class Subcategory extends Model
 
     public function child_sub_categories ()
     {
-        return $this->hasMany(ChildSubcategory::class, 'subcategory');
+        return $this->hasMany(Childsubcategory::class, 'subcategory');
     }
 
 

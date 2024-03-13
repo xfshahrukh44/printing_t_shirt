@@ -173,12 +173,12 @@ h3 strong{
                     <div class="productg-price">
                         <div class="starting-price">
                             <h4><span class="d-block"></span>${{$product->price}}</h4>
-                            <h5><span class="d-block">Regular Price</span>$1,299.00</h5>
+{{--                            <h5><span class="d-block">Regular Price</span>$1,299.00</h5>--}}
                         </div>
                         <div class="info-product">
                             @php
                                 $description = str_replace('<img src="/media', '<img src="https://www.proworldinc.com/media', html_entity_decode($product->description));
-                                $description = str_replace('href="/media', 'href="https://www.proworldinc.com/media', html_entity_decode($product->description));
+                                $description = str_replace('href="/media', 'href="https://www.proworldinc.com/media', $description);
                             @endphp
 
                             {!! $description !!}
