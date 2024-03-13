@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\inquiry;
 
@@ -47,6 +48,55 @@ class ProductController extends Controller
 		//View()->share('config',$config);
 	}
 
+	public function index1()
+	{
+		$products = new Product;
+		if (isset($_GET['q']) && $_GET['q'] != '') {
+
+			$keyword = $_GET['q'];
+
+			$products = $products->where(function ($query)  use ($keyword) {
+				$query->where('product_title', 'like', $keyword);
+			});
+		}
+
+		$products = $products->orderBy('id', 'asc')
+            ->whereHas('category', function ($q) {
+                return $q->where('type', 0);
+            })
+            ->get();
+
+		$subcategories = Subcategory::whereHas('category', function ($q) { return $q->where('type', 0); })->with('child_sub_categories')->get();
+
+		return view('product1', ['products' => $products, 'subcategories' => $subcategories]);
+	}
+
+	public function index2()
+	{
+		$products = new Product;
+		if (isset($_GET['q']) && $_GET['q'] != '') {
+
+			$keyword = $_GET['q'];
+		}
+
+        $products = $products->orderBy('id', 'asc')
+            ->whereHas('category', function ($q) {
+                return $q->where('type', 1);
+            })
+            ->get();
+
+        $subcategories = Subcategory::whereHas('category', function ($q) { return $q->where('type', 1); })->with('child_sub_categories')->get();
+
+		return view('product2', ['products' => $products, 'subcategories' => $subcategories]);
+	}
+
+	public function detail2(Request $request, $id)
+	{
+		$product = Product::find($id);
+
+		return view('product_detail', ['product' => $product]);
+	}
+
 	public function index()
 	{
 		$products = new Product;
@@ -83,7 +133,6 @@ class ProductController extends Controller
 
 	public function cart()
 	{
-
 		$page = DB::table('pages')->where('id', 2)->first();
 		$cartCount = COUNT(Session::get('cart'));
 		$language = Session::get('language');
@@ -99,21 +148,19 @@ class ProductController extends Controller
 
 	public function saveCart(Request $request)
 	{
-
-		
 		$var_item = $request->variation;
-		
+
 		// dd($var_item);
-		
+
 		$result = array();
-		
-		
+
+
 		$product_detail = DB::table('products')->where('id', $request->product_id)->first();
-		
-		
+
+
 		$id = isset($request->product_id) ? $request->product_id : '';
 		$qty = isset($request->qty) ? intval($request->qty) : '1';
-		
+
 		// dd($qty);
 
 		$cart = array();
@@ -137,19 +184,36 @@ class ProductController extends Controller
 
 			$cart[$cartId]['id'] = $id;
 			$cart[$cartId]['name'] = $productFirstrow->product_title;
-			$cart[$cartId]['baseprice'] = $price;
-			$cart[$cartId]['qty'] = $qty;
+
+			//use case: pricing for type 1 products
+            if ($productFirstrow->category->type == 0) {
+                if ($qty == 1) {
+                    $price = $productFirstrow->price;
+                } else if ($qty >= 2 && $qty <=5) {
+                    $price = $productFirstrow->price2;
+                } else if ($qty >= 6 && $qty <=11) {
+                    $price = $productFirstrow->price3;
+                } else if ($qty >= 12) {
+                    $price = $productFirstrow->price4;
+                } else {
+                    $price = $product_detail->price;
+                }
+            } else {
+                $price = $product_detail->price;
+            }
+
+            $cart[$cartId]['baseprice'] = $price;
+            $cart[$cartId]['qty'] = $qty;
 			$cart[$cartId]['variation_price'] = 0;
 
 			foreach ($var_item as $key => $value) {
-
 				$data = ProductAttribute::where('product_id', $_POST['product_id'])->where('value', $value)->first();
 
 				$cart[$cartId]['variation'][$data->id]['attribute'] = 	$data->attribute->name;
 				$cart[$cartId]['variation'][$data->id]['attribute_val'] = 	$data->attributesValues->value;
 				$cart[$cartId]['variation'][$data->id]['attribute_price'] = 	$data->price;
 				$cart[$cartId]['variation_price'] += $data->price;
-			
+
 			}
 
 			// dd($cart);
@@ -158,7 +222,7 @@ class ProductController extends Controller
 
 			Session::flash('message', 'Product Added to cart Successfully');
 			Session::flash('alert-class', 'alert-success');
-			return redirect('/cart');	
+			return redirect('/cart');
 
 		} else {
 
@@ -207,7 +271,8 @@ class ProductController extends Controller
 		Session::put('cart', $cart);
 		Session::flash('message', 'Your Cart Updated Successfully');
 		Session::flash('alert-class', 'alert-success');
-		return redirect('/checkout');
+		return redirect('/cart');
+//		return redirect('/checkout');
 	}
 
 
@@ -235,6 +300,17 @@ class ProductController extends Controller
 		Session::flash('flash_message', 'Product item removed successfully');
 		Session::flash('alert-class', 'alert-success');
 		return back();
+	}
+
+
+	public function clearCart(Request $request)
+	{
+       Session::put('cart', []);
+
+		// echo 'success';
+		Session::flash('flash_message', 'Cart cleared successfully');
+		Session::flash('alert-class', 'alert-success');
+        return redirect('/cart');
 	}
 
 	public function shop()
@@ -278,13 +354,11 @@ class ProductController extends Controller
 
 	public function checkout()
 	{
-
-		dd(Session::get('cart'));
-
+//	    dd('here');
 		if (Session::get('cart') && count(Session::get('cart')) > 0) {
 			$countries = DB::table('countries')
 				->get();
-			return view('checkout', ['cart' => Session::get('cart'), 'countries' => $countries]);
+			return view('shop.checkout', ['cart' => Session::get('cart'), 'countries' => $countries]);
 		} else {
 			Session::flash('flash_message', 'No Product found');
 			Session::flash('alert-class', 'alert-success');

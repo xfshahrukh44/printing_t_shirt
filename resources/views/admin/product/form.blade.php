@@ -2,7 +2,7 @@
 <div class="form-body">
     <div class="row">
 
-    
+
         <div class="col-md-12">
             <div class="form-group">
                {!! Form::Label('category', 'Select Category:') !!}
@@ -21,7 +21,7 @@
             <div class="form-group">
                {!! Form::Label('item', 'Select Sub-Category:') !!}
                <select name="subcategory" id="subcategory" class="form-control">
-                    
+
                </select>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="form-group">
                {!! Form::Label('item', 'Select Child Sub-Category:') !!}
                <select name="childsubcategory" id="childsubcategory" class="form-control">
-                    
+
                </select>
             </div>
         </div>
@@ -41,14 +41,14 @@
 
 
         <div class="row" style="margin-left: 0;">
-            
+
             <div class="col-md-4">
                 <div class="form-group">
                 <label> Category </label>
                 <input type="text" value="{{ App\Category::find($product->category)->name }}" class="form-control" readonly/>
                 </div>
             </div>
-       
+
 
             <div class="col-md-4">
                 <div class="form-group">
@@ -65,7 +65,7 @@
                 </div>
             </div>
 
-        
+
         </div>
 
 
@@ -76,41 +76,79 @@
             </div>
         </div>
 
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="in_stock">In Stock?</label>
+                <select name="in_stock" id="in_stock" class="form-control" required>
+                    <option value="1" {!! isset($product) && $product->in_stock == "1" ? 'selected' : '' !!}>Yes</option>
+                    <option value="0" {!! isset($product) && $product->in_stock == "0" ? 'selected' : '' !!}>No</option>
+                </select>
+            </div>
+        </div>
+
 
 
 
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('price', 'Price') !!}
-                {!! Form::text('price', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-            </div>
-        </div>
-        
-        
-        <div class="col-md-12">
-            <div class="form-group">
-                {!! Form::label('maximum_price', 'Maximum Price') !!}
-                {!! Form::text('maximum_price', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::text('price', isset($product) ? $product->price : 0, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>
         </div>
 
-        
+
+{{--        <div class="col-md-12">--}}
+{{--            <div class="form-group">--}}
+{{--                {!! Form::label('maximum_price', 'Maximum Price') !!}--}}
+{{--                {!! Form::text('maximum_price', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('price2', 'Price 2') !!}
+                {!! Form::text('price2', isset($product) ? $product->price2 : 0, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('price3', 'Price 3') !!}
+                {!! Form::text('price3', isset($product) ? $product->price3 : 0, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('price4', 'Price 4') !!}
+                {!! Form::text('price4', isset($product) ? $product->price4 : 0, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('size', 'Size') !!}
+                {!! Form::text('size', isset($product) ? $product->size : '1 x 1', ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('sku', 'Sku') !!}
                 {!! Form::text('sku', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>
         </div>
-        
-        
-           
+
+
+
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('tags', 'Tags') !!}
-                {!! Form::text('tags', null, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+                {!! Form::text('tags', 'N/A', ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
             </div>
         </div>
-        
+
 
         <div class="col-md-12">
             <div class="form-group">
@@ -120,7 +158,7 @@
         </div>
 
 
-        
+
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('additional_information', 'Additional Information') !!}
@@ -146,7 +184,7 @@
                     <!--<div class="col-md-2">-->
                         <div class="image-single" style="padding: 15px;">
                         <img src="{{ asset( $product_image->image)}}" alt="" id="image_id" style="height: 100px; width: 100px; border: 1px solid; border-radius: 15px;" >
-                        <button type="button" class="btn btn-danger" data-repeater-delete="" onclick="getInputValue({{$product_image->id}}, this);"> <i class="ft-x"></i>Delete</button>               
+                        <button type="button" class="btn btn-danger" data-repeater-delete="" onclick="getInputValue({{$product_image->id}}, this);"> <i class="ft-x"></i>Delete</button>
                         </div>
                     <!--</div>-->
                 @endforeach
@@ -181,7 +219,7 @@
                             <br>
                              <select class="form-control value" id="value" name="value[]" disabled>
                                 <option value="{{ $pro_att_edits->value }}">{{ $pro_att_edits->attributesValues->value }}</option>
-                            </select>   
+                            </select>
                         </div>
 
 
@@ -190,7 +228,7 @@
                             <br>
                             <input type="number" name="v_price[]" class="form-control" id="price" value="{{ $pro_att_edits->price }}">
                         </div>
-                        
+
                         <!--<div class="form-group mb-1 col-sm-12 col-md-2">-->
                             <!--<label for="bio" class="cursor-pointer">qty</label>-->
                             <!--<br>-->
@@ -201,7 +239,7 @@
                             <button onclick="deleteAttr({{ $pro_att_edits->id }}, this)" type="button" class="btn btn-danger" data-repeater-delete=""> <i class="ft-x"></i>
                                 Delete</button>
                         </div>
-                    
+
                     <hr>
                 </div>
             </div>
@@ -211,7 +249,7 @@
         <div class="repeater-default col-md-12">
             <div data-repeater-list="attribute">
                 <div data-repeater-item="" class="row">
-                    
+
                         <div class="form-group mb-1 col-sm-12 col-md-3">
                             <label for="email-addr">Attribute</label>
                             <br>
@@ -225,8 +263,8 @@
                             <label for="pass">value</label>
                             <br>
                              <select class="form-control value" id="value" name="value">
-                            
-                            </select>   
+
+                            </select>
                         </div>
                         <div class="form-group mb-1 col-sm-12 col-md-3">
                             <label for="bio" class="cursor-pointer">Price</label>
@@ -242,7 +280,7 @@
                             <button type="button" class="btn btn-danger" data-repeater-delete=""> <i class="ft-x"></i>
                                 Delete</button>
                         </div>
-                    
+
                     <hr>
                 </div>
             </div>
@@ -254,8 +292,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
     </div>
 </div>
 
@@ -268,44 +306,44 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
-    
+
   $(document).ready(function() {
 
   $('#subcategory_sec').hide();
 
-          
+
   $('#category').change(function() {
 
         var get_id = $('#category').val();
-        
+
         // alert(get_id);
 
         if(get_id == '0'){
-            
+
         $('#subcategory_sec').hide(500);
-            
+
         }else{
-            
-        $('#subcategory_sec').show(500);    
-            
+
+        $('#subcategory_sec').show(500);
+
         }
-          
-      
+
+
         $.ajax({
             url: "{{route('set_sub_category')}}",
             type: "get",
             dataType: "json",
             data: {
-                
+
                  "_token": "{{ csrf_token() }}",
                 get_id:get_id
-                
+
             },
             success: function (response) {
-               
+
 
                  if (response.status) {
-                
+
                 	console.log(response.getsub_category);
                     const options = response.getsub_category;
                     $('#subcategory').empty();
@@ -321,13 +359,13 @@
 	            } else {
 	                toastr.success(response.error);
 	            }
-                
-               
+
+
             }
         });
 
   });
-  
+
 
 // Child Sub-Category Section
 
@@ -340,13 +378,13 @@ var get_child_id = $('#subcategory').val();
 // alert(get_child_id);
 
 if(get_child_id == '0'){
-    
+
 $('#childsubcategory_sec').hide(500);
-    
+
 }else{
-    
-$('#childsubcategory_sec').show(500);    
-    
+
+$('#childsubcategory_sec').show(500);
+
 }
 
 $.ajax({
@@ -354,16 +392,16 @@ $.ajax({
     type: "get",
     dataType: "json",
     data: {
-        
+
          "_token": "{{ csrf_token() }}",
          get_child_id:get_child_id
-        
+
     },
     success: function (response) {
-       
+
 
         if (response.status) {
-    
+
             console.log(response.get_child_sub_category);
 
             const options = response.get_child_sub_category;
@@ -371,7 +409,7 @@ $.ajax({
             $('#childsubcategory').empty();
 
             const selectElement = $('#childsubcategory');
-                
+
             options.forEach((option) => {
 
                 const { id, childsubcategory } = option;
@@ -379,15 +417,15 @@ $.ajax({
                 selectElement.append(optionElement);
 
             });
-        
+
 
         } else {
 
             toastr.success(response.error);
 
-        }   
-        
-       
+        }
+
+
     }
 });
 
@@ -398,13 +436,12 @@ $.ajax({
 
 
 
-  
-    
-    
+
+
+
   });
-  
-  
+
+
 
 </script>
 
-  

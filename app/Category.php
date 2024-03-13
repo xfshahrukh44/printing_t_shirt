@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Subcategory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
@@ -25,7 +26,12 @@ class Category extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'heading', 'detail', 'icon', 'image'];
+    protected $fillable = ['name', 'heading', 'detail', 'icon', 'image', 'type'];
 
-    
+    public function sub_categories ()
+    {
+        return $this->hasMany(Subcategory::class, 'category');
+    }
+
+
 }

@@ -41,8 +41,18 @@
                                         <a href="#" class="btn btn-account"><i class="fa-regular fa-user"></i>
                                              Account</a>
                                         <div class="side-top-maodal">
-                                             <button class="btn btn-black" type="button" onclick="modalspan()"><i
-                                                       class="fa-solid fa-cart-shopping"></i>$0.00(0)</button>
+                                            @php
+                                                $cart = Session::get('cart');
+                                                $cart_count = count($cart);
+                                                $subtotal = 0;
+                                                $total_variation = 0;
+                                                foreach ($cart as $key => $value) {
+                                                    $subtotal += $value['baseprice'] * $value['qty'];
+                                                    $total_variation += $value['variation_price'];
+                                                }
+                                            @endphp
+                                             <a href="{{route('cart')}}" class="btn btn-black" type="button" onclick="modalspan()"><i
+                                                       class="fa-solid fa-cart-shopping"></i>${{ $subtotal + $total_variation }}({{$cart_count}})</a>
                                              <div class="openmaodal" id="modal_span">
                                                   <span class="close">&times;</span>
 
@@ -94,7 +104,7 @@
                     </nav>
                     <div class="links-menu">
                          <ul class="navbar-nav m-auto">
-                              <li class="nav-item mega-menu-on">
+                              <li class="nav-item mega-menu-on heat-transfers">
                                    <a class="nav-link active" aria-current="page" href="#"> Heat Transfers
                                    </a>
                                    <div class="main-mega-menu">
@@ -324,15 +334,12 @@
                                                             <li><a href="javascript:;">Sport</a></li>
                                                             <li><a href="javascript:;">TV</a></li>
                                                             <li><a href="javascript:;">Trendy</a></li>
-                                                            <li><a href="javascript:;">Ugly Christmas
-                                                                      Sweater</a></li>
-                                                            <li><a href="javascript:;">Unique
-                                                                      Pets</a></li>
+                                                            <li><a href="javascript:;">Ugly Christmas Sweater</a></li>
+                                                            <li><a href="javascript:;">Unique Pets</a></li>
                                                             <li><a href="javascript:;">Vintage</a></li>
                                                             <li><a href="javascript:;">Voting</a></li>
                                                             <li><a href="javascript:;">Western</a></li>
-                                                            <li><a href="javascript:;">Wildlife</a>
-                                                            </li>
+                                                            <li><a href="javascript:;">Wildlife</a></li>
                                                             <li><a href="javascript:;">Wildside</a></li>
                                                             <li><a href="javascript:;">Wine</a></li>
                                                        </ul>
@@ -356,7 +363,7 @@
                                         </div>
                                    </div>
                               </li>
-                              <li class="nav-item mega-menu-on Vinyl-on">
+                              <li class="nav-item mega-menu-on Vinyl-on t-shirt-categories">
                                    <a class="nav-link" href="#">Vinyl </a>
 
                                    <div class="main-mega-menu">
@@ -372,8 +379,7 @@
                                                                  <a href="javascript:;">Printable Vinyl</a>
                                                             </li>
                                                             <li>
-                                                                 <a href="javascript:;">Heat Transfer Vinyl <br>For
-                                                                      Garments</a>
+                                                                 <a href="javascript:;">Heat Transfer Vinyl <br>For Garments</a>
                                                             </li>
                                                             <li>
                                                                  <a href="javascript:;">Sign &amp; Decorative Vinyl</a>
@@ -423,8 +429,7 @@
                                                                  <a href="javascript:;">GCC Cutters</a>
                                                             </li>
                                                             <li>
-                                                                 <a href="javascript:;">Siser Romeo &amp; Juliet
-                                                                      Cutters</a>
+                                                                 <a href="javascript:;">Siser Romeo &amp; Juliet Cutters</a>
                                                             </li>
                                                             <li>
                                                                  <a href="javascript:;">All Accessories</a>
@@ -465,7 +470,7 @@
 
 
 
-                              <li class="nav-item mega-menu-on Custom-on">
+                              <li class="nav-item mega-menu-on Custom-on t-shirt-categories">
                                    <a class="nav-link" href="#">
                                         Custom Transfers
                                    </a>
@@ -505,7 +510,7 @@
 
 
 
-                              <li class="nav-item mega-menu-on Starter-Packs-on">
+                              <li class="nav-item mega-menu-on Starter-Packs-on t-shirt-categories">
                                    <a class="nav-link" href="#"> Starter Packs </a>
 
                                    <div class="main-mega-menu">
@@ -542,12 +547,12 @@
 
 
 
-                              <li class="nav-item">
+                              <li class="nav-item t-shirt-categories">
                                    <a class="nav-link" href="#"> Clearance </a>
                               </li>
 
 
-                              <li class="nav-item mega-menu-on Digital-on">
+                              <li class="nav-item mega-menu-on Digital-on t-shirt-categories">
                                    <a class="nav-link" href="#"> Digital Art </a>
                                    <div class="main-mega-menu">
                                         <div class="row">

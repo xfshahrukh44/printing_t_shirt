@@ -43,9 +43,9 @@
 
 
 table{
-    
+
     color:#fff;
-    
+
 }
 
 tbody, th, td{
@@ -73,14 +73,14 @@ h3 strong{
 
 .activeee{
    background:#000;
-   color:#fff; 
+   color:#fff;
    border:1px solid #fff;
-    
+
 }
 
 
 .activee{
-    
+
     background:#000;
     color:#fff;
     border:1px solid #fff;
@@ -92,243 +92,920 @@ h3 strong{
 
 
 @section('content')
+    <section class="porduct-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="main-pro-slides">
+                        <div class="slides-swiper">
+                            <h1>{{$product->product_title}}</h1>
+                            @php
+                                $product_images = DB::table('product_imagess')
+                                  ->where('product_id', $product->id)
+                                  ->orderBy('id', 'DESC')
+                                  ->get();
+                            @endphp
+                        </div>
+                        <div class="slides-star">
+                            <div class="star-icon">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p><a href="#"> 50 Reviews </a> <a href="#">Write a Review</a> Item #MP350</p>
+                        </div>
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                             class="swiper mySwiper2">
+                            <div class="swiper-wrapper change-img">
+                                @foreach($product_images as $product_image)
+                                    <div class="swiper-slide">
+                                        <img src="{{asset( $product_image->image)}}" />
+                                    </div>
+                                @endforeach
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/10.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/11.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/9.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/6.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/13.png')}}" />--}}
+{{--                                </div>--}}
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div thumbsSlider="" class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                @foreach($product_images as $product_image)
+                                    <div class="swiper-slide">
+                                        <img src="{{asset( $product_image->image)}}" />
+                                    </div>
+                                @endforeach
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/10.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/11.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/9.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/6.png')}}" />--}}
+{{--                                </div>--}}
+{{--                                <div class="swiper-slide">--}}
+{{--                                    <img src="{{asset('images/13.png')}}" />--}}
+{{--                                </div>--}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="productg-price">
+                        <div class="starting-price">
+                            <h4><span class="d-block"></span>${{$product->price}}</h4>
+                            <h5><span class="d-block">Regular Price</span>$1,299.00</h5>
+                        </div>
+                        <div class="info-product">
+                            @php
+                                $description = str_replace('<img src="/media', '<img src="https://www.proworldinc.com/media', html_entity_decode($product->description));
+                                $description = str_replace('href="/media', 'href="https://www.proworldinc.com/media', html_entity_decode($product->description));
+                            @endphp
 
-<!-- ============================================================== -->
-<!-- BODY START HERE -->
-<!-- ============================================================== -->
+                            {!! $description !!}
+                        </div>
+                        <form action="{{route('save_cart')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{$product->id}}">
 
-<!-- <section class="heading-sec">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="inner-headings">
-                    <h2>PRODUCTS</h2>
+                            <div class="stock-price">
+                                <p>In Stock - Available for immediate delivery</p>
+                                <div class="quantity-btn">
+                                    <label for="quantity">Qty
+                                    </label>
+                                    <input type="number" id="quantity" name="qty" min="1" max="100" value="1">
+                                </div>
+{{--                                variation--}}
+                                <div class="year-btn">
+                                    <?php
+                                    $productAttributes_id = DB::table('product_attributes')->select('product_id', 'attribute_id')->where('product_id', $product->id)->groupBy('attribute_id')->get();
+                                    // dump($productAttributes);
+                                    ?>
+                                    @foreach($productAttributes_id as $key => $val_product_attribute)
+
+                                        <h6> {{ App\Attributes::find($val_product_attribute->attribute_id)->name }} </h6>
+
+                                        <?php
+
+                                        $get_attribute_values = DB::table('product_attributes')->where('attribute_id',$val_product_attribute->attribute_id)->where('product_id',$val_product_attribute->product_id)->get();
+
+                                        ?>
+
+                                        @foreach($get_attribute_values as $key2 => $val_attr_value)
+                                            <input class="btn" type="radio" id="{{$key . '_' . $key2}}" name="variation[{{ App\Attributes::find($val_product_attribute->attribute_id)->name }}]" value="{{ $val_attr_value->value }}" required>
+                                            <label for="{{$key . '_' . $key2}}">{{ App\AttributeValue::find($val_attr_value->value)->value }}</label><br>
+                                        @endforeach
+
+                                    @endforeach
+                                </div>
+                                <button class="btn light-blue-btn" type="submit">ADD TO CART</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section> -->
+    </section>
 
 
 
-<section class="inner-product-sec">
-    <div class="container">
-        <div class="row">
-            
-        
-            <?php 
-                
-                $get_category = DB::table('categories')->get();
-                $route_category = Request::segment(3);
-                $route_subcategory = Request::segment(4);
-                $route_child_subcategory = Request::segment(5);
-
-            ?>
-
-            <div class="col-md-3">
-
-                <div class="category">
-                    <h4>Category</h4>
-                    <ul>
-
-                        @foreach($get_category as $key1 => $val_category)
-                        <li class="inner-shop">
-                            
-                            <a href="{{ URL('product/'.$val_category->id) }}" style="<?php if($route_category == $val_category->id){ echo 'color:red'; } ?>" > {{ $val_category->name }} </a>
-                                
-                                <?php $get_subcategory = DB::table('subcategories')->where('category',$val_category->id)->get(); ?>
-
-                                @foreach($get_subcategory as $key2 => $val_subcategory)
-                                <div class="inner-drop" style="<?php if($route_category == $val_subcategory->category){ echo 'display:block;'; } ?>" >
-                                    <ul>
-                                    <li class="inner-shop-2">
-                                        <a href="{{ URL('product/'.$route_category.'/'.$val_subcategory->id) }}" style="<?php if($route_subcategory == $val_subcategory->id){ echo 'color:red'; } ?>" > {{ $val_subcategory->subcategory }} </a>
-                                            
-                                        <?php $get_childsubcategory = DB::table('childsubcategories')->where('subcategory', $val_subcategory->id)->get(); ?> 
-                                        
-                                        @foreach($get_childsubcategory as $key2 => $val_childsubcategory)
-                                        <div class="inner-drop-2" style="<?php if($route_subcategory == $val_childsubcategory->subcategory){ echo 'display:block;'; } ?>" >
+    <section class="featured-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="main-tabs-info">
+                        <div class="change-tabs">
+                            <button class="clicktabs" onclick="opentabs(event , 'info1')"
+                                    id="showonly">Details</button>
+                            <button class="clicktabs" onclick="opentabs(event , 'info2')">Reviews (50)</button>
+                        </div>
+                        <div class="feature-details">
+                            <div class="changetabs" id="info1">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="slides-swiper">
+                                            <h1>Features
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="product-slider">
+                                            <div class="shirt-slides">
+                                                <a href="javascript:;">
+                                                    <div class="product-carousel owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-discription">
+                                                <div class="rainbow-col">
+                                                    <div class="pro-name">
+                                                        <p> Product Name Goes <span class="d-block">Here</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="box-col">
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="prod-price">
+                                                    <h6>$ 35</h6>
+                                                    <div class="cart-icon">
+                                                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                                        <a href="#"><i
+                                                                class="fa-solid fa-cart-shopping"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="product-slider">
+                                            <div class="shirt-slides">
+                                                <a href="javascript:;">
+                                                    <div class="product-carousel owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-discription">
+                                                <div class="rainbow-col">
+                                                    <div class="pro-name">
+                                                        <p> Product Name Goes <span class="d-block">Here</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="box-col">
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="prod-price">
+                                                    <h6>$ 35</h6>
+                                                    <div class="cart-icon">
+                                                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                                        <a href="#"><i
+                                                                class="fa-solid fa-cart-shopping"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="product-slider">
+                                            <div class="shirt-slides">
+                                                <a href="javascript:;">
+                                                    <div class="product-carousel owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-discription">
+                                                <div class="rainbow-col">
+                                                    <div class="pro-name">
+                                                        <p> Product Name Goes <span class="d-block">Here</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="box-col">
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="prod-price">
+                                                    <h6>$ 35</h6>
+                                                    <div class="cart-icon">
+                                                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                                        <a href="#"><i
+                                                                class="fa-solid fa-cart-shopping"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="product-slider">
+                                            <div class="shirt-slides">
+                                                <a href="javascript:;">
+                                                    <div class="product-carousel owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-discription">
+                                                <div class="rainbow-col">
+                                                    <div class="pro-name">
+                                                        <p> Product Name Goes <span class="d-block">Here</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="box-col">
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="prod-price">
+                                                    <h6>$ 35</h6>
+                                                    <div class="cart-icon">
+                                                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                                        <a href="#"><i
+                                                                class="fa-solid fa-cart-shopping"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="product-slider">
+                                            <div class="shirt-slides">
+                                                <a href="javascript:;">
+                                                    <div class="product-carousel owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-discription">
+                                                <div class="rainbow-col">
+                                                    <div class="pro-name">
+                                                        <p> Product Name Goes <span class="d-block">Here</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="box-col">
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="prod-price">
+                                                    <h6>$ 35</h6>
+                                                    <div class="cart-icon">
+                                                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                                        <a href="#"><i
+                                                                class="fa-solid fa-cart-shopping"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="product-slider">
+                                            <div class="shirt-slides">
+                                                <a href="javascript:;">
+                                                    <div class="product-carousel owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/11.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="shirt-dots">
+                                                                <figure>
+                                                                    <img src="{{asset('images/10.png')}}"
+                                                                         class="img-fluid" alt="">
+                                                                </figure>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="product-discription">
+                                                <div class="rainbow-col">
+                                                    <div class="pro-name">
+                                                        <p> Product Name Goes <span class="d-block">Here</span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="box-col">
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                        <span>.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="prod-price">
+                                                    <h6>$ 35</h6>
+                                                    <div class="cart-icon">
+                                                        <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                                        <a href="#"><i
+                                                                class="fa-solid fa-cart-shopping"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="list-feature">
+                                            <h5>Features</h5>
                                             <ul>
                                                 <li>
-                                                    <a href="{{ URL('product/'.$route_category.'/'.$val_subcategory->id.'/'.$val_childsubcategory->id) }}"  style="<?php if($route_child_subcategory == $val_childsubcategory->id){ echo 'color:red'; } ?>" > {{ $val_childsubcategory->childsubcategory }} </a> 
+                                                    <p>Platen Size: 16x20"</p>
+                                                </li>
+                                                <li>
+                                                    <p>Fabric Platen Cover</p>
+                                                </li>
+                                                <li>
+                                                    <p>Heat Press Footprint: 9x22"</p>
+                                                </li>
+                                                <li>
+                                                    <p>Pressure Display: Yes</p>
+                                                </li>
+                                                <li>
+                                                    <p>Temperature Range: Max.430°F</p>
+                                                </li>
+                                                <li>
+                                                    <p>Easy assembly of the control box to the frame is
+                                                        required.</p>
+                                                </li>
+                                                <li>
+                                                    <p>Preheat approximately 20 minutes to reach 356°F.</p>
+                                                </li>
+                                                <li>
+                                                    <p>"RAMLOCK" Quick Change System for interchangeable
+                                                        platens.</p>
+                                                </li>
+                                                <li>
+                                                    <p>Auto-Sleep Mode</p>
+                                                </li>
+                                                <li>
+                                                    <p>Over The Center Pressure Distribution</p>
+                                                </li>
+                                                <li>
+                                                    <p>Threadable Lower Platen</p>
+                                                </li>
+                                                <li>
+                                                    <p>Bottom Pad Cover And Non-Stick Sheet Included</p>
+                                                </li>
+                                            </ul>
+                                            <h5>Programmed Presets</h5>
+                                            <ul>
+                                                <li>
+                                                    <p>Siser Easyweed: 305 F For 12 Seconds</p>
+                                                </li>
+                                                <li>
+                                                    <p>Supacolor And Siser Glitter: 320 F For 15 Seconds</p>
+                                                </li>
+                                                <li>
+                                                    <p>Sublimation On Polyester: 400 F For 45 Seconds</p>
+                                                </li>
+                                                <li>
+                                                    <p>Hot Peel Transfer: 395 F for 10 Seconds</p>
                                                 </li>
                                             </ul>
                                         </div>
-                                        @endforeach
-
-                                    </li>
-                                    </ul>
+                                    </div>
                                 </div>
-                                @endforeach
-
-                        </li>
-                        @endforeach
-
-                </ul>
-                </div>
-
-            </div>
-
-            <?php 
-                $get_multiple_images = DB::table('product_imagess')->where('product_id', $get_product_detail->id)->get();
-            ?>
-
-            <div class="col-lg-5">
-                <div class="inner-img">
-                    <div class="swiper mySwiper2">
-                        <div class="swiper-wrapper">
-                            
-                            <div class="swiper-slide">
-                                <img src="{{asset($get_product_detail->image)}}" style="height: 430px;width: 430px;" />
                             </div>
-                            
-                            @foreach($get_multiple_images as $key => $val_images)
-                            <div class="swiper-slide">
-                                <img src="{{asset($val_images->image)}}" style="height: 430px;width: 430px;" />
+                            <div class="changetabs" id="info2">
+                                <div class="testimonals">
+                                    <div class="reviews-info">
+                                        <h4>Customer Reviews</h4>
+                                    </div>
+                                    <div class="show-reviews">
+                                        <div class="points-reviews">
+                                            <div class="reviewsss">
+                                                <h4>4.6</h4>
+                                            </div>
+                                            <div class="reviewsss-star">
+                                                <div class="star-icon">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                </div>
+                                                <div class="star-count">
+                                                    <p>50 reviews</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="review-range">
+                                            <a href="javascript:;">5 stars <div class="yellow-line"></div> 66%
+                                                (33)</a>
+                                            <a href="javascript:;">4 stars <div class="yellow-line"></div> 28%
+                                                (14)</a>
+                                            <a href="javascript:;">3 stars <div class="yellow-line"></div> 0%
+                                                (0)</a>
+                                            <a href="javascript:;">2 stars <div class="yellow-line"></div> 0%
+                                                (0)</a>
+                                            <a href="javascript:;">1 star <div class="yellow-line"></div> 6%
+                                                (3)</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="show-five">
+                                    <p>Top customer reviews with 5 stars | <a href="#">Show All</a></p>
+                                </div>
                             </div>
-                            @endforeach
-
                         </div>
                     </div>
-                    <div thumbsSlider="" class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="{{asset($get_product_detail->image)}}" style="height: 100px; width: 100px;" />
-                            </div>
-                            @foreach($get_multiple_images as $key => $val_images)
-                            <div class="swiper-slide">
-                                <img src="{{asset($val_images->image)}}" style="height: 100px; width: 100px;" />
-                            </div>
-                            @endforeach
-
-                        </div>
-                    </div>
                 </div>
-                
-                <br><br><hr style="border:1px solid #5f5f5f;">
-
-                <div class="col-lg-12">
-                        
-                    <div class="inner-producttt">
-                        
-                            <div class="productmain">
-                                  <button class="clicktabs activeee" onclick="opencity(event , 'porduct1')" id="showonly" > Description </button>
-                                  <button class="clicktabs" onclick="opencity(event , 'porduct2')"> Additional Information </button>
-                            </div>
-                         
-                         <br>
-                         
-                        <div class="contentinfo">
-                        
-                            <div class="cycleinfo" id="porduct1">
-                            
-                                {!! $get_product_detail->description !!}
-                                
-                            </div>
-                            
-                            
-                            <div class="cycleinfo" id="porduct2" style="display:none;">
-                              
-                                {!! $get_product_detail->additional_information !!}
-                                
-                            </div>
-                            
-                        
-                        </div>
-                
-                
-                     </div>
-                     
-                </div>
-             
-                
-                
             </div>
-
-
-
-
-
-            <?php
-                $productAttributes_id = DB::table('product_attributes')->select('product_id', 'attribute_id')->where('product_id', $get_product_detail->id)->groupBy('attribute_id')->get();
-                // dump($productAttributes);
-            ?>
-
-            
-
-            <div class="col-lg-4">
-
-            <form method="POST" action="{{ route('save_cart') }}" id="add-cart">
-
-                @csrf
-
-                <input type="hidden" name="product_id" id="product_id" value="{{ $get_product_detail->id }}">
-
-                <div class="inner-product-details">
-                    <!-- <h4>TECHDEV-PROFILERACING</h4> -->
-                    <h2> {{ $get_product_detail->product_title }} </h2>
-                    <h3>${{ $get_product_detail->price }} USD</h3>
-                    
-                    
-                    @foreach($productAttributes_id as $key => $val_product_attribute)
-                    
-                    <h6> {{ App\Attributes::find($val_product_attribute->attribute_id)->name }} </h6>
-
-                    <?php  
-
-                        $get_attribute_values = DB::table('product_attributes')->where('attribute_id',$val_product_attribute->attribute_id)->where('product_id',$val_product_attribute->product_id)->get();
-
-                    ?>
-
-                    <select class="form-control" name="variation[{{ App\Attributes::find($val_product_attribute->attribute_id)->name }}]>
-                        
-                        <option value="0">Choose an option</option>
-                        @foreach($get_attribute_values as $key => $val_attr_value)
-                        <option value="{{ $val_attr_value->value }}"> {{ App\AttributeValue::find($val_attr_value->value)->value }} </option>
-                        @endforeach
-
-                    </select>
-                    @endforeach
-
-
-                    <h6>Quantity</h6>
-                    <div class="quantity">
-                        <a href="#" class=" minus-1"><span>-</span></a>
-                        <input name="qty" type="text" class="quantity__input input-1" readonly="" value="1">
-                        <a href="#" class=" plus-1"><span>+</span></a>
-                    </div>
-
-                    <br>
-
-                    <div class="cart-btn">
-                        <button type="submit" class="btn btn-custom" id="addCart">Add to cart
-                        <!-- <a href="#" class="btn btn-custom white">Buy it now</a> -->
-                    </div>
-
-                </div>
-            
-            </form>
-
-            </div>
-            
-            
-            
-            
-            
-
-
-
         </div>
-        
-        
-        
-    </div>
-</section>
+    </section>
 
 
 
-
-
+    <section class="related-product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slides-swiper">
+                        <h1>Related Products</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-slider">
+                        <div class="shirt-slides">
+                            <a href="javascript:;">
+                                <div class="product-carousel owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-discription">
+                            <div class="rainbow-col">
+                                <div class="pro-name">
+                                    <p> Product Name Goes <span class="d-block">Here</span>
+                                    </p>
+                                </div>
+                                <div class="box-col">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                </div>
+                            </div>
+                            <div class="prod-price">
+                                <h6>$ 35</h6>
+                                <div class="cart-icon">
+                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-slider">
+                        <div class="shirt-slides">
+                            <a href="javascript:;">
+                                <div class="product-carousel owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-discription">
+                            <div class="rainbow-col">
+                                <div class="pro-name">
+                                    <p> Product Name Goes <span class="d-block">Here</span>
+                                    </p>
+                                </div>
+                                <div class="box-col">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                </div>
+                            </div>
+                            <div class="prod-price">
+                                <h6>$ 35</h6>
+                                <div class="cart-icon">
+                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-slider">
+                        <div class="shirt-slides">
+                            <a href="javascript:;">
+                                <div class="product-carousel owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-discription">
+                            <div class="rainbow-col">
+                                <div class="pro-name">
+                                    <p> Product Name Goes <span class="d-block">Here</span>
+                                    </p>
+                                </div>
+                                <div class="box-col">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                </div>
+                            </div>
+                            <div class="prod-price">
+                                <h6>$ 35</h6>
+                                <div class="cart-icon">
+                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-slider">
+                        <div class="shirt-slides">
+                            <a href="javascript:;">
+                                <div class="product-carousel owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-discription">
+                            <div class="rainbow-col">
+                                <div class="pro-name">
+                                    <p> Product Name Goes <span class="d-block">Here</span>
+                                    </p>
+                                </div>
+                                <div class="box-col">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                </div>
+                            </div>
+                            <div class="prod-price">
+                                <h6>$ 35</h6>
+                                <div class="cart-icon">
+                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-slider">
+                        <div class="shirt-slides">
+                            <a href="javascript:;">
+                                <div class="product-carousel owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-discription">
+                            <div class="rainbow-col">
+                                <div class="pro-name">
+                                    <p> Product Name Goes <span class="d-block">Here</span>
+                                    </p>
+                                </div>
+                                <div class="box-col">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                </div>
+                            </div>
+                            <div class="prod-price">
+                                <h6>$ 35</h6>
+                                <div class="cart-icon">
+                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="product-slider">
+                        <div class="shirt-slides">
+                            <a href="javascript:;">
+                                <div class="product-carousel owl-carousel owl-theme">
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="shirt-dots">
+                                            <figure>
+                                                <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-discription">
+                            <div class="rainbow-col">
+                                <div class="pro-name">
+                                    <p> Product Name Goes <span class="d-block">Here</span>
+                                    </p>
+                                </div>
+                                <div class="box-col">
+                                    <span>.</span>
+                                    <span>.</span>
+                                    <span>.</span>
+                                </div>
+                            </div>
+                            <div class="prod-price">
+                                <h6>$ 35</h6>
+                                <div class="cart-icon">
+                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
+                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
 
 @section('js')
@@ -349,11 +1026,11 @@ $(document).ready(function () {
 
 
  function opencity(evt, cityName) {
-     
+
        var a, cycleinfo, clicktabs;
 
        cycleinfo = document.getElementsByClassName("cycleinfo");
-       
+
        for (i = 0; i < cycleinfo.length; i++) {
             cycleinfo[i].style.display = "none";
        }

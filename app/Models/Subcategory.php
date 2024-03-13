@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Subcategory extends Model
@@ -27,5 +28,15 @@ class Subcategory extends Model
      */
     protected $fillable = ['category', 'subcategory', 'image'];
 
-    
+    public function category ()
+    {
+        return $this->belongsTo(Category::class, 'category');
+    }
+
+    public function child_sub_categories ()
+    {
+        return $this->hasMany(ChildSubcategory::class, 'subcategory');
+    }
+
+
 }

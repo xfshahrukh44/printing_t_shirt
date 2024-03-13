@@ -57,7 +57,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($product as $item)    
+                                    @foreach($product as $item)
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td class="text-dark weight-600"> {{ \Illuminate\Support\Str::limit($item->product_title, 50, $end='...') }}
@@ -78,7 +78,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    @endforeach  
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

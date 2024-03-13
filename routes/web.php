@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     Route::get('/','Admin\AdminController@dashboard');
 
     Route::get('/dashboard','Admin\AdminController@dashboard')->name('admin.dashboard');
-    
+
     Route::get('account/settings','Admin\UsersController@getSettings');
     Route::post('account/settings','Admin\UsersController@saveSettings');
 
@@ -41,9 +41,9 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
 
     Route::get('logo/edit','Admin\AdminController@logoEdit')->name('admin.logo.edit');
     Route::post('logo/upload','Admin\AdminController@logoUpload')->name('logo_upload');
-    
+
     Route::get('favicon/edit','Admin\AdminController@faviconEdit')->name('admin.favicon.edit');
-    
+
     Route::post('favicon/upload','Admin\AdminController@faviconUpload')->name('favicon_upload');
 
     Route::get('config/setting', 'Admin\AdminController@configSetting')->name('admin.config.setting');
@@ -51,10 +51,10 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     Route::get('contact/inquiries','Admin\AdminController@contactSubmissions');
     Route::get('contact/inquiries/{id}','Admin\AdminController@inquiryshow');
     Route::get('newsletter/inquiries','Admin\AdminController@newsletterInquiries');
-    
+
     Route::any('contact/submissions/delete/{id}','Admin\AdminController@contactSubmissionsDelete');
-    Route::any('newsletter/inquiries/delete/{id}','Admin\AdminController@newsletterInquiriesDelete'); 
-    
+    Route::any('newsletter/inquiries/delete/{id}','Admin\AdminController@newsletterInquiriesDelete');
+
     /* Config Setting Form Submit Route */
     Route::post('config/setting','Admin\AdminController@configSettingUpdate')->name('config_settings_update');
 
@@ -114,13 +114,13 @@ Route::group(['middleware' => ['auth', 'roles'],'roles' => 'admin','prefix'=>'ad
     Route::get('user/delete/{id}','Admin\\UsersController@destroy');
     Route::get('user/deleted/','Admin\\UsersController@getDeletedUsers');
     Route::get('user/restore/{id}','Admin\\UsersController@restoreUser');
-    
+
 
     Route::resource('product', 'Admin\\ProductController');
     Route::get('product/{id}/delete', ['as' => 'product.delete', 'uses' => 'Admin\\ProductController@destroy']);
     Route::get('order/list', ['as' => 'order.list', 'uses' => 'Admin\\ProductController@orderList']);
     Route::get('order/detail/{id}', ['as' => 'order.list.detail', 'uses' => 'Admin\\ProductController@orderListDetail']);
-    
+
      //Order Status Change Routes//
     Route::get('status/completed/{id}','Admin\\ProductController@updatestatuscompleted')->name('status.completed');
     Route::get('status/pending/{id}','Admin\\ProductController@updatestatusPending')->name('status.pending');
@@ -159,10 +159,10 @@ Route::get('account-detail','LoggedInController@accountDetail')->name('accountDe
 Route::post('update/account','LoggedInController@updateAccount')->name('update.account');
 Route::get('signout', function() {
         Auth::logout();
-        
-        Session::flash('flash_message', 'You have logged out  Successfully'); 
-        Session::flash('alert-class', 'alert-success'); 
-        
+
+        Session::flash('flash_message', 'You have logged out  Successfully');
+        Session::flash('alert-class', 'alert-success');
+
         return redirect('signin');
 });
 
@@ -214,7 +214,7 @@ Route::get('/test', function() {
     App::setlocale('arab');
     dd(App::getlocale());
     if(App::setlocale('arab')) {
-        
+
     }
 });
 */
@@ -227,14 +227,21 @@ Route::get('store','ProductController@shop')->name('shop');
 Route::get('store-detail/{id}','ProductController@shopDetail')->name('shopDetail');
 Route::get('category-detail/{id}','ProductController@categoryDetail')->name('categoryDetail');
 
+//product index (2 pages)
+Route::get('products/regular/index','ProductController@index1')->name('product.index1');
+Route::get('products/shirts/index','ProductController@index2')->name('product.index2');
+Route::get('product-detail/{id}','ProductController@detail2')->name('product.detail2');
+
 Route::post('/cartAdd', 'ProductController@saveCart')->name('save_cart');
-Route::any('/remove-cart/{id}', 'ProductController@removeCart')->name('remove_cart'); 
+Route::any('/remove-cart/{id}', 'ProductController@removeCart')->name('remove_cart');
 Route::post('/updateCart', 'ProductController@updateCart')->name('update_cart');
 Route::get('/cart', 'ProductController@cart')->name('cart');
+Route::any('/clear-cart', 'ProductController@clearCart')->name('clear_cart');
 Route::get('/payment', 'OrderController@payment')->name('payment');
 Route::get('invoice/{id}','LoggedInController@invoice')->name('invoice');
 Route::get('/payment', 'OrderController@payment')->name('payment');
-Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+//Route::get('/checkout', 'OrderController@checkout')->name('checkout');
+Route::get('/checkout', 'ProductController@checkout')->name('checkout');
 Route::post('/place-order', 'OrderController@placeOrder')->name('order.place');
 Route::post('/new-order', 'OrderController@newOrder')->name('new.place');
 Route::post('shipping', 'ProductController@shipping')->name('shipping');

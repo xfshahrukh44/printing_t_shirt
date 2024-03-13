@@ -27,5 +27,10 @@ class Childsubcategory extends Model
      */
     protected $fillable = ['subcategory', 'childsubcategory'];
 
-    
+    public function sub_category ()
+    {
+        return $this->belongsTo(Subcategory::class, 'subcategory');
+    }
+
+
 }
