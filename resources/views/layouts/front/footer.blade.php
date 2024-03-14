@@ -5,12 +5,12 @@
                     <div class="footer-link">
                          <img src="{{ asset($logo->img_path) }}" class="img-fluid" alt="">
                          <ul>
-                             
-                             <li><a href="">961 Bethel Ave., Pennsauken, NJ 08110</a></li>
-                              <li><a href="">Mon-Thu 8:30am - 5pm EST</a></li>
-                              <li><a href="">Friday 8:30am - 4pm EST</a></li>
-                              <li><a href="">(800) 678-8289</a></li>
-                              
+
+                             <li><a href="">{{App\Http\Traits\HelperTrait::returnFlag(519)}}</a></li>
+                              <li><a href="">{{App\Http\Traits\HelperTrait::returnFlagType(1964)}} {{App\Http\Traits\HelperTrait::returnFlag(1964)}}</a></li>
+                              <li><a href="">{{App\Http\Traits\HelperTrait::returnFlagType(1965)}} {{App\Http\Traits\HelperTrait::returnFlag(1965)}}</a></li>
+                              <li><a href="">{{App\Http\Traits\HelperTrait::returnFlag(59)}}</a></li>
+
                          </ul>
                     </div>
                </div>
@@ -48,13 +48,13 @@
                          <p class="email">Feel free to get in touch with us via email</p>
 
                          <p class="email">
-                              info@domain.com
+                             {{App\Http\Traits\HelperTrait::returnFlag(218)}}
                          </p>
 
                          <div class="social-icons">
-                              <span><a href="#"><i class="fa-brands fa-facebook-f"></i> </a></span>
-                              <span><a href="#"><i class="fa-brands fa-instagram"></i></a></span>
-                              <span><a href="#"><i class="fa-brands fa-twitter"></i></a></span>
+                              <span><a href="{{App\Http\Traits\HelperTrait::returnFlag(682)}}"><i class="fa-brands fa-facebook-f"></i> </a></span>
+                              <span><a href="{{App\Http\Traits\HelperTrait::returnFlag(1962)}}"><i class="fa-brands fa-instagram"></i></a></span>
+                              <span><a href="{{App\Http\Traits\HelperTrait::returnFlag(1960)}}"><i class="fa-brands fa-twitter"></i></a></span>
                          </div>
                     </div>
                </div>

@@ -57,7 +57,8 @@ class HomeController extends Controller
     public function index()
     {
 
-       $page = DB::table('pages')->where('id', 1)->first();
+//       $page = DB::table('pages')->where('id', 1)->first();
+       $page = Page::with('sections')->where('id', 1)->first();
        $section = DB::table('section')->where('page_id', 1)->get();
        $banner = DB::table('banners')->get();
        $blog = DB::table('blogs')->get();

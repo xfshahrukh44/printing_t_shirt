@@ -51,16 +51,16 @@
             <!--        </li>-->
             <!--    </ul>-->
             <!--</li>-->
-            <!--<li class="nav-item">-->
-            <!--    <a href="javascript:;"><i class="la la-list"></i><span class="menu-title" data-i18n="Dashboard">CMS</span></a>-->
-            <!--    <ul class="menu-content">-->
-        <!--        <li class="{{ (request()->is('admin/page') || request()->is('admin/page/*')) ? 'active' : '' }}">-->
-        <!--            <a class="menu-item" href="{{ url('admin/page') }}"><i></i>-->
-            <!--                <span data-i18n="eCommerce">Pages Content</span>-->
-            <!--            </a>-->
-            <!--        </li>-->
-            <!--    </ul>-->
-            <!--</li>-->
+            <li class="nav-item">
+                <a href="javascript:;"><i class="la la-list"></i><span class="menu-title" data-i18n="Dashboard">CMS</span></a>
+                <ul class="menu-content">
+                <li class="{{ (request()->is('admin/page') || request()->is('admin/page/*')) ? 'active' : '' }}">
+                    <a class="menu-item" href="{{ url('admin/page') }}"><i></i>
+                            <span data-i18n="eCommerce">Pages Content</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item">
                 <a href="javascript:;"><i class="la la-shopping-cart"></i><span class="menu-title" data-i18n="Dashboard">Ecommerce</span></a>
                 <ul class="menu-content">

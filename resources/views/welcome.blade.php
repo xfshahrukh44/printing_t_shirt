@@ -17,34 +17,39 @@
      <div class="container">
           <div class="row">
                <div class="col-lg-6">
-                    <div class="digital-print">
-                        <div class="down-top" data-aos="fade-down" data-aos-duration="2000">
-                         <h1>Digital Printing T Shirt</h1>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>
-                         <a href="#" class="btn light-blue-btn">
-                              <div class="rotate-z">Send Message</div>
-                         </a>
-                         </div>
+                    <div class="digital-print" style="background-image: url({{asset($page->sections[0]->value ?? '')}}) !important;">
+{{--                        <div class="down-top" data-aos="fade-down" data-aos-duration="2000">--}}
+{{--                             <h1>Digital Printing T Shirt</h1>--}}
+{{--                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
+{{--                                  incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
+{{--                             <a href="#" class="btn light-blue-btn">--}}
+{{--                                  <div class="rotate-z">Send Message</div>--}}
+{{--                             </a>--}}
+{{--                         </div>--}}
+
+                            {!! $page->sections[1]->value ?? '' !!}
                     </div>
                </div>
                <div class="col-lg-6">
                     <div class="digital-art">
                          <div class="row  align-items-center">
                               <div class="col-lg-6">
-                                   <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">
-                                        <h2>Save $50 <span class="d-block">Digital Art T Shirt </span></h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                             tempor incididunt ut labore et dolore magna aliqua. Quis </p>
-                                        <a href="#" class="btn light-blue-btn">
-                                             <div class="rotate-z">Send Message</div>
-                                        </a>
-                                   </div>
+{{--                                   <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">--}}
+{{--                                        <h2>Save $50 <span class="d-block">Digital Art T Shirt </span></h2>--}}
+{{--                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod--}}
+{{--                                             tempor incididunt ut labore et dolore magna aliqua. Quis </p>--}}
+{{--                                        <a href="#" class="btn light-blue-btn">--}}
+{{--                                             <div class="rotate-z">Send Message</div>--}}
+{{--                                        </a>--}}
+{{--                                   </div>--}}
+
+                                    {!! $page->sections[3]->value ?? '' !!}
                               </div>
                               <div class="col-lg-6">
                                    <div>
                                         <figure>
-                                             <img src="{{ asset('images/3.png') }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-duration="2000">
+{{--                                             <img src="{{ asset('images/3.png') }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-duration="2000">--}}
+                                             <img src="{{asset($page->sections[2]->value ?? '')}}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-duration="2000">
                                         </figure>
                                    </div>
                               </div>
@@ -53,19 +58,22 @@
                     <div class="digital-art">
                          <div class="row  align-items-center">
                               <div class="col-lg-6">
-                                   <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">
-                                        <h2>20% OFF <span class="d-block">Sublimation Products </span></h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                             tempor incididunt ut labore et dolore magna aliqua. Quis </p>
-                                        <a href="#" class="btn light-blue-btn">
-                                             <div class="rotate-z">Send Message</div>
-                                        </a>
-                                   </div>
+{{--                                   <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">--}}
+{{--                                        <h2>20% OFF <span class="d-block">Sublimation Products </span></h2>--}}
+{{--                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod--}}
+{{--                                             tempor incididunt ut labore et dolore magna aliqua. Quis </p>--}}
+{{--                                        <a href="#" class="btn light-blue-btn">--}}
+{{--                                             <div class="rotate-z">Send Message</div>--}}
+{{--                                        </a>--}}
+{{--                                   </div>--}}
+
+                                    {!! $page->sections[5]->value ?? '' !!}
                               </div>
                               <div class="col-lg-6">
                                    <div>
                                         <figure>
-                                             <img src="{{ asset('images/4.png') }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-duration="2000">
+{{--                                             <img src="{{ asset('images/4.png') }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-duration="2000">--}}
+                                             <img src="{{asset($page->sections[4]->value ?? '')}}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-duration="2000">
                                         </figure>
                                    </div>
                               </div>
@@ -80,11 +88,14 @@
      <div class="container">
           <div class="row">
                <div class="col-lg-12">
-                    <div class="categories-main">
-                         <h3  data-aos="zoom-in" data-aos-duration="2000">Popular Categories</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>
-                    </div>
+{{--                    <div class="categories-main">--}}
+{{--                         <h3  data-aos="zoom-in" data-aos-duration="2000">Popular Categories</h3>--}}
+{{--                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
+{{--                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
+{{--                    </div>--}}
+
+                   {!! $page->sections[6]->value ?? '' !!}
+
                     <div class="main-art">
                          <div class="shirt-art" data-aos="flip-left" data-aos-duration="2000">
                               <a href="javascript:;">
@@ -221,11 +232,14 @@
      <div class="container">
           <div class="row">
                <div class="col-lg-12">
-                    <div class="categories-main">
-                         <h3 data-aos="zoom-in" data-aos-duration="2000">Popular Digital Shirt</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>
-                    </div>
+{{--                    <div class="categories-main">--}}
+{{--                         <h3 data-aos="zoom-in" data-aos-duration="2000">Popular Digital Shirt</h3>--}}
+{{--                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
+{{--                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
+{{--                    </div>--}}
+
+                   {!! $page->sections[7]->value ?? '' !!}
+
                </div>
                <div class="col-lg-3">
                     <div class="product-slider" data-aos="fade-down" data-aos-duration="2000">
@@ -437,11 +451,14 @@
      <div class="container">
           <div class="row">
                <div class="col-lg-12">
-                    <div class="categories-main">
-                         <h3 data-aos="zoom-in" data-aos-duration="2000">Popular Sublimations</h3>
-                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>
-                    </div>
+{{--                    <div class="categories-main">--}}
+{{--                         <h3 data-aos="zoom-in" data-aos-duration="2000">Popular Sublimations</h3>--}}
+{{--                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
+{{--                              incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
+{{--                    </div>--}}
+
+                   {!! $page->sections[8]->value ?? '' !!}
+
                </div>
                <div class="col-lg-3">
                     <div class="product-slider" data-aos="fade-down" data-aos-duration="2000">
