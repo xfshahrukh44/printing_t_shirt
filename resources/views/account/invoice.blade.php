@@ -78,7 +78,7 @@
 
                                 <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Order Date:</span> {{date('d F, Y',strtotime($order->created_at))}}</div>
 
-                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> <span class="badge badge-warning badge-pill px-25">{{$order->order_status}}</span></div>
+                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> <span class="badge badge-warning badge-pill px-25" style="color: black !important;">{{$order->order_status}}</span></div>
                                 @if($order->transaction_id != '')
                                 <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Transaction ID:</span> {{$order->transaction_id}}</div>
                                 @endif
@@ -260,7 +260,7 @@ hr {
     font-size: 110%!important;
 }
 .text-blue {
-    color: #c91d22;
+    color: #07c4f4;
 }
 .pb-25, .py-25 {
     padding-bottom: .75rem!important;
