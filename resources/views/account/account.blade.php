@@ -39,23 +39,23 @@
                         <div class="row">
                             @include('account.sidebar')
                             <!-- My Account Tab Menu End -->
-    
+
                             <!-- My Account Tab Content Start -->
                             <div class="col-lg-9 col-md-8">
                                 <div class="tab-content" id="myaccountContent">
-                                   
+
                                    <!-- Single Tab Content Start -->
                                     <div class="tab-pane active" id="account-info" role="tabpanel">
                                         <div class="myaccount-content">
                                             <div class="section-heading">
                                                 <h2>Account Details</h2>
                                             </div>
-    
+
                                             <div class="account-details-form">
                                                <form action="{{ route('update.account') }}" method="post" enctype="multipart/form-data" id="accountForm">
                                                 @csrf
                                                     <div class="row">
-                                                    
+
                                                         <div class="col-lg-12">
                                                             <div class="single-input-item">
                                                                 <label for="last-name" class="required">Name</label>
@@ -63,15 +63,15 @@
                                                             </div>
                                                         </div>
                                                     </div>
-    
+
                                                     <div class="single-input-item">
                                                         <label for="email" class="required">Email Addres</label>
                                                         <input type="email" id="email" placeholder="Email Address" name="email" value="<?php echo Auth::user()->email; ?>">
                                                     </div>
-    
+
                                                     <fieldset>
                                                         <legend>Password change</legend>
-    
+
                                                         <div class="row">
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
@@ -79,7 +79,7 @@
                                                                     <input type="password" id="new-pwd" placeholder="New Password" name="password">
                                                                 </div>
                                                             </div>
-    
+
                                                             <div class="col-lg-6">
                                                                 <div class="single-input-item">
                                                                     <label for="confirm-pwd" class="required">Confirm Password</label>
@@ -88,16 +88,16 @@
                                                             </div>
                                                         </div>
                                                     </fieldset>
-    
+
                                                     <div class="single-input-item">
-                                                        <button class="check-btn sqr-btn btn btn-danger" id="updateProfile">Save Changes</button>
+                                                        <button class="check-btn sqr-btn btn btn-danger" id="updateProfile" style="background-color: #07c4f4; border: 0px;">Save Changes</button>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div> <!-- Single Tab Content End -->
-    
-                                    
+
+
                                 </div>
                             </div> <!-- My Account Tab Content End -->
                         </div>
@@ -110,12 +110,12 @@
 
     <br><br><br>
 
-<!-- main content end -->   
+<!-- main content end -->
 </main>
 @endsection
 @section('css')
 <style type="text/css">
-    
+
     .account-details-form input {
         border-color:#000 !important;
     }

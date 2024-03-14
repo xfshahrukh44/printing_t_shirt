@@ -38,7 +38,7 @@
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                    </div>
                                    <form class="d-flex btn-top">
-                                        <a href="#" class="btn btn-account"><i class="fa-regular fa-user"></i>
+                                        <a href="{{route('signin')}}" class="btn btn-account"><i class="fa-regular fa-user"></i>
                                              Account</a>
                                         <div class="side-top-maodal">
                                             @php

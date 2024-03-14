@@ -4,17 +4,17 @@
 <style>
 
 label{
-    color:#fff;
+    color:black;
 }
 
 h1{
-    color:#fff;
+    color:black;
 }
 
 .proceed_button3 {
-    background-color: transparent;
+    background-color: #07c4f4;
     width: 100% !important;
-    color: #c0c0c0;
+    color: white;
     border-radius: unset;
     height: 50px !important;
     border: 1px solid #c0c0c0;
@@ -39,13 +39,13 @@ h1{
     </div>
 </section>
 
-<section class="account" style="background:#000;">
+<section class="account" style="background:white;">
     <div class="container" id="from-wrapper">
 
         <br><br><br><br>
 
         <div class="row">
-            
+
             <div class="col-md-6">
 
                 <div class="form-container sign-up-container">
@@ -75,7 +75,7 @@ h1{
                     <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->first('email') }}</small>
                     @endif
                 </div>
-                
+
                 <!-- <div class="form-group">
                     <label>Address*</label>
                     <input type="text" class="form-control {{ $errors->registerForm->has('address') ? ' is-invalid' : '' }}" name="address" id="address" required>
@@ -90,7 +90,7 @@ h1{
                     <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->first('password') }}</small>
                     @endif
                 </div>
-                
+
                 <!-- <div class="form-group">
                     <label>Confirm Password*</label>
                     <input type="password" class="form-control" name="password_confirmation" id="signup-password" required>
@@ -100,7 +100,7 @@ h1{
                 </div> -->
 
                 <button class="btn proceed_button3" type="submit">Sign Up</button>
-                
+
                 </form>
                 </div>
 
@@ -141,9 +141,9 @@ h1{
                 </div>
 
             </div>
-        
+
         </div>
-        
+
         <br><br><br><br>
 
     </div>
@@ -151,7 +151,7 @@ h1{
 @endsection
 @section('js')
 <script>
-    $("#phone").on("keypress keyup blur",function (event) {    
+    $("#phone").on("keypress keyup blur",function (event) {
        $(this).val($(this).val().replace(/[^\d].+/, ""));
         if ((event.which < 48 || event.which > 57)) {
             event.preventDefault();
