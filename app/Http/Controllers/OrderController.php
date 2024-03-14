@@ -306,7 +306,7 @@ class OrderController extends Controller
 
 	public function placeOrder(Request $request)
 	{
-		
+
 		// dd($request->all());
 
 		$validateArr = array();
@@ -406,9 +406,6 @@ class OrderController extends Controller
 		} else {
 
 			try {
-
-
-
 				try {
 					Stripe\Stripe::setApiKey(config('services.stripe.secret'));
 
@@ -431,14 +428,14 @@ class OrderController extends Controller
 						'description' => "Payment From Website",
 						'metadata' => array("name" => $request->first_name, "email" => $request->email),
 					));
-				} catch (Exception $e) {
+				} catch (\Exception $e) {
 					return redirect()->back()->with('stripe_error', $e->getMessage());
 				}
 			} catch (Exception $e) {
 				return redirect()->back()->with('stripe_error', $e->getMessage());
 			}
 			$chargeJson = $charge->jsonSerialize();
-			// Check whether the charge is successful 
+			// Check whether the charge is successful
 			if ($chargeJson['amount_refunded'] == 0 && empty($chargeJson['failure_code']) && $chargeJson['paid'] == 1 && $chargeJson['captured'] == 1) {
 				$transactionID = $chargeJson['balance_transaction'];
 				$payment_status = $chargeJson['status'];

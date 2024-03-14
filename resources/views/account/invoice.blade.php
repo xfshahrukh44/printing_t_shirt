@@ -74,13 +74,13 @@
                                     Invoice
                                 </div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">ID:</span> #{{$order->invoice_number}}</div>
+                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">ID:</span> #{{$order->invoice_number}}</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Order Date:</span> {{date('d F, Y',strtotime($order->created_at))}}</div>
+                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Order Date:</span> {{date('d F, Y',strtotime($order->created_at))}}</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> <span class="badge badge-warning badge-pill px-25">{{$order->order_status}}</span></div>
+                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> <span class="badge badge-warning badge-pill px-25">{{$order->order_status}}</span></div>
                                 @if($order->transaction_id != '')
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Transaction ID:</span> {{$order->transaction_id}}</div>
+                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Transaction ID:</span> {{$order->transaction_id}}</div>
                                 @endif
                             </div>
                         </div>
@@ -106,10 +106,10 @@
                                 <div class="d-none d-sm-block col-3">{{$order_product->order_products_name}}</div>
                                 <div class="d-none d-sm-block col-3">
 
-                                    <?php 
-                                        
+                                    <?php
+
                                         $variants = json_decode($order_product->variants);
-                                        
+
                                     ?>
 
                                     @foreach($variants as $key => $value)
@@ -181,7 +181,7 @@
                                         Total Amount
                                     </div>
                                     <div class="col-5">
-                                        <?php 
+                                        <?php
                                             $shipping = $order->order_shipping ;
                                         ?>
                                         <span class="text-150 text-success-d3 opacity-2">${{$order->order_total  + $shipping }}</span>
@@ -270,7 +270,7 @@ hr {
     padding-top: .75rem!important;
 }
 .bgc-default-tp1 {
-    background-color: #c91d22;
+    background-color: #07c4f4;
 }
 .bgc-default-l4, .bgc-h-default-l4:hover {
     background-color: #f3f8fa!important;

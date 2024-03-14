@@ -67,7 +67,8 @@
 
 
                                                 @if(Auth::check())
-                                                    <?php  $_getUser = DB::table('users')->where('id', '=', Auth::user()->id)->first();?>
+                                                    <?php  $_getUser = App\User::where('id', '=', Auth::user()->id)->first();?>
+                                                    <?php $profile = $_getUser->profile; ?>
                                                     <div class="form-group">
                                                         <input class="form-control" id="f-name" name="first_name"
                                                                value="{{old('first_name')?old('first_name'):$_getUser->name}}"
@@ -81,7 +82,7 @@
                                                     <div class="form-group">
                                                         <input class="form-control" id="address" name="address_line_1"
                                                                placeholder="Address *" type="text"
-                                                               value="{{old('address_line_1')}}" required>
+                                                               value="{{$profile->address}}" required>
                                                         <span
                                                             class="invalid-feedback {{ ($errors->first('address_line_1') ? 'd-block' : '') }}">
                           <strong>{{ $errors->first('address_line_1') }}</strong>
@@ -90,7 +91,7 @@
                                                     <br>
                                                     <div class="form-group">
                                                         <input class="form-control right" placeholder="Town / City *"
-                                                               name="city" id="city" type="text" required>
+                                                               name="city" id="city" type="text" required value="{{$profile->city}}">
                                                         <span
                                                             class="invalid-feedback {{ ($errors->first('city') ? 'd-block' : '') }}">
                           <strong>{{ $errors->first('city') }}</strong>
@@ -99,7 +100,7 @@
                                                     <br>
                                                     <div class="form-group">
                                                         <input type="text" name="country" id="country"
-                                                               class="form-control left" placeholder="Country">
+                                                               class="form-control left" placeholder="Country" value="{{$profile->country}}">
                                                         <span
                                                             class="invalid-feedback {{ ($errors->first('country') ? 'd-block' : '') }}">
                           <strong>{{ $errors->first('country') }}</strong>
@@ -109,7 +110,7 @@
                                                     <div class="form-group">
                                                         <input class="form-control right" placeholder="Phone *"
                                                                name="phone_no" type="text" value="{{old('phone_no')}}"
-                                                               required>
+                                                               required value="{{$profile->phone}}">
                                                         <span
                                                             class="invalid-feedback {{ ($errors->first('phone_no') ? 'd-block' : '') }}">
                           <strong>{{ $errors->first('phone_no') }}</strong>
@@ -130,7 +131,7 @@
                                                     <div class="form-group">
                                                         <input class="form-control" id="zip_code" name="zip_code"
                                                                placeholder="Postcode" type="text"
-                                                               value="{{old('zip_code')}}">
+                                                               value="{{$profile->postal}}">
                                                     </div>
                                                     <br>
                                                     <div class="form-group">

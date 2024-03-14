@@ -89,6 +89,52 @@
                                                         </div>
                                                     </fieldset>
 
+                                                   @if ($user = App\User::where('id', '=', Auth::user()->id)->first())
+                                                       <?php $profile = $user->profile; ?>
+                                                       @if ($profile)
+                                                           <fieldset>
+                                                               <legend>Billing Details</legend>
+
+                                                               <div class="row">
+                                                                   <div class="col-lg-12">
+                                                                       <div class="single-input-item">
+                                                                           <label for="new-pwd" class="required">Address *</label>
+                                                                           <input type="text" id="new-pwd" placeholder="Address *" name="profile_data[address]" value="{{$profile->address}}">
+                                                                       </div>
+                                                                   </div>
+
+                                                                   <div class="col-lg-12">
+                                                                       <div class="single-input-item">
+                                                                           <label for="new-pwd" class="required">Town / City *</label>
+                                                                           <input type="text" id="new-pwd" placeholder="Town / City *" name="profile_data[city]" value="{{$profile->city}}">
+                                                                       </div>
+                                                                   </div>
+
+                                                                   <div class="col-lg-12">
+                                                                       <div class="single-input-item">
+                                                                           <label for="new-pwd" class="required">Country</label>
+                                                                           <input type="text" id="new-pwd" placeholder="Country" name="profile_data[country]" value="{{$profile->country}}">
+                                                                       </div>
+                                                                   </div>
+
+                                                                   <div class="col-lg-12">
+                                                                       <div class="single-input-item">
+                                                                           <label for="new-pwd" class="required">Phone *</label>
+                                                                           <input type="text" id="new-pwd" placeholder="Phone *" name="profile_data[phone]" value="{{$profile->phone}}">
+                                                                       </div>
+                                                                   </div>
+
+                                                                   <div class="col-lg-12">
+                                                                       <div class="single-input-item">
+                                                                           <label for="new-pwd" class="required">Postcode</label>
+                                                                           <input type="text" id="new-pwd" placeholder="Postcode" name="profile_data[postal]" value="{{$profile->postal}}">
+                                                                       </div>
+                                                                   </div>
+                                                               </div>
+                                                           </fieldset>
+                                                       @endif
+                                                   @endif
+
                                                     <div class="single-input-item">
                                                         <button class="check-btn sqr-btn btn btn-danger" id="updateProfile" style="background-color: #07c4f4; border: 0px;">Save Changes</button>
                                                     </div>

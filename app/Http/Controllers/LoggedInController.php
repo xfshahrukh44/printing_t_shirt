@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Profile;
 use Hash;
 use Illuminate\Http\Request;
 use App\inquiry;
@@ -151,7 +152,6 @@ class LoggedInController extends Controller
 	}
 
     public function updateAccount(Request $request) {
-
 		$user = DB::table('users')->where('id', Auth::user()->id)->first();
 
 		$insertArr['name'] = $_POST['uname'];
@@ -169,6 +169,9 @@ class LoggedInController extends Controller
 		->update(
 		   $insertArr
 		  );
+
+		//billing data (profile)
+        Profile::where('user_id', Auth::user()->id)->update($request->profile_data);
 
 		Session::flash('message', 'Your password settings has been changed');
 		Session::flash('alert-class', 'alert-success');
