@@ -46,7 +46,7 @@
                                       <div class="col-md-12">
                                           <div class="form-group">
                                               <div class="upload-photo">
-                                                <input type="file" name="image" id="input-file-now" class="dropify" {{ ($logo->img_path != '') ? "data-default-file = /$logo->img_path" : ''}} {{ ($logo->img_path == '') ? "required" : ''}} value="{{$logo->img_path}}" />
+                                                <input type="file" name="image" id="input-file-now" class="dropify" {{ ($logo->img_path != '') ? "data-default-file = ".asset($logo->img_path) : ''}} {{ ($logo->img_path == '') ? "required" : ''}} value="{{$logo->img_path}}" />
                                               </div>
                                           </div>
                                       </div>
