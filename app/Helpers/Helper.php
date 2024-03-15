@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Helpers;
-
 use App\orders;
 use App\Product;
 use Carbon\Carbon;
