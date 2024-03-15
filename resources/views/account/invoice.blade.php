@@ -109,7 +109,7 @@
                                         $temp_product = \App\Product::find($order_product->order_products_product_id);
                                     @endphp
 
-                                    @if($temp_product->zip && can_download_product($order->id, $temp_product->id))
+                                    @if($temp_product->zip && $temp_product->can_download_product($order->id))
                                         <a target="_blank" href="{{asset($temp_product->zip)}}" title="Download zip">
                                             <i class="fas fa-download"></i>
                                         </a>

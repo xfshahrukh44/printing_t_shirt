@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -51,6 +52,15 @@ class Product extends Model
     public function attributes()
     {
         return $this->hasMany('App\ProductAttribute', 'product_id', 'id');
+    }
+
+    public function can_download_product ($order_id) {
+        $order = orders::where('id',$order_id)->first();
+
+        return (bool) (
+            !is_null($order->completed_at) &&
+            (Carbon::parse($order->completed_at)->addHours($this->product_download_expiry) >= Carbon::now())
+        );
     }
 
 }
