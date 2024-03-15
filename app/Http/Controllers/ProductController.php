@@ -124,7 +124,19 @@ class ProductController extends Controller
 	{
 		$product = Product::find($id);
 
-		return view('product_detail', ['product' => $product]);
+		$related_products = Product::where('id', '!=', $product->id)
+            ->where('category', $product->category)
+            ->orWhere('subcategory', $product->subcategory)
+            ->orWhere('childsubcategory', $product->childsubcategory)
+            ->get()->take(8);
+
+		$featured_products = Product::where('id', '!=', $product->id)->where('childsubcategory', $product->childsubcategory)->get()->take(8);
+
+		return view('product_detail', [
+            'product' => $product,
+            'related_products' => $related_products,
+            'featured_products' => $featured_products
+        ]);
 	}
 
 	public function index()
