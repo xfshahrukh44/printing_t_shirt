@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+use App\Product;
 use App\inquiry;
 use App\schedule;
 use App\newsletter;
@@ -9,6 +9,7 @@ use App\post;
 use App\banner;
 use App\imagetable;
 use DB;
+use Illuminate\Http\Request;
 use Mail;use View;
 use Session;
 use App\Http\Helpers\UserSystemInfoHelper;
@@ -216,6 +217,17 @@ class HomeController extends Controller
                 return response()->json(['message'=>'Error Occurred', 'status' => false]);
             }
         }
+    }
+
+    public function categoryIdentifier (Request $request)
+    {
+        $page = (
+            !$product = Product::where('product_title', 'LIKE', '%'.$request->get('query').'%')
+                ->orWhere('description', 'LIKE', '%'.$request->get('query').'%')
+                ->first()
+        ) ? 'index1' : 'index' . strval($product->categorys->type + 1);
+
+        return ProductController::$page($request);
     }
 
 }

@@ -48,8 +48,12 @@ class ProductController extends Controller
 		//View()->share('config',$config);
 	}
 
-	public function index1()
+	public static function index1(Request $request)
 	{
+	    $filters = [
+	        'query' => $request->has('query') ? $request->get('query') : null,
+        ];
+
 		$products = new Product;
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 
@@ -61,6 +65,9 @@ class ProductController extends Controller
 		}
 
 		$products = $products->orderBy('id', 'asc')
+            ->when(!is_null($filters['query']), function ($q) use ($filters) {
+                return $q->where('product_title', 'LIKE', '%'.$filters['query'].'%')->orWhere('description', 'LIKE', '%'.$filters['query'].'%');
+            })
             ->whereHas('category', function ($q) {
                 return $q->where('type', 0);
             })
@@ -68,11 +75,15 @@ class ProductController extends Controller
 
 		$subcategories = Subcategory::whereHas('category', function ($q) { return $q->where('type', 0); })->with('child_sub_categories')->get();
 
-		return view('product1', ['products' => $products, 'subcategories' => $subcategories]);
+		return view('product1', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);
 	}
 
-	public function index2()
+	public static function index2(Request $request)
 	{
+	    $filters = [
+	        'query' => $request->has('query') ? $request->get('query') : null,
+        ];
+
 		$products = new Product;
 		if (isset($_GET['q']) && $_GET['q'] != '') {
 
@@ -80,6 +91,9 @@ class ProductController extends Controller
 		}
 
         $products = $products->orderBy('id', 'asc')
+            ->when(!is_null($filters['query']), function ($q) use ($filters) {
+                return $q->where('product_title', 'LIKE', '%'.$filters['query'].'%')->orWhere('description', 'LIKE', '%'.$filters['query'].'%');
+            })
             ->whereHas('category', function ($q) {
                 return $q->where('type', 1);
             })
@@ -87,7 +101,7 @@ class ProductController extends Controller
 
         $subcategories = Subcategory::whereHas('category', function ($q) { return $q->where('type', 1); })->with('child_sub_categories')->get();
 
-		return view('product2', ['products' => $products, 'subcategories' => $subcategories]);
+		return view('product2', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);
 	}
 
 	public function detail2(Request $request, $id)

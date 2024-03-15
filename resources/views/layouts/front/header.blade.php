@@ -34,8 +34,11 @@
                          <div class="collapse navbar-collapse">
                               <div class="main-menu">
                                    <div class="search-bar">
-                                        <input type="search" class="form-control" placeholder="Search For...">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <form action="{{route('category.identifier')}}" method="POST">
+                                            @csrf
+                                            <input type="search" class="form-control" name="query" placeholder="Search For..." value="{{$filters['query'] ?? ''}}">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </form>
                                    </div>
                                    <form class="d-flex btn-top">
                                         <a href="{{route('signin')}}" class="btn btn-account"><i class="fa-regular fa-user"></i>
