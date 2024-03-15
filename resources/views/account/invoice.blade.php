@@ -103,7 +103,18 @@
                             @foreach($order_products as $order_product)
                             <div class="row mb-2 mb-sm-0 py-25">
                                 <div class="d-none d-sm-block col-1">{{ $count }}</div>
-                                <div class="d-none d-sm-block col-3">{{$order_product->order_products_name}}</div>
+                                <div class="d-none d-sm-block col-3">
+                                    {{$order_product->order_products_name}}
+                                    @php
+                                        $temp_product = \App\Product::find($order_product->order_products_product_id);
+                                    @endphp
+
+                                    @if($temp_product->zip && can_download_product($order->id, $temp_product->id))
+                                        <a target="_blank" href="{{asset($temp_product->zip)}}" title="Download zip">
+                                            <i class="fas fa-download"></i>
+                                        </a>
+                                    @endif
+                                </div>
                                 <div class="d-none d-sm-block col-3">
 
                                     <?php

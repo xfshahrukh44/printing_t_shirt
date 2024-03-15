@@ -87,6 +87,22 @@
         </div>
 
 
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('product_download_expiry', 'Product download expiry (hours)') !!}
+                {!! Form::number('product_download_expiry', isset($product) ? $product->product_download_expiry : 24, ('required' == 'required') ? ['class' => 'form-control', 'required' => 'required', 'min' => 0] : ['class' => 'form-control']) !!}
+            </div>
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('zip', 'Zip') !!}
+                <input class="form-control dropify" accept=".zip,.rar,.7zip" name="zip" type="file" id="zip" {{ ($product->zip != '') ? "data-default-file = /$product->zip" : ''}} {{ ($product->zip == '') ? "required" : ''}} value="{{$product->zip}}">
+            </div>
+        </div>
+
+
 
 
         <div class="col-md-12">

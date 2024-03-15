@@ -56,7 +56,7 @@
 
                                                             <br>
                                                             @if (count($value['variation']))
-                                                                <h6>Variations</h6>
+                                                                <h6> <b>Variations</b> </h6>
                                                             @endif
                                                             @foreach ($value['variation'] as $key => $values)
                                                                 <p class="m-0"> {{ $values['attribute'] }} - {{ $values['attribute_val'] }} - <b>${{ $values['attribute_price'] }}</b></p>

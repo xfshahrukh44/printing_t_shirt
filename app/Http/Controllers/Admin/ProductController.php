@@ -14,6 +14,7 @@ use App\imagetable;
 use App\Attributes;
 use App\AttributeValue;
 use App\ProductAttribute;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Image;
 use File;
@@ -179,20 +180,23 @@ class ProductController extends Controller
 			$product->price4 = $request->input('price4');
 			$product->size = $request->input('size');
 			$product->in_stock = $request->input('in_stock');
-			$product->maximum_price = $request->input('maximum_price');
+			$product->in_stock = $request->input('in_stock');
+			$product->product_download_expiry = $request->input('product_download_expiry');
 			$product->tags = $request->input('tags');
             $product->description = $request->input('description');
             $product->additional_information = $request->input('additional_information');
 
             $file = $request->file('image');
-
-            //make sure yo have image folder inside your public
             $destination_path = 'uploads/products/';
             $profileImage = date("Ymdhis").".".$file->getClientOriginalExtension();
-
             Image::make($file)->save(public_path($destination_path) . DIRECTORY_SEPARATOR. $profileImage);
-
             $product->image = $destination_path.$profileImage;
+
+            $file = $request->file('zip');
+            $zip_name = date("Ymdhis").".".$file->getClientOriginalExtension();
+            $file->move(public_path($destination_path), $zip_name);
+            $product->zip = $destination_path.$zip_name;
+
             $product->save();
 
 
@@ -336,6 +340,7 @@ class ProductController extends Controller
 		$requestData['price4'] = $request->input('price4');
 		$requestData['size'] = $request->input('size');
 		$requestData['in_stock'] = $request->input('in_stock');
+		$requestData['product_download_expiry'] = $request->input('product_download_expiry');
 		$requestData['maximum_price'] = $request->input('maximum_price');
 		$requestData['tags'] = $request->input('tags');
 
@@ -370,6 +375,28 @@ class ProductController extends Controller
             Image::make($file)->save($pathToStore . DIRECTORY_SEPARATOR. $fileNameToStore);
 
 			$requestData['image'] = 'uploads/products/'.$fileNameToStore;
+        }
+
+        if ($request->hasFile('zip')) {
+
+			$product = product::where('id', $id)->first();
+			$zip_path = public_path($product->zip);
+
+			if(File::exists($zip_path)) {
+
+				File::delete($zip_path);
+			}
+
+            $file = $request->file('zip');
+            $fileNameExt = $request->file('zip')->getClientOriginalName();
+            $fileNameForm = str_replace(' ', '_', $fileNameExt);
+            $fileName = pathinfo($fileNameForm, PATHINFO_FILENAME);
+            $fileExt = $request->file('zip')->getClientOriginalExtension();
+            $fileNameToStore = $fileName.'_'.time().'.'.$fileExt;
+            $pathToStore = public_path('uploads/products/');
+            $file->move($pathToStore, $fileNameToStore);
+
+			$requestData['zip'] = 'uploads/products/'.$fileNameToStore;
         }
 
             if(! is_null(request('images'))) {
@@ -501,11 +528,13 @@ class ProductController extends Controller
 	}
 
 	public function updatestatuscompleted($id) {
-
 		$order_id = $id;
 		$order = DB::table('orders')
               ->where('id', $id)
-              ->update(['order_status' => 'Completed']);
+              ->update([
+                  'order_status' => 'Completed',
+                  'completed_at' => Carbon::now(),
+              ]);
 
 
 		Session::flash('message', 'Order Status Updated Successfully');

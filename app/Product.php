@@ -34,6 +34,8 @@ class Product extends Model
         'price4',
         'size',
         'in_stock',
+        'product_download_expiry',
+        'zip',
     ];
 
     public function category()

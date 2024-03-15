@@ -150,98 +150,100 @@
                                                 @endif
                                             </div>
 
-                                            <div class="col-md-5 col-lg-5 col-sm-5 col-xs-12">
-                                                <div class="section-heading dark-color">
-                                                    <h3>YOUR ORDER</h3>
-                                                </div>
-                                                <div class="YouOrder">
-
-                                                    @foreach($cart as $key=>$value)
-                                                        <p class="custompp"> {{ $value['name'] }} <span class="customp"> x {{ $value['qty'] }} = ${{ $value['baseprice'] * $value['qty'] }} </span> </p>
-                                                        <p class="custompp"> > variation price
-
-                                                            <span class="customp">
-
-                        <?php $t_var = 0;?>
-                                                                @foreach ($value['variation'] as $key => $values)
-                                                                    <?php
-                                                                    $t_var += $values['attribute_price'];
-                                                                    ?>
-                                                                @endforeach
-
-                        x {{ $value['qty'] }} = ${{ $t_var * $value['qty'] }}
-
-                                                                <?php $variation += $t_var * $value['qty']; ?>
-
-                      </span>
-
-                                                        </p>
-
-                                                        <hr>
-                                                    @endforeach
-                                                    <div class="amount-wrapper">
-                                                        <h6> <b>SUBTOTAL</b> <span> <p>  ${{ $subtotal }} </p> </span></h6>
-                                                        <h6> <b>VARIATIONS</b> <span> <p>  ${{ $variation }} </p> </span></h6>
-                                                        <h6> <b>Total</b> <span> <p> ${{ $subtotal + $variation }} </p> </span></h6>
-
-                                                        <input type="hidden" name="total_price" value="{{ $subtotal + $variation }}" />
-                                                        <input type="hidden" name="total_variation_price" value="{{ $variation }}" />
-
+                                            @if(Auth::check())
+                                                <div class="col-md-5 col-lg-5 col-sm-5 col-xs-12">
+                                                    <div class="section-heading dark-color">
+                                                        <h3>YOUR ORDER</h3>
                                                     </div>
-                                                </div>
-                                                <div id="accordion" class="payment-accordion">
+                                                    <div class="YouOrder">
+
+                                                        @foreach($cart as $key=>$value)
+                                                            <p class="custompp"> {{ $value['name'] }} <span class="customp"> x {{ $value['qty'] }} = ${{ $value['baseprice'] * $value['qty'] }} </span> </p>
+                                                            <p class="custompp"> > variation price
+
+                                                                <span class="customp">
+
+                            <?php $t_var = 0;?>
+                                                                    @foreach ($value['variation'] as $key => $values)
+                                                                        <?php
+                                                                        $t_var += $values['attribute_price'];
+                                                                        ?>
+                                                                    @endforeach
+
+                            x {{ $value['qty'] }} = ${{ $t_var * $value['qty'] }}
+
+                                                                    <?php $variation += $t_var * $value['qty']; ?>
+
+                          </span>
+
+                                                            </p>
+
+                                                            <hr>
+                                                        @endforeach
+                                                        <div class="amount-wrapper">
+                                                            <h6> <b>SUBTOTAL</b> <span> <p>  ${{ $subtotal }} </p> </span></h6>
+                                                            <h6> <b>VARIATIONS</b> <span> <p>  ${{ $variation }} </p> </span></h6>
+                                                            <h6> <b>Total</b> <span> <p> ${{ $subtotal + $variation }} </p> </span></h6>
+
+                                                            <input type="hidden" name="total_price" value="{{ $subtotal + $variation }}" />
+                                                            <input type="hidden" name="total_variation_price" value="{{ $variation }}" />
+
+                                                        </div>
+                                                    </div>
+                                                    <div id="accordion" class="payment-accordion">
 
 
-                                                <!-- <div class="card">
-                    <div class="card-header" id="headingOne">
-                      <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-payment="paypal">
-                          Pay with Paypal <img src="{{ asset('images/paypal.png') }}" width="60" alt="">
-                        </button>
-                      </h5>
-                    </div>
+                                                    <!-- <div class="card">
+                        <div class="card-header" id="headingOne">
+                          <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" data-payment="paypal">
+                              Pay with Paypal <img src="{{ asset('images/paypal.png') }}" width="60" alt="">
+                            </button>
+                          </h5>
+                        </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div class="card-body">
-                        <input type="hidden" name="price" value="{{ $subtotal }}" />
-                        <input type="hidden" name="product_id" value="" />
-                        <input type="hidden" name="qty" value="value['qty']" />
-                        <div id="paypal-button-container-popup"></div>
-                      </div>
-                    </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body">
+                            <input type="hidden" name="price" value="{{ $subtotal }}" />
+                            <input type="hidden" name="product_id" value="" />
+                            <input type="hidden" name="qty" value="value['qty']" />
+                            <div id="paypal-button-container-popup"></div>
+                          </div>
+                        </div>
 
-                  </div> -->
-
-
-                                                    <div class="card">
-
-{{--                                                        <div class="card-header" id="headingTwo">--}}
-{{--                                                            <h5 class="mb-0">--}}
-{{--                                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" data-payment="stripe">--}}
-{{--                                                                    Pay with Credit Card <img src="{{ asset('images/payment1.png') }}" alt="" width="150">--}}
-{{--                                                                </button>--}}
-{{--                                                            </h5>--}}
-{{--                                                        </div>--}}
+                      </div> -->
 
 
-                                                        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
-                                                            <div class="card-body">
-                                                                <div class="stripe-form-wrapper require-validation" data-stripe-publishable-key="{{ config('services.stripe.key') }}" data-cc-on-file="false">
-                                                                    <div id="card-element"></div>
-                                                                    <div id="card-errors" role="alert"></div>
-                                                                    <div class="form-group">
-                                                                        <button class="btn btn-danger btn-block" type="button" id="stripe-submit">Pay Now ${{ $subtotal + $variation  }}  </button>
+                                                        <div class="card">
+
+    {{--                                                        <div class="card-header" id="headingTwo">--}}
+    {{--                                                            <h5 class="mb-0">--}}
+    {{--                                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" data-payment="stripe">--}}
+    {{--                                                                    Pay with Credit Card <img src="{{ asset('images/payment1.png') }}" alt="" width="150">--}}
+    {{--                                                                </button>--}}
+    {{--                                                            </h5>--}}
+    {{--                                                        </div>--}}
+
+
+                                                            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                                <div class="card-body">
+                                                                    <div class="stripe-form-wrapper require-validation" data-stripe-publishable-key="{{ config('services.stripe.key') }}" data-cc-on-file="false">
+                                                                        <div id="card-element"></div>
+                                                                        <div id="card-errors" role="alert"></div>
+                                                                        <div class="form-group">
+                                                                            <button class="btn btn-danger btn-block" type="button" id="stripe-submit">Pay Now ${{ $subtotal + $variation  }}  </button>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <hr>
+                                                    <hr>
 
-                                                <button type="submit" class="hvr-wobble-skew" style="display:none">place order</button>
-                                                <!--   <a class="PaymentMethod-a" id="paypal-button-container-popup" href="#" style="display:none"></a> -->
-                                            </div>
+                                                    <button type="submit" class="hvr-wobble-skew" style="display:none">place order</button>
+                                                    <!--   <a class="PaymentMethod-a" id="paypal-button-container-popup" href="#" style="display:none"></a> -->
+                                                </div>
+                                            @endif
                                         </div>
 
                                     </form>

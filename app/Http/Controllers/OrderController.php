@@ -479,7 +479,7 @@ class OrderController extends Controller
 			//echo "data saved";
 			//return;
 			if (Auth::check()) {
-				return redirect('/');
+				return redirect('/orders');
 			} else {
 				return redirect('/');
 			}
