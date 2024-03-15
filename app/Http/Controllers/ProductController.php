@@ -52,6 +52,8 @@ class ProductController extends Controller
 	{
 	    $filters = [
 	        'query' => $request->has('query') ? $request->get('query') : null,
+	        'subcategory' => $request->has('subcategory') ? $request->get('subcategory') : null,
+	        'childsubcategory' => $request->has('childsubcategory') ? $request->get('childsubcategory') : null,
         ];
 
 		$products = new Product;
@@ -68,6 +70,12 @@ class ProductController extends Controller
             ->when(!is_null($filters['query']), function ($q) use ($filters) {
                 return $q->where('product_title', 'LIKE', '%'.$filters['query'].'%')->orWhere('description', 'LIKE', '%'.$filters['query'].'%');
             })
+            ->when(!is_null($filters['subcategory']), function ($q) use ($filters) {
+                return $q->where('subcategory', intval($filters['subcategory']));
+            })
+            ->when(!is_null($filters['childsubcategory']), function ($q) use ($filters) {
+                return $q->where('childsubcategory', intval($filters['childsubcategory']));
+            })
             ->whereHas('category', function ($q) {
                 return $q->where('type', 0);
             })
@@ -82,6 +90,8 @@ class ProductController extends Controller
 	{
 	    $filters = [
 	        'query' => $request->has('query') ? $request->get('query') : null,
+	        'subcategory' => $request->has('subcategory') ? $request->get('subcategory') : null,
+	        'childsubcategory' => $request->has('childsubcategory') ? $request->get('childsubcategory') : null,
         ];
 
 		$products = new Product;
@@ -93,6 +103,12 @@ class ProductController extends Controller
         $products = $products->orderBy('id', 'asc')
             ->when(!is_null($filters['query']), function ($q) use ($filters) {
                 return $q->where('product_title', 'LIKE', '%'.$filters['query'].'%')->orWhere('description', 'LIKE', '%'.$filters['query'].'%');
+            })
+            ->when(!is_null($filters['subcategory']), function ($q) use ($filters) {
+                return $q->where('subcategory', intval($filters['subcategory']));
+            })
+            ->when(!is_null($filters['childsubcategory']), function ($q) use ($filters) {
+                return $q->where('childsubcategory', intval($filters['childsubcategory']));
             })
             ->whereHas('category', function ($q) {
                 return $q->where('type', 1);

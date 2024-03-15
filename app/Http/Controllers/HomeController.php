@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Childsubcategory;
 use App\Product;
 use App\inquiry;
 use App\schedule;
@@ -221,13 +222,26 @@ class HomeController extends Controller
 
     public function categoryIdentifier (Request $request)
     {
-        $page = (
-            !$product = Product::where('product_title', 'LIKE', '%'.$request->get('query').'%')
-                ->orWhere('description', 'LIKE', '%'.$request->get('query').'%')
-                ->first()
-        ) ? 'index1' : 'index' . strval($product->categorys->type + 1);
+        if ($request->has('override_for_2')) {
+            $page = 'product.index2';
+        } else if ($request->has('childsubcategory') && !is_null($request->get('subcategory'))) {
+            $chuld_sub_category = Childsubcategory::with('sub_categorys.categorys')->find($request->get('childsubcategory'));
+            $page = 'product.index' . strval($chuld_sub_category->sub_categorys->categorys->type + 1);
+        } else {
+            $page = (
+                !$product = Product::where('product_title', 'LIKE', '%'.$request->get('query').'%')
+                    ->orWhere('description', 'LIKE', '%'.$request->get('query').'%')
+                    ->first()
+            ) ? 'product.index1' : ('product.index' . strval(intval($product->categorys->type) + 1));
+        }
 
-        return ProductController::$page($request);
+        $http_build_query = http_build_query([
+            'query' => $request->get('query'),
+            'subcategory' => $request->get('subcategory'),
+            'childsubcategory' => $request->get('childsubcategory'),
+        ]);
+
+        return redirect(route($page) . ($http_build_query != "" ? ('?' . $http_build_query) : ''));
     }
 
 }

@@ -23,6 +23,15 @@
                                         <h3>Shop By</h3>
                                     </div>
                                     <div class="category-inner">
+                                        <ul>
+                                            <li class="category-mian-li">
+                                                <a href="#" id="btn_all_categories">
+                                                    <i class="fa-solid fa-angle-right"></i>
+                                                    All
+                                                </a>
+                                            </li>
+
+                                        </ul>
                                         @foreach($subcategories as $subcategory)
                                             <ul>
                                                 <li class="category-mian-li">
@@ -33,11 +42,11 @@
 
                                                     @if (count($subcategory->child_sub_categories))
                                                         <span>{{count($subcategory->child_sub_categories)}}</span>
-                                                        <div class="category-hover">
+                                                        <div class="category-hover" data-sub="{{$subcategory->id}}">
                                                             <ul>
                                                                 @foreach($subcategory->child_sub_categories as $child_sub_category)
-                                                                    <li>
-                                                                        <a href="#">
+                                                                    <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
+                                                                        <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
                                                                             <i class="fa-solid fa-angle-right"></i>
                                                                             {{$child_sub_category->childsubcategory}}
                                                                         </a>
@@ -77,20 +86,6 @@
                                                                         </div>
                                                                     </div>
                                                                 @endforeach
-{{--                                                                <div class="item">--}}
-{{--                                                                    <div class="shirt-dots">--}}
-{{--                                                                        <figure>--}}
-{{--                                                                            <img src="{{asset($product->image)}}" class="img-fluid" alt="">--}}
-{{--                                                                        </figure>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
-{{--                                                                <div class="item">--}}
-{{--                                                                    <div class="shirt-dots">--}}
-{{--                                                                        <figure>--}}
-{{--                                                                            <img src="{{asset($product->image)}}" class="img-fluid" alt="">--}}
-{{--                                                                        </figure>--}}
-{{--                                                                    </div>--}}
-{{--                                                                </div>--}}
                                                             </div>
                                                         </a>
                                                     </div>
@@ -116,206 +111,6 @@
                                                 </div>
                                             </div>
                                         @endforeach
-{{--                                        <div class="col-lg-3">--}}
-{{--                                            <div class="product-slider">--}}
-{{--                                                <div class="shirt-slides">--}}
-{{--                                                    <a href="javascript:;">--}}
-{{--                                                        <div class="product-carousel owl-carousel owl-theme">--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="product-discription">--}}
-{{--                                                    <div class="rainbow-col">--}}
-{{--                                                        <div class="pro-name">--}}
-{{--                                                            <p> Product Name Goes <span class="d-block">Here</span></p>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="box-col">--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="prod-price">--}}
-{{--                                                        <h6>$ 35</h6>--}}
-{{--                                                        <div class="cart-icon">--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-heart"></i></a>--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-3">--}}
-{{--                                            <div class="product-slider">--}}
-{{--                                                <div class="shirt-slides">--}}
-{{--                                                    <a href="javascript:;">--}}
-{{--                                                        <div class="product-carousel owl-carousel owl-theme">--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="product-discription">--}}
-{{--                                                    <div class="rainbow-col">--}}
-{{--                                                        <div class="pro-name">--}}
-{{--                                                            <p> Product Name Goes <span class="d-block">Here</span></p>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="box-col">--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="prod-price">--}}
-{{--                                                        <h6>$ 35</h6>--}}
-{{--                                                        <div class="cart-icon">--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-heart"></i></a>--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-3">--}}
-{{--                                            <div class="product-slider">--}}
-{{--                                                <div class="shirt-slides">--}}
-{{--                                                    <a href="javascript:;">--}}
-{{--                                                        <div class="product-carousel owl-carousel owl-theme">--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="product-discription">--}}
-{{--                                                    <div class="rainbow-col">--}}
-{{--                                                        <div class="pro-name">--}}
-{{--                                                            <p> Product Name Goes <span class="d-block">Here</span></p>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="box-col">--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="prod-price">--}}
-{{--                                                        <h6>$ 35</h6>--}}
-{{--                                                        <div class="cart-icon">--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-heart"></i></a>--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-lg-3">--}}
-{{--                                            <div class="product-slider">--}}
-{{--                                                <div class="shirt-slides">--}}
-{{--                                                    <a href="javascript:;">--}}
-{{--                                                        <div class="product-carousel owl-carousel owl-theme">--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/10.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                            <div class="item">--}}
-{{--                                                                <div class="shirt-dots">--}}
-{{--                                                                    <figure>--}}
-{{--                                                                        <img src="{{asset('images/11.png')}}" class="img-fluid" alt="">--}}
-{{--                                                                    </figure>--}}
-{{--                                                                </div>--}}
-{{--                                                            </div>--}}
-{{--                                                        </div>--}}
-{{--                                                    </a>--}}
-{{--                                                </div>--}}
-{{--                                                <div class="product-discription">--}}
-{{--                                                    <div class="rainbow-col">--}}
-{{--                                                        <div class="pro-name">--}}
-{{--                                                            <p> Product Name Goes <span class="d-block">Here</span></p>--}}
-{{--                                                        </div>--}}
-{{--                                                        <div class="box-col">--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                            <span>.</span>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="prod-price">--}}
-{{--                                                        <h6>$ 35</h6>--}}
-{{--                                                        <div class="cart-icon">--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-heart"></i></a>--}}
-{{--                                                            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -328,5 +123,27 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#form_product_search').append(`<input type="hidden" name="override_for_2" id="override_for_2" value="1">`);
+
+            $('.anchor_child_sub_category').on('click', function () {
+                $('#subcategory').val($(this).data('sub'));
+                $('#childsubcategory').val($(this).data('child'));
+                $('#form_product_search').submit();
+            });
+
+            $('#btn_all_categories').on('click', function () {
+                $('#query').val("");
+                $('#subcategory').val("");
+                $('#childsubcategory').val("");
+                $('#form_product_search').submit();
+            });
+
+            if ($('#childsubcategory').val() != "") {
+                $('.category-hover[data-sub="' + $('#subcategory').val() + '"]').slideToggle('fast');
+                $('.li_child_sub_category[data-child="' + $('#childsubcategory').val() + '"]').css('background', '#07c4f4');
+            }
+        });
+    </script>
 @endsection

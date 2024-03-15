@@ -34,9 +34,11 @@
                          <div class="collapse navbar-collapse">
                               <div class="main-menu">
                                    <div class="search-bar">
-                                        <form action="{{route('category.identifier')}}" method="POST">
+                                        <form action="{{route('category.identifier')}}" method="POST" id="form_product_search">
                                             @csrf
-                                            <input type="search" class="form-control" name="query" placeholder="Search For..." value="{{$filters['query'] ?? ''}}">
+                                            <input type="search" class="form-control" id="query" name="query" placeholder="Search For..." value="{{$filters['query'] ?? ''}}">
+                                            <input type="hidden" name="subcategory" id="subcategory" value="{{$filters['subcategory'] ?? ''}}">
+                                            <input type="hidden" name="childsubcategory" id="childsubcategory" value="{{$filters['childsubcategory'] ?? ''}}">
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                         </form>
                                    </div>

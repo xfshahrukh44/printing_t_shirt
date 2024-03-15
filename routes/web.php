@@ -231,8 +231,8 @@ Route::get('store-detail/{id}','ProductController@shopDetail')->name('shopDetail
 Route::get('category-detail/{id}','ProductController@categoryDetail')->name('categoryDetail');
 
 //product index (2 pages)
-Route::get('products/regular/index/{query?}','ProductController@index1')->name('product.index1');
-Route::get('products/shirts/index/{query?}','ProductController@index2')->name('product.index2');
+Route::get('products/regular/index/{query?}/{subcategory?}/{childsubcategory?}','ProductController@index1')->name('product.index1');
+Route::get('products/shirts/index/{query?}/{subcategory?}/{childsubcategory?}','ProductController@index2')->name('product.index2');
 Route::get('product-detail/{id}','ProductController@detail2')->name('product.detail2');
 
 Route::post('/cartAdd', 'ProductController@saveCart')->name('save_cart');
