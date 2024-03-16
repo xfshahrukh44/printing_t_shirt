@@ -20,16 +20,24 @@
 
 <script>
     $(document).ready(function () {
+        function categoryIdentifierByText (ev, el) {
+            ev.preventDefault();
+
+            if (!el.hasClass('category_anchor') && !el.hasClass('sub_category_anchor')) {
+                let url = '{{route("category.identifier.by.text") . '?child=temp'}}';
+                url = url.replaceAll('temp', encodeURI(el.text().replaceAll('&', 'ayymperand')));
+                window.location.href = url;
+            }
+        }
+
         //heat transfer categories
         $('li.heat-transfers a').on('click', function (e) {
-            e.preventDefault();
-            window.location.href = '{{route("product.index1")}}';
+            categoryIdentifierByText(e, $(this));
         });
 
         //t shirt categories
         $('li.t-shirt-categories a').on('click', function (e) {
-            e.preventDefault();
-            window.location.href = '{{route("product.index2")}}';
+            categoryIdentifierByText(e, $(this));
         });
     });
 </script>

@@ -225,8 +225,8 @@ class HomeController extends Controller
         if ($request->has('override_for_2')) {
             $page = 'product.index2';
         } else if ($request->has('childsubcategory') && !is_null($request->get('subcategory'))) {
-            $chuld_sub_category = Childsubcategory::with('sub_categorys.categorys')->find($request->get('childsubcategory'));
-            $page = 'product.index' . strval($chuld_sub_category->sub_categorys->categorys->type + 1);
+            $child_sub_category = Childsubcategory::with('sub_categorys.categorys')->find($request->get('childsubcategory'));
+            $page = 'product.index' . strval($child_sub_category->sub_categorys->categorys->type + 1);
         } else {
             $page = (
                 !$product = Product::where('product_title', 'LIKE', '%'.$request->get('query').'%')
@@ -239,6 +239,20 @@ class HomeController extends Controller
             'query' => $request->get('query'),
             'subcategory' => $request->get('subcategory'),
             'childsubcategory' => $request->get('childsubcategory'),
+        ]);
+
+        return redirect(route($page) . ($http_build_query != "" ? ('?' . $http_build_query) : ''));
+    }
+
+    public function categoryIdentifierByText (Request $request)
+    {
+        $child_sub_category = Childsubcategory::where('childsubcategory', str_replace('ayymperand', '&', $request->child))->first();
+
+        $page = 'product.index' . strval($child_sub_category->sub_categorys->categorys->type + 1);
+
+        $http_build_query = http_build_query([
+            'subcategory' => strval($child_sub_category->sub_categorys->id ?? ''),
+            'childsubcategory' => strval($child_sub_category->id ?? ''),
         ]);
 
         return redirect(route($page) . ($http_build_query != "" ? ('?' . $http_build_query) : ''));

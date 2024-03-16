@@ -143,6 +143,7 @@
             if ($('#childsubcategory').val() != "") {
                 $('.category-hover[data-sub="' + $('#subcategory').val() + '"]').slideToggle('fast');
                 $('.li_child_sub_category[data-child="' + $('#childsubcategory').val() + '"]').css('background', '#07c4f4');
+                // $('.category-hover[data-sub="' + $('#subcategory').val() + '"]').attr('style', 'display: block!important;');
             }
         });
     </script>

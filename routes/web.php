@@ -200,6 +200,7 @@ Route::get('learn-to-play','HomeController@play')->name('play');
 
 //category identifier
 Route::post('/category-identifier','HomeController@categoryIdentifier')->name('category.identifier');
+Route::get('/category-identifier-by-text','HomeController@categoryIdentifierByText')->name('category.identifier.by.text');
 
 
 

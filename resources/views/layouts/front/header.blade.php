@@ -110,13 +110,13 @@
                     <div class="links-menu">
                          <ul class="navbar-nav m-auto">
                               <li class="nav-item mega-menu-on heat-transfers">
-                                   <a class="nav-link active" aria-current="page" href="#"> Heat Transfers
+                                   <a class="nav-link active category_anchor" aria-current="page" href="#"> Heat Transfers
                                    </a>
                                    <div class="main-mega-menu">
                                         <div class="row">
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Graphics By Type</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Graphics By Type</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="screen-printed.php">Screen Printed</a>
@@ -143,7 +143,7 @@
                                                                  <a href="javascript:;">Custom Transfers</a>
                                                             </li>
                                                        </ul>
-                                                       <h5><a href="javascript:;">Featured Transfers</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Featured Transfers</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Best Selling Graphics</a>
@@ -168,7 +168,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Graphics By Category</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Graphics By Category</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Animal</a>
@@ -225,7 +225,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Entertainment</a>
@@ -279,7 +279,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Military</a>
@@ -333,7 +333,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li><a href="javascript:;">Sequins</a></li>
                                                             <li><a href="javascript:;">Sport</a></li>
@@ -354,7 +354,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li><a href="javascript:;"><img src="{{asset('images/1.jpg')}}"
                                                                            class="img-fluid" alt=""></a>
@@ -368,14 +368,16 @@
                                         </div>
                                    </div>
                               </li>
+
+
                               <li class="nav-item mega-menu-on Vinyl-on t-shirt-categories">
-                                   <a class="nav-link" href="#">Vinyl </a>
+                                   <a class="nav-link category_anchor" href="#">Vinyl </a>
 
                                    <div class="main-mega-menu">
                                         <div class="row">
                                              <div class="col-lg-3">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Vinyl By Type</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Vinyl By Type</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">All Vinyl</a>
@@ -397,7 +399,7 @@
 
                                              <div class="col-lg-3">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Vinyl By Brand</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Vinyl By Brand</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Oracal</a>
@@ -424,7 +426,7 @@
 
                                              <div class="col-lg-4">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Vinyl Cutters &amp; Accessories</a>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Vinyl Cutters &amp; Accessories</a>
                                                        </h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
@@ -440,7 +442,7 @@
                                                                  <a href="javascript:;">All Accessories</a>
                                                             </li>
                                                        </ul>
-                                                       <h5><a href="javascript:;">Featured</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Featured</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Vinyl Cutter Starter Package</a>
@@ -455,7 +457,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;"><img src="{{asset('images/3.jpg')}}"
@@ -473,17 +475,15 @@
                               </li>
 
 
-
-
                               <li class="nav-item mega-menu-on Custom-on t-shirt-categories">
-                                   <a class="nav-link" href="#">
+                                   <a class="nav-link category_anchor" href="#">
                                         Custom Transfers
                                    </a>
                                    <div class="main-mega-menu">
                                         <div class="row">
                                              <div class="col-lg-6">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;"><img src="{{asset('images/5.jpg')}}"
@@ -496,7 +496,7 @@
                                              </div>
                                              <div class="col-lg-6">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;"><img src="{{asset('images/27.png')}}"
@@ -512,17 +512,14 @@
                               </li>
 
 
-
-
-
                               <li class="nav-item mega-menu-on Starter-Packs-on t-shirt-categories">
-                                   <a class="nav-link" href="#"> Starter Packs </a>
+                                   <a class="nav-link category_anchor" href="#"> Starter Packs </a>
 
                                    <div class="main-mega-menu">
                                         <div class="row">
                                              <div class="col-lg-12">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Starter Packages</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Starter Packages</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">All Starter Packages</a>
@@ -550,20 +547,18 @@
                               </li>
 
 
-
-
                               <li class="nav-item t-shirt-categories">
-                                   <a class="nav-link" href="#"> Clearance </a>
+                                   <a class="nav-link category_anchor" href="#"> Clearance </a>
                               </li>
 
 
                               <li class="nav-item mega-menu-on Digital-on t-shirt-categories">
-                                   <a class="nav-link" href="#"> Digital Art </a>
+                                   <a class="nav-link category_anchor" href="#"> Digital Art </a>
                                    <div class="main-mega-menu">
                                         <div class="row">
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;">Digital Art By Category</a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor">Digital Art By Category</a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">All Digital Art</a>
@@ -603,7 +598,7 @@
                                              </div>
                                              <div class="col-lg-2">
 
-                                                  <h5><a href="javascript:;"></a></h5>
+                                                  <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                   <ul class="inner-ul-links">
                                                        <li>
                                                             <a href="javascript:;">Blessed</a>
@@ -642,7 +637,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Health & Beauty</a>
@@ -684,7 +679,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a></h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a></h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Police</a>
@@ -726,7 +721,7 @@
 
                                              <div class="col-lg-2">
                                                   <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;"></a>Digital Art By Artist</h5>
+                                                       <h5><a href="javascript:;" class="sub_category_anchor"></a>Digital Art By Artist</h5>
                                                        <ul class="inner-ul-links">
                                                             <li>
                                                                  <a href="javascript:;">Bailey and Ginger</a>
