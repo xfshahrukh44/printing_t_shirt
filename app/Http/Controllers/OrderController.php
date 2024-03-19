@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\inquiry;
 use Illuminate\Support\Facades\Redirect;
@@ -403,6 +404,7 @@ class OrderController extends Controller
 			$order->card_token = $_POST['payer_id'];
 		} elseif (isset($_POST['payment_method']) && $_POST['payment_method'] == 'cash') {
 			$order->order_status = "succeeded";
+			$order->completed_at = Carbon::now();
 		} else {
 
 			try {

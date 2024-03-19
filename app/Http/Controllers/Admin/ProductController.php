@@ -533,7 +533,6 @@ class ProductController extends Controller
               ->where('id', $id)
               ->update([
                   'order_status' => 'Completed',
-                  'completed_at' => Carbon::now(),
               ]);
 
 
