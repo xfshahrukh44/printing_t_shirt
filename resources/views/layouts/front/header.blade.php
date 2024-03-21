@@ -139,9 +139,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Sequins</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Custom Transfers</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Custom Transfers</a>--}}
+{{--                                                            </li>--}}
                                                        </ul>
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Featured Transfers</a></h5>
                                                        <ul class="inner-ul-links">
@@ -379,14 +379,14 @@
                                                   <div class="iner-menu-links">
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Vinyl By Type</a></h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">All Vinyl</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">All Vinyl</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Printable Vinyl</a>
                                                             </li>
                                                             <li>
-                                                                 <a href="javascript:;">Heat Transfer Vinyl <br>For Garments</a>
+                                                                 <a href="javascript:;">Heat Transfer Vinyl For Garments</a>
                                                             </li>
                                                             <li>
                                                                  <a href="javascript:;">Sign &amp; Decorative Vinyl</a>
@@ -407,15 +407,15 @@
                                                             <li>
                                                                  <a href="javascript:;">Siser</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Sparkleberry Ink</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Sparkleberry Ink</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Specialty Materials</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">K-Laser Foil</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">K-Laser Foil</a>--}}
+{{--                                                            </li>--}}
                                                        </ul>
                                                   </div>
                                              </div>
@@ -429,9 +429,9 @@
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Vinyl Cutters &amp; Accessories</a>
                                                        </h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">All Cutters</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">All Cutters</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">GCC Cutters</a>
                                                             </li>
@@ -447,9 +447,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Vinyl Cutter Starter Package</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Vinyl Packages</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Vinyl Packages</a>--}}
+{{--                                                            </li>--}}
                                                        </ul>
                                                   </div>
                                              </div>
@@ -521,9 +521,9 @@
                                                   <div class="iner-menu-links">
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Starter Packages</a></h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">All Starter Packages</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">All Starter Packages</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">DTF Starter Packages</a>
                                                             </li>
@@ -560,9 +560,9 @@
                                                   <div class="iner-menu-links">
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Digital Art By Category</a></h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">All Digital Art</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">All Digital Art</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Bundles</a>
                                                             </li>
@@ -624,9 +624,9 @@
                                                        <li>
                                                             <a href="javascript:;">Funny</a>
                                                        </li>
-                                                       <li>
-                                                            <a href="javascript:;">Holiday</a>
-                                                       </li>
+{{--                                                       <li>--}}
+{{--                                                            <a href="javascript:;">Holiday</a>--}}
+{{--                                                       </li>--}}
                                                        <li>
                                                             <a href="javascript:;">Home</a>
                                                        </li>
@@ -648,9 +648,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Love</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Masks</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Masks</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Military</a>
                                                             </li>
@@ -702,9 +702,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Sports</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">States</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">States</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Sublimation</a>
                                                             </li>
@@ -723,9 +723,9 @@
                                                   <div class="iner-menu-links">
                                                        <h5><a href="javascript:;" class="sub_category_anchor"></a>Digital Art By Artist</h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">Bailey and Ginger</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Bailey and Ginger</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Camus Studio</a>
                                                             </li>
@@ -738,9 +738,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Jordyn Alison Designs</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Savana's Design</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Savana's Design</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Shine Green</a>
                                                             </li>

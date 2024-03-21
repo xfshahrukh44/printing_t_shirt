@@ -1,0 +1,15 @@
+{
+    "child_sub_categories": [
+        { "name": "Printable Vinyl", "link": "/heat-transfer-vinyl/printable-vinyl.html" },
+        { "name": "Heat Transfer Vinyl <br>For Garments", "link": "/heat-transfer-vinyl/heat-transfer-vinyl-for-garments.html" },
+        { "name": "Sign & Decorative Vinyl", "link": "/heat-transfer-vinyl/sign-and-decorative-vinyl.html" },
+        { "name": "Siser", "link": "/heat-transfer-vinyl/siser.html" },
+        { "name": "Oracal", "link": "/heat-transfer-vinyl/oracal.html" },
+        { "name": "Specialty Materials", "link": "/heat-transfer-vinyl/specialty-materials.html" },
+        { "name": "GCC Cutters", "link": "/vinyl-cutters/gcc-cutters.html" },
+        { "name": "Siser Romeo & Juliet Cutters", "link": "/vinyl-cutters/siser-romeo-and-juliet-cutters.html" },
+        { "name": "Silhouette Cutters", "link": "/vinyl-cutters/silhouette-cutters.html" },
+        { "name": "All Accessories", "link": "/printables-more/vinyl-accessories.html" },
+        { "name": "Vinyl Cutter Starter Package", "link": "/vinyl-cutter-starter-package.html" }
+    ]
+}

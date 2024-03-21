@@ -1,0 +1,9 @@
+{
+    "child_sub_categories": [
+        { "name": "DTF Starter Packages", "link": "/dtf-direct-to-film/dtf-starter-packages.html" },
+        { "name": "Heat Press Starter Packages", "link": "/starter-packages/heat-press-starter-packages.html" },
+        { "name": "Mug Starter Packages", "link": "/starter-packages/mug-starter-packages.html" },
+        { "name": "Sublimation Starter Packages", "link": "/starter-packages/sublimation-starter-packages.html" },
+        { "name": "Vinyl Starter Packages", "link": "/starter-packages/vinyl-starter-packages.html" }
+    ]
+}
