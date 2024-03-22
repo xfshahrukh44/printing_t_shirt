@@ -64,13 +64,13 @@ class StoreHeatTransferProduct implements ShouldQueue
             }
 
             //feature image
-            $upload_dir = 'uploads/products/';
+            $upload_dir = 'uploads/products';
             $unique_file_name = uniqid() . '_' . basename($this->product['feature_image']);
             $destinationPath = public_path($upload_dir) . DIRECTORY_SEPARATOR . $unique_file_name;
             $imageData = file_get_contents($this->product['feature_image']);
             if ($imageData !== false) {
                 if (file_put_contents($destinationPath, $imageData) !== false) {
-                    $created_product->image = $upload_dir . $unique_file_name;
+                    $created_product->image = $upload_dir . '/' . $unique_file_name;
                     $created_product->save();
                 }
             }
