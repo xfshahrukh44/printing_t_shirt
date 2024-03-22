@@ -218,21 +218,21 @@ Route::post('update-content','HomeController@updateContent')->name('update-conte
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('/temp', function() {
-    $data = json_decode(file_get_contents(asset('scrape-data/categories/heat-transfers/step_2_products.json')), true);
-
-    $failed_categories = [];
-    $failed_products = [];
-    foreach ($data['child_sub_categories'] as $child_sub_category) {
-        if (!$child_category = Childsubcategory::where('childsubcategory', 'LIKE', '%'.$child_sub_category['name'].'%')->first()) {
-            $failed_categories []= $child_sub_category['name'];
-            continue;
-        }
-
-        foreach ($child_sub_category['products'] as $product) {
-            dispatch(new StoreHeatTransferProduct($product, $child_category));
-        }
-    }
-    dd('Enqueued!');
+//    $data = json_decode(file_get_contents(asset('scrape-data/categories/heat-transfers/step_2_products.json')), true);
+//
+//    $failed_categories = [];
+//    $failed_products = [];
+//    foreach ($data['child_sub_categories'] as $child_sub_category) {
+//        if (!$child_category = Childsubcategory::where('childsubcategory', 'LIKE', '%'.$child_sub_category['name'].'%')->first()) {
+//            $failed_categories []= $child_sub_category['name'];
+//            continue;
+//        }
+//
+//        foreach ($child_sub_category['products'] as $product) {
+//            dispatch(new StoreHeatTransferProduct($product, $child_category));
+//        }
+//    }
+//    dd('Enqueued!');
 });
 
 /* Form Validation */
