@@ -218,7 +218,7 @@ Route::post('update-content','HomeController@updateContent')->name('update-conte
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('/temp', function() {
-    $data = json_decode(file_get_contents(asset('scrape-data/categories/heat-transfers/step_2_products.json')), true);
+    $data = json_decode(file_get_contents(public_path('scrape-data/categories/heat-transfers/step_2_products.json')), true);
 
     $failed_categories = [];
     $failed_products = [];
