@@ -54,6 +54,7 @@ class StoreHeatTransferProduct implements ShouldQueue
             //prices
             $mins = [1, 2, 6, 12];
             $maxs = [1, 5, 11, 99999999999999];
+            $created_product->product_prices()->delete();
             foreach ($this->product['prices'] as $key => $rate) {
                 ProductPrice::create([
                     'product_id' => $created_product->id,
