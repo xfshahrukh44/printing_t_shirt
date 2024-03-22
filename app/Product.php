@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\ProductPrice;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +30,10 @@ class Product extends Model
     protected $fillable = [
         'product_title',
         'description',
+        'category',
+        'subcategory',
+        'childsubcategory',
+        'image',
         'price',
         'price2',
         'price3',
@@ -61,6 +66,11 @@ class Product extends Model
             !is_null($order->completed_at) &&
             (Carbon::parse($order->completed_at)->addHours($this->product_download_expiry) >= Carbon::now())
         );
+    }
+
+    public function product_prices ()
+    {
+        return $this->hasMany(ProductPrice::class, 'product_id');
     }
 
 }

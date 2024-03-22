@@ -548,7 +548,8 @@
 
 
                               <li class="nav-item t-shirt-categories">
-                                   <a class="nav-link category_anchor" href="#"> Clearance </a>
+{{--                                   <a class="nav-link category_anchor" href="{{route("category.identifier.by.text", ['child' => 'Clearance'])}}"> Clearance </a>--}}
+                                   <a class="nav-link" href="{{route("category.identifier.by.text", ['child' => 'Clearance'])}}"> Clearance </a>
                               </li>
 
 

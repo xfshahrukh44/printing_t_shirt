@@ -223,17 +223,23 @@ class HomeController extends Controller
     public function categoryIdentifier (Request $request)
     {
         if ($request->has('override_for_2')) {
-            $page = 'product.index2';
+            $c = 2;
         } else if ($request->has('childsubcategory') && !is_null($request->get('subcategory'))) {
             $child_sub_category = Childsubcategory::with('sub_categorys.categorys')->find($request->get('childsubcategory'));
-            $page = 'product.index' . strval($child_sub_category->sub_categorys->categorys->type + 1);
+            $c = $child_sub_category->sub_categorys->categorys->type + 1;
         } else {
-            $page = (
+            $c = (
                 !$product = Product::where('product_title', 'LIKE', '%'.$request->get('query').'%')
                     ->orWhere('description', 'LIKE', '%'.$request->get('query').'%')
                     ->first()
-            ) ? 'product.index1' : ('product.index' . strval(intval($product->categorys->type) + 1));
+            ) ? 1 : (intval($product->categorys->type) + 1);
         }
+
+        if (in_array($child_sub_category->sub_categorys->subcategory, ['Vinyl By Type', 'Vinyl By Brand'])) {
+            $c = 1;
+        }
+
+        $page = 'product.index' . strval($c);
 
         $http_build_query = http_build_query([
             'query' => $request->get('query'),
@@ -248,7 +254,13 @@ class HomeController extends Controller
     {
         $child_sub_category = Childsubcategory::where('childsubcategory', str_replace('ayymperand', '&', $request->child))->first();
 
-        $page = 'product.index' . strval($child_sub_category->sub_categorys->categorys->type + 1);
+        $c = $child_sub_category->sub_categorys->categorys->type + 1;
+
+        if (in_array($child_sub_category->sub_categorys->subcategory, ['Vinyl By Type', 'Vinyl By Brand'])) {
+            $c = 1;
+        }
+
+        $page = 'product.index' . strval($c);
 
         $http_build_query = http_build_query([
             'subcategory' => strval($child_sub_category->sub_categorys->id ?? ''),
