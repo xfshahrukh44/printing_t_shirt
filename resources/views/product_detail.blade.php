@@ -119,6 +119,9 @@ h3 strong{
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                              class="swiper mySwiper2">
                             <div class="swiper-wrapper change-img">
+                                <div class="swiper-slide">
+                                    <img src="{{asset( $product->image)}}" />
+                                </div>
                                 @foreach($product_images as $product_image)
                                     <div class="swiper-slide">
                                         <img src="{{asset( $product_image->image)}}" />
@@ -130,6 +133,9 @@ h3 strong{
                         </div>
                         <div thumbsSlider="" class="swiper mySwiper">
                             <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="{{asset( $product->image)}}" />
+                                </div>
                                 @foreach($product_images as $product_image)
                                     <div class="swiper-slide">
                                         <img src="{{asset( $product_image->image)}}" />
@@ -278,6 +284,13 @@ h3 strong{
                             <div class="shirt-slides">
                                 <a href="{{route('product.detail2', $related_product->id)}}">
                                     <div class="product-carousel owl-carousel owl-theme">
+                                        <div class="item">
+                                            <div class="shirt-dots">
+                                                <figure>
+                                                    <img src="{{asset( $related_product->image)}}" class="img-fluid" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
                                         @php
                                             $product_images = DB::table('product_imagess')
                                               ->where('product_id', $related_product->id)
