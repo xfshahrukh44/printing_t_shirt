@@ -1,6 +1,9 @@
 <?php
 
+use App\Jobs\StoreDigitalArtProduct;
 use App\Jobs\StoreHeatTransferProduct;
+use App\Jobs\StoreStarterPackProduct;
+use App\Jobs\StoreVinylProduct;
 use App\Models\Childsubcategory;
 use App\Models\ProductPrice;
 use App\Product;
@@ -218,10 +221,18 @@ Route::post('update-content','HomeController@updateContent')->name('update-conte
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('/temp', function() {
-//    $data = json_decode(file_get_contents(public_path('scrape-data/categories/heat-transfers/step_2_products.json')), true);
+//    $arr = [];
+//    for ($i = 0; $i < 10; $i++) {
+//        $arr[strval($i)] = 0;
+//    }
+//    foreach (Product::whereHas('product_prices')->get() as $product) {
+//        $arr[strval(count($product->product_prices))] += 1;
+//    }
+//    dd($arr);
+
+//    $data = json_decode(file_get_contents(public_path('scrape-data/categories/digital-art/step_3_products.json')), true);
 //
 //    $failed_categories = [];
-//    $failed_products = [];
 //    foreach ($data['child_sub_categories'] as $child_sub_category) {
 //        if (!$child_category = Childsubcategory::where('childsubcategory', 'LIKE', '%'.$child_sub_category['name'].'%')->first()) {
 //            $failed_categories []= $child_sub_category['name'];
@@ -229,7 +240,7 @@ Route::get('/temp', function() {
 //        }
 //
 //        foreach ($child_sub_category['products'] as $product) {
-//            dispatch(new StoreHeatTransferProduct($product, $child_category));
+//            dispatch(new StoreDigitalArtProduct($product, $child_category));
 //        }
 //    }
 //    dd('Enqueued!');

@@ -37,5 +37,10 @@ class Childsubcategory extends Model
         return $this->belongsTo(Subcategory::class, 'subcategory');
     }
 
+    public function products()
+    {
+        return $this->hasMany('App\Product', 'childsubcategory', 'id');
+    }
+
 
 }

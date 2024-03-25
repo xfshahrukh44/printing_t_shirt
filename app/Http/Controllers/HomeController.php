@@ -235,9 +235,9 @@ class HomeController extends Controller
             ) ? 1 : (intval($product->categorys->type) + 1);
         }
 
-        if (in_array($child_sub_category->sub_categorys->subcategory, ['Vinyl By Type', 'Vinyl By Brand'])) {
-            $c = 1;
-        }
+//        if (in_array($child_sub_category->sub_categorys->subcategory, ['Vinyl By Type', 'Vinyl By Brand'])) {
+//            $c = 1;
+//        }
 
         $page = 'product.index' . strval($c);
 
@@ -256,9 +256,9 @@ class HomeController extends Controller
 
         $c = $child_sub_category->sub_categorys->categorys->type + 1;
 
-        if (in_array($child_sub_category->sub_categorys->subcategory, ['Vinyl By Type', 'Vinyl By Brand'])) {
-            $c = 1;
-        }
+//        if (in_array($child_sub_category->sub_categorys->subcategory, ['Vinyl By Type', 'Vinyl By Brand'])) {
+//            $c = 1;
+//        }
 
         $page = 'product.index' . strval($c);
 

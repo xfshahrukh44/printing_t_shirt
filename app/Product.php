@@ -54,6 +54,11 @@ class Product extends Model
         return $this->belongsTo('App\Category', 'category', 'id');
     }
 
+    public function childsubcategorys()
+    {
+        return $this->belongsTo('App\Models\Childsubcategory', 'childsubcategory', 'id');
+    }
+
     public function attributes()
     {
         return $this->hasMany('App\ProductAttribute', 'product_id', 'id');

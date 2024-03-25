@@ -78,12 +78,25 @@ class ProductController extends Controller
             ->when(!is_null($filters['childsubcategory']), function ($q) use ($filters) {
                 return $q->where('childsubcategory', intval($filters['childsubcategory']));
             })
-            ->whereHas('categorys', function ($q) {
+//            ->whereHas('categorys', function ($q) {
+//                return $q->where('type', 0);
+//            })
+//            ->get();
+            ->paginate(12)
+            ->withQueryString();
+
+		$subcategories = Subcategory::
+//        where(function ($q) {
+//		    return $q->whereIn('subcategory', ['Vinyl By Type', 'Vinyl By Brand']);
+//        })
+//        ->orWhere(function ($q) {
+//            return $q->whereHas('category', function ($q) {
+            whereHas('category', function ($q) {
                 return $q->where('type', 0);
             })
-            ->get();
-
-		$subcategories = Subcategory::whereHas('category', function ($q) { return $q->where('type', 0); })->with('child_sub_categories')->get();
+//            });
+//        })
+        ->with('child_sub_categories.products')->get();
 
 		return view('product1', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);
 	}
@@ -114,12 +127,18 @@ class ProductController extends Controller
             ->when(!is_null($filters['childsubcategory']), function ($q) use ($filters) {
                 return $q->where('childsubcategory', intval($filters['childsubcategory']));
             })
-            ->whereHas('categorys', function ($q) {
-                return $q->where('type', 1);
-            })
-            ->get();
+//            ->whereHas('categorys', function ($q) {
+//                return $q->where('type', 1);
+//            })
+//            ->get();
+            ->paginate(12)
+            ->withQueryString();
 
-        $subcategories = Subcategory::whereHas('category', function ($q) { return $q->where('type', 1); })->with('child_sub_categories')->get();
+        $subcategories = Subcategory::
+        whereHas('category', function ($q) {
+            return $q->where('type', 1);
+        })
+        ->with('child_sub_categories.products')->get();
 
 		return view('product2', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);
 	}

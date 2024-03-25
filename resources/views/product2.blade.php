@@ -45,12 +45,14 @@
                                                         <div class="category-hover" data-sub="{{$subcategory->id}}">
                                                             <ul>
                                                                 @foreach($subcategory->child_sub_categories as $child_sub_category)
-                                                                    <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
-                                                                        <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
-                                                                            <i class="fa-solid fa-angle-right"></i>
-                                                                            {{$child_sub_category->childsubcategory}}
-                                                                        </a>
-                                                                    </li>
+                                                                    @if($child_sub_category->products->isNotEmpty())
+                                                                        <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
+                                                                            <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
+                                                                                <i class="fa-solid fa-angle-right"></i>
+                                                                                {{$child_sub_category->childsubcategory}}
+                                                                            </a>
+                                                                        </li>
+                                                                    @endif
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -77,11 +79,18 @@
                                                     <div class="shirt-slides">
                                                         <a href="{{route('product.detail2', $product->id)}}">
                                                             <div class="product-carousel owl-carousel owl-theme">
+                                                                <div class="item">
+                                                                    <div class="shirt-dots">
+                                                                        <figure>
+                                                                            <img src="{{asset( $product->image ?? 'images/default.png')}}" class="img-fluid" alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
                                                                 @foreach($product_images as $product_image)
                                                                     <div class="item">
                                                                         <div class="shirt-dots">
                                                                             <figure>
-                                                                                <img src="{{asset( $product_image->image)}}" class="img-fluid" alt="">
+                                                                                <img src="{{asset( $product_image->image ?? 'images/default.png')}}" class="img-fluid" alt="">
                                                                             </figure>
                                                                         </div>
                                                                     </div>
@@ -111,6 +120,9 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                    </div>
+                                    <div class="mt-4">
+                                        {{ $products->links() }}
                                     </div>
                                 </div>
                             </div>

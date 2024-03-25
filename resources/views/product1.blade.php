@@ -45,12 +45,14 @@
                                                         <div class="category-hover" data-sub="{{$subcategory->id}}">
                                                             <ul>
                                                                 @foreach($subcategory->child_sub_categories as $child_sub_category)
-                                                                    <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
-                                                                        <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
-                                                                            <i class="fa-solid fa-angle-right"></i>
-                                                                            {{$child_sub_category->childsubcategory}}
-                                                                        </a>
-                                                                    </li>
+                                                                    @if($child_sub_category->products->isNotEmpty())
+                                                                        <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
+                                                                            <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
+                                                                                <i class="fa-solid fa-angle-right"></i>
+                                                                                {{$child_sub_category->childsubcategory}}
+                                                                            </a>
+                                                                        </li>
+                                                                    @endif
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -95,35 +97,32 @@
                                                                 Help
                                                             </p>
                                                         </div>
+
+                                                        {{--pricing--}}
+                                                        @php
+                                                            if (count($product->product_prices) == 4) {
+                                                                $ul_class = '';
+                                                            } else if (count($product->product_prices) == 2) {
+                                                                $ul_class = 'class="two-field"';
+                                                            } else if (count($product->product_prices) == 3) {
+                                                                $ul_class = 'class="three-field"';
+                                                            } else if (count($product->product_prices) == 5) {
+                                                                $ul_class = 'class="five-field"';
+                                                            }
+                                                        @endphp
                                                         <div class="item-sale">
-                                                            <ul>
-                                                                <li>
-                                                                    <span>1</span>
-                                                                </li>
-                                                                <li>
-                                                                    <span>2-5</span>
-                                                                </li>
-                                                                <li>
-                                                                    <span>6-11</span>
-                                                                </li>
-                                                                <li>
-                                                                    <span>12+</span>
-                                                                </li>
-                                                                <li>
-                                                                    <span>${{$product->price}}</span>
-                                                                </li>
+                                                            <ul {!! $ul_class !!}>
+                                                                @foreach($product->product_prices as $product_price)
+                                                                    <li>
+                                                                        <span>{{$product_price->min}} {{$product_price->max == 99999999999999 ? '+' : '-'}} {{$product_price->max == 99999999999999 ? '' : $product_price->max}}</span>
+                                                                    </li>
+                                                                @endforeach
 
-                                                                <li>
-                                                                    <span>${{$product->price2}}</span>
-                                                                </li>
-
-                                                                <li>
-                                                                    <span>${{$product->price3}}</span>
-                                                                </li>
-
-                                                                <li>
-                                                                    <span>${{$product->price4}}</span>
-                                                                </li>
+                                                                @foreach($product->product_prices as $product_price)
+                                                                    <li>
+                                                                        <span>${{$product_price->rate}}</span>
+                                                                    </li>
+                                                                @endforeach
                                                             </ul>
                                                         </div>
                                                         <div class="stock-cart">
@@ -307,6 +306,9 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                    </div>
+                                    <div class="mt-4">
+                                        {{ $products->links() }}
                                     </div>
                                 </div>
                             </div>
