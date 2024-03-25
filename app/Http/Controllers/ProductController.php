@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductPrice;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\inquiry;
@@ -251,18 +252,22 @@ class ProductController extends Controller
 			$cart[$cartId]['name'] = $productFirstrow->product_title;
 
 			//use case: pricing for type 1 products
-            if ($productFirstrow->category->type == 0) {
-                if ($qty == 1) {
-                    $price = $productFirstrow->price;
-                } else if ($qty >= 2 && $qty <=5) {
-                    $price = $productFirstrow->price2;
-                } else if ($qty >= 6 && $qty <=11) {
-                    $price = $productFirstrow->price3;
-                } else if ($qty >= 12) {
-                    $price = $productFirstrow->price4;
-                } else {
-                    $price = $product_detail->price;
-                }
+            if (count($productFirstrow->product_prices) > 0 ) {
+                $price = ProductPrice::where('min', '<=', $qty)->where('max', '>=', $qty)->first();
+                $price = $price->rate ?? ($product_detail->price ?? 0.00);
+//            }
+//            if ($productFirstrow->category->type == 0) {
+//                if ($qty == 1) {
+//                    $price = $productFirstrow->price;
+//                } else if ($qty >= 2 && $qty <=5) {
+//                    $price = $productFirstrow->price2;
+//                } else if ($qty >= 6 && $qty <=11) {
+//                    $price = $productFirstrow->price3;
+//                } else if ($qty >= 12) {
+//                    $price = $productFirstrow->price4;
+//                } else {
+//                    $price = $product_detail->price;
+//                }
             } else {
                 $price = $product_detail->price;
             }
