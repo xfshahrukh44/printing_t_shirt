@@ -39,65 +39,74 @@ class StoreDigitalArtProduct implements ShouldQueue
     {
         try {
             DB::beginTransaction();
-            if (
-            !$created_product = Product::firstOrCreate([
+
+            $product = Product::where([
                 'product_title' => $this->product['product_title'],
                 'category' => $this->child_category->sub_categorys->categorys->id,
                 'subcategory' => $this->child_category->sub_categorys->id,
-            ],[
-                'childsubcategory' => $this->child_category->id,
-//                'sku' => $this->product['sku'],
-//                'size' => $this->product['size'],
-                'description' => $this->product['description'],
-                'additional_information' => $this->product['additional_information'],
-            ])
-            ) { DB::rollBack(); $this->fail(); }
+            ])->first();
+            $product->additional_information = $this->product['additional_information'];
+            $product->save();
 
-            //prices
-            if (is_array($this->product['price'])) {
-                $created_product->product_prices()->delete();
-                foreach ($this->product['price'] as $key => $product_price) {
-                    ProductPrice::create([
-                        'product_id' => $created_product->id,
-                        'min' => $product_price['min'],
-                        'max' => $product_price['max'],
-                        'rate' => $product_price['rate'],
-                    ]);
-                }
-            } else {
-                $created_product->price = $this->product['price'];
-                $created_product->save();
-            }
+//            if (
+//            !$created_product = Product::firstOrCreate([
+//                'product_title' => $this->product['product_title'],
+//                'category' => $this->child_category->sub_categorys->categorys->id,
+//                'subcategory' => $this->child_category->sub_categorys->id,
+//            ],[
+////                'childsubcategory' => $this->child_category->id,
+////                'sku' => $this->product['sku'],
+////                'size' => $this->product['size'],
+////                'description' => $this->product['description'],
+//                'additional_information' => $this->product['additional_information'],
+//            ])
+//            ) { DB::rollBack(); $this->fail(); }
 
-            //feature image
-            $upload_dir = 'test';
-            $unique_file_name = uniqid() . '_' . basename($this->product['feature_image']);
-            $destinationPath = storage_path($upload_dir) . DIRECTORY_SEPARATOR . $unique_file_name;
-            $imageData = file_get_contents($this->product['feature_image']);
-            if ($imageData !== false) {
-                if (file_put_contents($destinationPath, $imageData) !== false) {
-                    $created_product->image = 'uploads/products/' . $unique_file_name;
-                    $created_product->save();
-                }
-            }
-
-            //product images
-            foreach ($this->product['product_images'] as $product_image_url) {
-                $upload_dir = 'test';
-                $unique_file_name = uniqid() . '_' . basename($product_image_url);
-                $destinationPath = storage_path($upload_dir) . DIRECTORY_SEPARATOR . $unique_file_name;
-                $imageData = file_get_contents($product_image_url);
-                if ($imageData !== false) {
-                    if (file_put_contents($destinationPath, $imageData) !== false) {
-                        $created_product->image = 'uploads/products/' . $unique_file_name;
-                        $created_product->save();
-
-                        DB::table('product_imagess')->insert([
-                            ['image' => ('uploads/products/' . $unique_file_name), 'product_id' => $created_product->id]
-                        ]);
-                    }
-                }
-            }
+//            //prices
+//            if (is_array($this->product['price'])) {
+//                $created_product->product_prices()->delete();
+//                foreach ($this->product['price'] as $key => $product_price) {
+//                    ProductPrice::create([
+//                        'product_id' => $created_product->id,
+//                        'min' => $product_price['min'],
+//                        'max' => $product_price['max'],
+//                        'rate' => $product_price['rate'],
+//                    ]);
+//                }
+//            } else {
+//                $created_product->price = $this->product['price'];
+//                $created_product->save();
+//            }
+//
+//            //feature image
+//            $upload_dir = 'test';
+//            $unique_file_name = uniqid() . '_' . basename($this->product['feature_image']);
+//            $destinationPath = storage_path($upload_dir) . DIRECTORY_SEPARATOR . $unique_file_name;
+//            $imageData = file_get_contents($this->product['feature_image']);
+//            if ($imageData !== false) {
+//                if (file_put_contents($destinationPath, $imageData) !== false) {
+//                    $created_product->image = 'uploads/products/' . $unique_file_name;
+//                    $created_product->save();
+//                }
+//            }
+//
+//            //product images
+//            foreach ($this->product['product_images'] as $product_image_url) {
+//                $upload_dir = 'test';
+//                $unique_file_name = uniqid() . '_' . basename($product_image_url);
+//                $destinationPath = storage_path($upload_dir) . DIRECTORY_SEPARATOR . $unique_file_name;
+//                $imageData = file_get_contents($product_image_url);
+//                if ($imageData !== false) {
+//                    if (file_put_contents($destinationPath, $imageData) !== false) {
+//                        $created_product->image = 'uploads/products/' . $unique_file_name;
+//                        $created_product->save();
+//
+//                        DB::table('product_imagess')->insert([
+//                            ['image' => ('uploads/products/' . $unique_file_name), 'product_id' => $created_product->id]
+//                        ]);
+//                    }
+//                }
+//            }
 
             DB::commit();
         } catch (\Exception $e) {
