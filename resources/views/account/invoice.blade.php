@@ -109,10 +109,17 @@
                                         $temp_product = \App\Product::find($order_product->order_products_product_id);
                                     @endphp
 
-                                    @if($temp_product->zip && $temp_product->can_download_product($order->id))
-                                        <a target="_blank" href="{{asset($temp_product->zip)}}" title="Download zip">
-                                            <i class="fas fa-download"></i>
-                                        </a>
+{{--                                    @dd($temp_product->can_download_product($order->id))--}}
+                                    @if($temp_product->zip)
+                                        @if($temp_product->can_download_product($order->id))
+                                            <button class="btn btn-info text-white" target="_blank" href="{{asset($temp_product->zip)}}" title="Download zip">
+                                                <i class="fas fa-download"></i> Download zip file
+                                            </button>
+                                        @else
+                                            <button class="btn btn-danger text-white" href="#" title="Link expired" disabled>
+                                                <i class="fas fa-download"></i> Link expired
+                                            </button>
+                                        @endif
                                     @endif
                                 </div>
                                 <div class="d-none d-sm-block col-3">

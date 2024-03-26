@@ -443,6 +443,9 @@ class OrderController extends Controller
 				$payment_status = $chargeJson['status'];
 				$order->transaction_id = $transactionID;
 				$order->order_status = $payment_status;
+				if ($payment_status == "succeeded") {
+                    $order->completed_at = Carbon::now();
+                }
 			}
 		}
 
