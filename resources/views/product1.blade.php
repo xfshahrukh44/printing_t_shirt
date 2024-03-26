@@ -342,17 +342,17 @@
                                                                 <div class="pro-name">
                                                                     <p> {{$product->product_title}} <span class="d-block">Here</span></p>
                                                                 </div>
-                                                                <div class="box-col">
-                                                                    <span>.</span>
-                                                                    <span>.</span>
-                                                                    <span>.</span>
-                                                                </div>
+{{--                                                                <div class="box-col">--}}
+{{--                                                                    <span>.</span>--}}
+{{--                                                                    <span>.</span>--}}
+{{--                                                                    <span>.</span>--}}
+{{--                                                                </div>--}}
                                                             </div>
                                                             <div class="prod-price">
                                                                 <h6>${{$product->price}}</h6>
                                                                 <div class="cart-icon">
-                                                                    <a href="#"><i class="fa-solid fa-heart"></i></a>
-                                                                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                                                                    <a href="{{route('add.product.to.favourites', $product->id)}}"><i class="fa-solid fa-heart" {!! in_array($product->id, session()->get('favourite_products')) ? 'style="color: white !important; background: #f76c68 !important;"' : '' !!}></i></a>
+                                                                    <a href="{{route('product.detail2', $product->id)}}"><i class="fa-solid fa-cart-shopping"></i></a>
                                                                 </div>
                                                             </div>
                                                         </div>

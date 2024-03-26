@@ -11,6 +11,8 @@ use App\banner;
 use App\imagetable;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Mail;use View;
 use Session;
 use App\Http\Helpers\UserSystemInfoHelper;
@@ -268,6 +270,30 @@ class HomeController extends Controller
         ]);
 
         return redirect(route($page) . ($http_build_query != "" ? ('?' . $http_build_query) : ''));
+    }
+
+    public function addProductToFavourites (Request $request, $product_id)
+    {
+//        $previous_route_name = Route::getRoutes()->match(Request::create(URL::previous()))->getName();
+//        dd($previous_route_name);
+
+        if (!session()->has('favourite_products')) {
+            session()->put('favourite_products', []);
+        }
+
+        $favourite_products = session()->get('favourite_products');
+
+        if (in_array($product_id, $favourite_products)) {
+            unset($favourite_products[array_search($product_id, $favourite_products)]);
+            $favourite_products = array_values($favourite_products);
+        } else {
+            $favourite_products []= $product_id;
+        }
+
+        session()->put('favourite_products', $favourite_products);
+
+//        return redirect()->route($previous_route_name);
+        return redirect()->back();
     }
 
 }
