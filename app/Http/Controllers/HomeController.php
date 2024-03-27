@@ -70,7 +70,15 @@ class HomeController extends Controller
 
        $get_product = DB::table('products')->where('status', '1')->take(6)->get();
 
-       return view('welcome', compact('page', 'section', 'banner', 'blog', 'instagram', 'get_product'));
+       $popular_categories = Childsubcategory::inRandomOrder()->has('products', '>', 0)->get()->take(10);
+       $popular_specialty_materials = Product::whereHas('childsubcategorys', function ($q) {
+           return $q->where('childsubcategory', 'LIKE', '%Specialty Materials%');
+       })->orderBy('id', 'DESC')->take(4)->get();
+       $popular_heat_transfers = Product::whereHas('childsubcategorys', function ($q) {
+           return $q->where('id', 35);
+       })->orderBy('id', 'DESC')->take(4)->get();
+
+       return view('welcome', compact('page', 'section', 'banner', 'blog', 'instagram', 'get_product', 'popular_categories', 'popular_specialty_materials', 'popular_heat_transfers'));
 
     }
 
