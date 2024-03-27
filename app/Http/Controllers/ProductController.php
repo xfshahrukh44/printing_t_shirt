@@ -97,6 +97,7 @@ class ProductController extends Controller
             })
 //            });
 //        })
+        ->whereNotIn('subcategory', ['Vinyl Cutters & Accessories', 'Featured', 'Starter Packages'])
         ->with('child_sub_categories.products')->get();
 
 		return view('product1', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);
@@ -139,6 +140,7 @@ class ProductController extends Controller
         whereHas('category', function ($q) {
             return $q->where('type', 1);
         })
+        ->whereNotIn('subcategory', ['Vinyl Cutters & Accessories', 'Featured', 'Starter Packages'])
         ->with('child_sub_categories.products')->get();
 
 		return view('product2', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);

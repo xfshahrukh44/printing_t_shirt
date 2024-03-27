@@ -115,6 +115,9 @@
                                             <button class="btn btn-info text-white" target="_blank" href="{{asset($temp_product->zip)}}" title="Download zip">
                                                 <i class="fas fa-download"></i> Download zip file
                                             </button>
+                                            <h6>
+                                                <b>Link expires in: {{$temp_product->product_download_expiry}} hr(s)</b>
+                                            </h6>
                                         @else
                                             <button class="btn btn-danger text-white" href="#" title="Link expired" disabled>
                                                 <i class="fas fa-download"></i> Link expired

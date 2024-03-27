@@ -118,9 +118,9 @@
                                                   <div class="iner-menu-links">
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Graphics By Type</a></h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="screen-printed.php">Screen Printed</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="screen-printed.php">Screen Printed</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">DTF (Direct to Film)</a>
                                                             </li>
@@ -145,21 +145,21 @@
                                                        </ul>
                                                        <h5><a href="javascript:;" class="sub_category_anchor">Featured Transfers</a></h5>
                                                        <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">Best Selling Graphics</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Best Selling Graphics</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">New Graphics</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Wildside</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Custom Transfers</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Clearance</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Wildside</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Custom Transfers</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Clearance</a>--}}
+{{--                                                            </li>--}}
                                                        </ul>
                                                   </div>
                                              </div>
@@ -194,18 +194,18 @@
                                                             <li>
                                                                  <a href="javascript:;">Christian Inspirational</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Clearance</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Clearance</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Color Changing</a>
                                                             </li>
                                                             <li>
                                                                  <a href="javascript:;">Country</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Custom Transfers</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Custom Transfers</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Dance and Cheer</a>
                                                             </li>
@@ -284,9 +284,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Military</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Mixed Media</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Mixed Media</a>--}}
+{{--                                                            </li>--}}
                                                             <li>
                                                                  <a href="javascript:;">Native American</a>
                                                             </li>
@@ -323,9 +323,9 @@
                                                             <li>
                                                                  <a href="javascript:;">Rhinestone</a>
                                                             </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Screen Printed</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Screen Printed</a>--}}
+{{--                                                            </li>--}}
                                                        </ul>
                                                   </div>
                                              </div>
@@ -424,35 +424,35 @@
 
 
 
-                                             <div class="col-lg-4">
-                                                  <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;" class="sub_category_anchor">Vinyl Cutters &amp; Accessories</a>
-                                                       </h5>
-                                                       <ul class="inner-ul-links">
+{{--                                             <div class="col-lg-4">--}}
+{{--                                                  <div class="iner-menu-links">--}}
+{{--                                                       <h5><a href="javascript:;" class="sub_category_anchor">Vinyl Cutters &amp; Accessories</a>--}}
+{{--                                                       </h5>--}}
+{{--                                                       <ul class="inner-ul-links">--}}
 {{--                                                            <li>--}}
 {{--                                                                 <a href="javascript:;">All Cutters</a>--}}
 {{--                                                            </li>--}}
-                                                            <li>
-                                                                 <a href="javascript:;">GCC Cutters</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Siser Romeo &amp; Juliet Cutters</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">All Accessories</a>
-                                                            </li>
-                                                       </ul>
-                                                       <h5><a href="javascript:;" class="sub_category_anchor">Featured</a></h5>
-                                                       <ul class="inner-ul-links">
-                                                            <li>
-                                                                 <a href="javascript:;">Vinyl Cutter Starter Package</a>
-                                                            </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">GCC Cutters</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Siser Romeo &amp; Juliet Cutters</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">All Accessories</a>--}}
+{{--                                                            </li>--}}
+{{--                                                       </ul>--}}
+{{--                                                       <h5><a href="javascript:;" class="sub_category_anchor">Featured</a></h5>--}}
+{{--                                                       <ul class="inner-ul-links">--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Vinyl Cutter Starter Package</a>--}}
+{{--                                                            </li>--}}
 {{--                                                            <li>--}}
 {{--                                                                 <a href="javascript:;">Vinyl Packages</a>--}}
 {{--                                                            </li>--}}
-                                                       </ul>
-                                                  </div>
-                                             </div>
+{{--                                                       </ul>--}}
+{{--                                                  </div>--}}
+{{--                                             </div>--}}
 
 
                                              <div class="col-lg-2">
@@ -473,6 +473,11 @@
                                         </div>
                                    </div>
                               </li>
+
+                             <li class="nav-item">
+                                 {{--                                   <a class="nav-link category_anchor" href="{{route("category.identifier.by.text", ['child' => 'Clearance'])}}"> Clearance </a>--}}
+                                 <a class="nav-link" href="{{route("category.identifier.by.text", ['child' => 'Mixed Media'])}}"> Clearance </a>
+                             </li>
 
 
                               <li class="nav-item mega-menu-on Custom-on t-shirt-categories">
@@ -512,45 +517,41 @@
                               </li>
 
 
-                              <li class="nav-item mega-menu-on Starter-Packs-on t-shirt-categories">
-                                   <a class="nav-link category_anchor" href="#"> Starter Packs </a>
+{{--                              <li class="nav-item mega-menu-on Starter-Packs-on t-shirt-categories">--}}
+{{--                                   <a class="nav-link category_anchor" href="#"> Starter Packs </a>--}}
 
-                                   <div class="main-mega-menu">
-                                        <div class="row">
-                                             <div class="col-lg-12">
-                                                  <div class="iner-menu-links">
-                                                       <h5><a href="javascript:;" class="sub_category_anchor">Starter Packages</a></h5>
-                                                       <ul class="inner-ul-links">
+{{--                                   <div class="main-mega-menu">--}}
+{{--                                        <div class="row">--}}
+{{--                                             <div class="col-lg-12">--}}
+{{--                                                  <div class="iner-menu-links">--}}
+{{--                                                       <h5><a href="javascript:;" class="sub_category_anchor">Starter Packages</a></h5>--}}
+{{--                                                       <ul class="inner-ul-links">--}}
 {{--                                                            <li>--}}
 {{--                                                                 <a href="javascript:;">All Starter Packages</a>--}}
 {{--                                                            </li>--}}
-                                                            <li>
-                                                                 <a href="javascript:;">DTF Starter Packages</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Heat Press Starter Packages</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Mug Starter Packages</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Sublimation Starter Packages</a>
-                                                            </li>
-                                                            <li>
-                                                                 <a href="javascript:;">Vinyl Starter Packages</a>
-                                                            </li>
-                                                       </ul>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </li>
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">DTF Starter Packages</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Heat Press Starter Packages</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Mug Starter Packages</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Sublimation Starter Packages</a>--}}
+{{--                                                            </li>--}}
+{{--                                                            <li>--}}
+{{--                                                                 <a href="javascript:;">Vinyl Starter Packages</a>--}}
+{{--                                                            </li>--}}
+{{--                                                       </ul>--}}
+{{--                                                  </div>--}}
+{{--                                             </div>--}}
+{{--                                        </div>--}}
+{{--                                   </div>--}}
+{{--                              </li>--}}
 
 
-                              <li class="nav-item t-shirt-categories">
-{{--                                   <a class="nav-link category_anchor" href="{{route("category.identifier.by.text", ['child' => 'Clearance'])}}"> Clearance </a>--}}
-                                   <a class="nav-link" href="{{route("category.identifier.by.text", ['child' => 'Clearance'])}}"> Clearance </a>
-                              </li>
 
 
                               <li class="nav-item mega-menu-on Digital-on t-shirt-categories">
