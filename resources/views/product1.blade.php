@@ -146,8 +146,9 @@
                                                                     <div class="heart-cart">
                                                                         <button type="submit" class="btn btn-black">Add To
                                                                             Cart</button>
-                                                                        <a href="#"><i
-                                                                                class="fa-regular fa-heart"></i></a>
+                                                                        <a href="{{route('add.product.to.favourites', $product->id)}}">
+                                                                            <i class="fa-{{in_array($product->id, session()->get('favourite_products')) ? 'solid' : 'regular'}} fa-heart"></i>
+                                                                        </a>
                                                                     </div>
                                                                 </div>
                                                             </form>
