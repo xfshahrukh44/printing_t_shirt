@@ -106,16 +106,16 @@ h3 strong{
                                   ->get();
                             @endphp
                         </div>
-                        <div class="slides-star">
-                            <div class="star-icon">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <p><a href="#"> 50 Reviews </a> <a href="#">Write a Review</a> Item #MP350</p>
-                        </div>
+{{--                        <div class="slides-star">--}}
+{{--                            <div class="star-icon">--}}
+{{--                                <i class="fa-solid fa-star"></i>--}}
+{{--                                <i class="fa-solid fa-star"></i>--}}
+{{--                                <i class="fa-solid fa-star"></i>--}}
+{{--                                <i class="fa-solid fa-star"></i>--}}
+{{--                                <i class="fa-solid fa-star"></i>--}}
+{{--                            </div>--}}
+{{--                            <p><a href="#"> 50 Reviews </a> <a href="#">Write a Review</a> Item #MP350</p>--}}
+{{--                        </div>--}}
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                              class="swiper mySwiper2">
                             <div class="swiper-wrapper change-img">
@@ -212,7 +212,7 @@ h3 strong{
                         <div class="change-tabs">
                             <button class="clicktabs" onclick="opentabs(event , 'info1')"
                                     id="showonly">Details</button>
-                            <button class="clicktabs" onclick="opentabs(event , 'info2')">Reviews (50)</button>
+{{--                            <button class="clicktabs" onclick="opentabs(event , 'info2')">Reviews (50)</button>--}}
                         </div>
                         <div class="feature-details">
                             <div class="changetabs" id="info1">
