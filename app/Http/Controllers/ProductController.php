@@ -231,6 +231,7 @@ class ProductController extends Controller
 
 		$id = isset($request->product_id) ? $request->product_id : '';
 		$qty = isset($request->qty) ? intval($request->qty) : '1';
+		$color = $request->has('color') ? $request->get('color') : null;
 
 		// dd($qty);
 
@@ -255,6 +256,7 @@ class ProductController extends Controller
 
 			$cart[$cartId]['id'] = $id;
 			$cart[$cartId]['name'] = $productFirstrow->product_title;
+			$cart[$cartId]['color'] = $color;
 
 			//use case: pricing for type 1 products
             if (count($productFirstrow->product_prices) > 0 ) {

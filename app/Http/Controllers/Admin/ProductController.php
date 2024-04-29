@@ -173,6 +173,7 @@ class ProductController extends Controller
             $product->subcategory = $request->input('subcategory');
             $product->childsubcategory = $request->input('childsubcategory');
             $product->product_title = $request->input('product_title');
+            $product->colors = $request->input('colors');
 			$product->sku = $request->input('sku');
 			$product->price = $request->input('price');
 			$product->price2 = $request->input('price2');
@@ -331,6 +332,7 @@ class ProductController extends Controller
 
 
         $requestData['product_title'] = $request->input('product_title');
+        $requestData['colors'] = $request->has('colors') ? json_encode($request->input('colors')) : json_encode([]);
         $requestData['description'] = $request->input('description');
         $requestData['additional_information'] = $request->input('additional_information');
 		$requestData['sku'] = $request->input('sku');

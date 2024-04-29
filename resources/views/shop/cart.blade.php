@@ -53,6 +53,14 @@
                                                         <div class="clear-black-img">
 {{--                                                            <h5>RANDOM RHINESTONE CLEAR <span class="d-block">Item#A9086F</span>--}}
                                                             <h5>{{ $value['name'] }} - <b>${{ $value['baseprice'] }}</b></h5>
+                                                            @if(!is_null($value['color']))
+                                                                <div class="row">
+                                                                    <div class="col-6">Color:</div>
+                                                                    <div class="col-6">
+                                                                        <h5><div style="width: 40px; height: 40px; background: {{$value['color']}};"></div> </h5>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
 
                                                             <br>
                                                             @if (count($value['variation']))

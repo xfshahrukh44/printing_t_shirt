@@ -464,6 +464,7 @@ class OrderController extends Controller
 					$order_products->order_products_product_id = $value['id'];
 					$order_products->user_id = Auth::user()->id;
 					$order_products->order_products_name = $value['name'];
+					$order_products->colors = $value['color'];
 					$order_products->order_products_price = $value['baseprice'];
 					$order_products->orders_id = $orders->id;
 					$order_products->order_products_qty = $value['qty'];

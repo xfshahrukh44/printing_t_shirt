@@ -159,6 +159,14 @@
 
                                                         @foreach($cart as $key=>$value)
                                                             <p class="custompp"> {{ $value['name'] }} <span class="customp"> x {{ $value['qty'] }} = ${{ $value['baseprice'] * $value['qty'] }} </span> </p>
+                                                            @if(!is_null($value['color']))
+                                                                <div class="row">
+                                                                    <div class="col-6">Color:</div>
+                                                                    <div class="col-6">
+                                                                        <div style="width: 20px; height: 20px; background: {{$value['color']}};"></div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
                                                             <p class="custompp"> > variation price
 
                                                                 <span class="customp">

@@ -200,6 +200,14 @@
                                         <p>
                                             {{$popular_specialty_material->product_title}}
                                         </p>
+                                        @php
+                                            $colors = (isset($popular_specialty_material) && !is_null($popular_specialty_material->colors)) ? json_decode($popular_specialty_material->colors) : [];
+                                        @endphp
+                                        <div class="box-col">
+                                            @foreach($colors as $color)
+                                                <span style="background: {{$color}} !important; color: {{$color}} !important;">.</span>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="item-size">
@@ -465,6 +473,14 @@
                                 <div class="rainbow-col">
                                     <div class="pro-name">
                                         <p> {{$popular_heat_transfer->product_title}} <span class="d-block">Here</span></p>
+                                    </div>
+                                    @php
+                                        $colors = (isset($popular_heat_transfer) && !is_null($popular_heat_transfer->colors)) ? json_decode($popular_heat_transfer->colors) : [];
+                                    @endphp
+                                    <div class="box-col">
+                                        @foreach($colors as $color)
+                                            <span style="background: {{$color}} !important; color: {{$color}} !important;">.</span>
+                                        @endforeach
                                     </div>
                                     {{--                                                                <div class="box-col">--}}
                                     {{--                                                                    <span>.</span>--}}

@@ -90,6 +90,14 @@
                                                                     <p>
                                                                         {{$product->product_title}}
                                                                     </p>
+                                                                    @php
+                                                                        $colors = (isset($product) && !is_null($product->colors)) ? json_decode($product->colors) : [];
+                                                                    @endphp
+                                                                    <div class="box-col">
+                                                                        @foreach($colors as $color)
+                                                                            <span style="background: {{$color}} !important; color: {{$color}} !important;">.</span>
+                                                                        @endforeach
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="item-size">
@@ -365,11 +373,14 @@
                                                                 <div class="pro-name">
                                                                     <p> {{$product->product_title}} <span class="d-block">Here</span></p>
                                                                 </div>
-{{--                                                                <div class="box-col">--}}
-{{--                                                                    <span>.</span>--}}
-{{--                                                                    <span>.</span>--}}
-{{--                                                                    <span>.</span>--}}
-{{--                                                                </div>--}}
+                                                                @php
+                                                                    $colors = (isset($product) && !is_null($product->colors)) ? json_decode($product->colors) : [];
+                                                                @endphp
+                                                                <div class="box-col">
+                                                                    @foreach($colors as $color)
+                                                                        <span style="background: {{$color}} !important; color: {{$color}} !important;">.</span>
+                                                                    @endforeach
+                                                                </div>
                                                             </div>
                                                             <div class="prod-price">
                                                                 <h6>${{$product->price}}</h6>

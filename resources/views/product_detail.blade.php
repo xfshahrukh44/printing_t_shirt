@@ -170,6 +170,18 @@ h3 strong{
                                     </label>
                                     <input type="number" id="quantity" name="qty" min="1" max="100" value="1">
                                 </div>
+                                @php
+                                    $colors = (isset($product) && !is_null($product->colors)) ? json_decode($product->colors) : [];
+                                @endphp
+                                @if(count($colors))
+                                    <label for="">Select color</label>
+                                    <select name="color" id="select_color" class="" required>
+                                        @foreach($colors as $key => $color)
+                                            <option value="{{$color}}" style="background: {{$color}};" {!! $key == 0 ? 'selected' : '' !!}></option>
+                                        @endforeach
+                                    </select>
+                                    <div style="width: 40px; height: 40px; background: transparent;" id="div_selected_color"></div>
+                                @endif
 {{--                                variation--}}
                                 <div class="year-btn">
                                     <?php
@@ -345,6 +357,14 @@ $(document).ready(function () {
     $(".inner-shop").click(function () {
         $(".inner-drop").show()
     })
+
+    $('#select_color').on('change', function () {
+        if ($(this).find('option:selected').val() != "") {
+            $('#div_selected_color').css('background', $(this).find('option:selected').val());
+        }
+    });
+
+    $('#select_color').trigger('change');
 });
 
 $(document).ready(function () {

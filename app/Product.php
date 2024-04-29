@@ -43,6 +43,7 @@ class Product extends Model
         'in_stock',
         'product_download_expiry',
         'zip',
+        'colors',
     ];
 
     public function category()
