@@ -249,6 +249,8 @@ class HomeController extends Controller
 //            $c = 1;
 //        }
 
+        //override
+        $c = 1;
         $page = 'product.index' . strval($c);
 
         $http_build_query = http_build_query([
@@ -270,6 +272,8 @@ class HomeController extends Controller
 //            $c = 1;
 //        }
 
+        //override
+        $c = 1;
         $page = 'product.index' . strval($c);
 
         $http_build_query = http_build_query([

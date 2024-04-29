@@ -26,7 +26,7 @@
                                         <ul>
                                             <li class="category-mian-li">
                                                 <a href="#" id="btn_all_categories">
-                                                    <i class="fa-solid fa-angle-right"></i>
+{{--                                                    <i class="fa-solid fa-angle-right"></i>--}}
                                                     All
                                                 </a>
                                             </li>
@@ -36,7 +36,7 @@
                                             <ul>
                                                 <li class="category-mian-li">
                                                     <a href="javascript:;">
-                                                        <i class="fa-solid fa-angle-right"></i>
+{{--                                                        <i class="fa-solid fa-angle-right"></i>--}}
                                                         {{$subcategory->subcategory}}
                                                     </a>
 
@@ -48,7 +48,7 @@
                                                                     @if($child_sub_category->products->isNotEmpty())
                                                                         <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
                                                                             <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
-                                                                                <i class="fa-solid fa-angle-right"></i>
+{{--                                                                                <i class="fa-solid fa-angle-right"></i>--}}
                                                                                 {{$child_sub_category->childsubcategory}}
                                                                             </a>
                                                                         </li>

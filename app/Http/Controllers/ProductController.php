@@ -92,13 +92,16 @@ class ProductController extends Controller
 //        })
 //        ->orWhere(function ($q) {
 //            return $q->whereHas('category', function ($q) {
-            whereHas('category', function ($q) {
-                return $q->where('type', 0);
-            })
+        //override
+//            whereHas('category', function ($q) {
+//                return $q->where('type', 0);
+//            })
 //            });
 //        })
-        ->whereNotIn('subcategory', ['Vinyl Cutters & Accessories', 'Featured', 'Starter Packages'])
-        ->with('child_sub_categories.products')->get();
+        //override
+//        ->whereNotIn('subcategory', ['Vinyl Cutters & Accessories', 'Featured', 'Starter Packages'])
+//        ->with('child_sub_categories.products')->get();
+        with('child_sub_categories.products')->get();
 
 		return view('product1', ['products' => $products, 'subcategories' => $subcategories, 'filters' => $filters]);
 	}
