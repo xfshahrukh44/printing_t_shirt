@@ -175,6 +175,17 @@
                                                                                     <div
                                                                                         class="swiper-wrapper change-img">
                                                                                         <div
+                                                                                            class="swiper-slide off-white-back">
+                                                                                            <div
+                                                                                                class="shirt-dots">
+                                                                                                <figure>
+                                                                                                    <img src="{{asset($product->image)}}"
+                                                                                                         class="img-fluid"
+                                                                                                         alt="">
+                                                                                                </figure>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div
                                                                                             class="swiper-slide">
                                                                                             <div
                                                                                                 class="shirt-dots">
@@ -236,6 +247,17 @@
                                                                                      {{--                                                                                 class="swiper mySwiper3 select-img-slides">--}}
                                                                                      class="swiper select-img-slides ms3_{{$product->id}}">
                                                                                     <div class="swiper-wrapper">
+                                                                                        <div
+                                                                                            class="swiper-slide off-white-back">
+                                                                                            <div
+                                                                                                class="shirt-dots">
+                                                                                                <figure>
+                                                                                                    <img src="{{asset($product->image)}}"
+                                                                                                         class="img-fluid"
+                                                                                                         alt="">
+                                                                                                </figure>
+                                                                                            </div>
+                                                                                        </div>
                                                                                         <div
                                                                                             class="swiper-slide">
                                                                                             <div

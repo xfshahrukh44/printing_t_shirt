@@ -493,7 +493,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="categories-main">
-                        <h3 data-aos="zoom-in" data-aos-duration="2000">The Best Brands</h3>
+                        <h3 data-aos="zoom-in" data-aos-duration="2000">Collaborative Brands</h3>
 {{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
 {{--                            incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
                     </div>
@@ -679,7 +679,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="categories-main">
-                        <h3 data-aos="zoom-in" data-aos-duration="2000">Pro World Newsletter</h3>
+                        <h3 data-aos="zoom-in" data-aos-duration="2000">Subscribe to Our Newsletter</h3>
 {{--                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
 {{--                            incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
                     </div>

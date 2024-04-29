@@ -71,7 +71,8 @@
   margin-top: 5px;
 }
 .cart-inner .shirt-dots {
-  background: var(--black-color);
+  /*background: var(--black-color);*/
+  background: rgb(226, 218, 205);
 }
 .cart-inner .pro-name p {
   font-size: 16px;
@@ -933,6 +934,10 @@
 
 .pro-img-modal .orange-back figure {
   background: rgb(236, 91, 62);
+}
+
+.pro-img-modal .off-white-back figure {
+  background: rgb(226, 218, 205);
 }
 
 .modal-produc .modal-header {
