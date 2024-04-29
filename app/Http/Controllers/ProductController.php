@@ -260,7 +260,7 @@ class ProductController extends Controller
 
 			//use case: pricing for type 1 products
             if (count($productFirstrow->product_prices) > 0 ) {
-                $price = ProductPrice::where('min', '<=', $qty)->where('max', '>=', $qty)->first();
+                $price = ProductPrice::where('product_id', $productFirstrow->id)->where('min', '<=', $qty)->where('max', '>=', $qty)->first();
                 $price = $price->rate ?? ($product_detail->price ?? 0.00);
 //            }
 //            if ($productFirstrow->category->type == 0) {
