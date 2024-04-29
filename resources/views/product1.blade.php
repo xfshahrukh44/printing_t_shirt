@@ -95,7 +95,7 @@
                                                                     @endphp
                                                                     <div class="box-col">
                                                                         @foreach($colors as $color)
-                                                                            <span style="background: {{$color}} !important; color: {{$color}} !important;">.</span>
+                                                                            <span style="background: {{$color}} !important; color: {{$color}} !important;" data-color="{{$color}}" class="span_select_color" title="Select color">.</span>
                                                                         @endforeach
                                                                     </div>
                                                                 </div>
@@ -143,6 +143,7 @@
                                                             <form action="{{route('save_cart')}}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                                <input type="hidden" name="color" class="color" value="">
                                                                 <div class="cart-btn">
                                                                     <div class="quantity-btn">
                                                                         <label for="quantity">Qty
@@ -450,6 +451,11 @@
                 $('.category-hover[data-sub="' + $('#subcategory').val() + '"]').slideToggle('fast');
                 $('.li_child_sub_category[data-child="' + $('#childsubcategory').val() + '"]').css('background', '#07c4f4');
             }
+
+            $('body').on('click', '.span_select_color', function () {
+                toastr.success('Color selected!');
+                $(this).parent().parent().parent().parent().find('.color').val($(this).data('color'));
+            })
         });
     </script>
 @endsection
