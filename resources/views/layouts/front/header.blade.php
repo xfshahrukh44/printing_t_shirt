@@ -110,7 +110,7 @@
                     <div class="links-menu">
                          <ul class="navbar-nav m-auto">
                               <li class="nav-item mega-menu-on heat-transfers">
-                                   <a class="nav-link active category_anchor" aria-current="page" href="#"> Heat Transfers
+                                   <a class="nav-link active category_anchor" aria-current="page" href="#"> Templates and transfers
                                    </a>
                                    <div class="main-mega-menu">
                                         <div class="row">
@@ -371,7 +371,8 @@
 
 
                               <li class="nav-item mega-menu-on Vinyl-on t-shirt-categories">
-                                   <a class="nav-link category_anchor" href="#">Vinyl </a>
+                                   <a class="nav-link category_anchor" href="#">Premade T-shirts </a>
+{{--                                   <a class="nav-link category_anchor" href="#">Vinyl </a>--}}
 
                                    <div class="main-mega-menu">
                                         <div class="row">
@@ -494,7 +495,7 @@
                                                                  <a href="javascript:;"><img src="{{asset('images/5.jpg')}}"
                                                                            class="img-fluid" alt=""></a>
                                                                  <a href="javascript:;">View All Custom
-                                                                      Heat Transfers</a>
+                                                                      Templates and transfers</a>
                                                             </li>
                                                        </ul>
                                                   </div>
