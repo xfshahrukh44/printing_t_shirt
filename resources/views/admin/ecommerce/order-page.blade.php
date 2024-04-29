@@ -183,12 +183,17 @@
                                     </td>
                                     <td class="no-border">$ {{$order_product->t_variation_price}}</td>
                                 </tr>
+                                <tr>
+                                    <td class="no-border" colspan="2">&nbsp;</td>
+                                    <td colspan="3" class="text-muted no-border">Shipping:</td>
+                                    <td class="no-border">$ 10.00</td>
+                                </tr>
 
                                 <tr>
                                     <td class="no-border" colspan="2">&nbsp;</td>
                                     <td colspan="3" class="text-dark no-border weight-600">Total Price:
                                     </td>
-                                    <td class="no-border">${{$order->order_total + $t_variation_price}}</td>
+                                    <td class="no-border">${{$order->order_total + $t_variation_price + 10.00}}</td>
 
                                 </tr>
 

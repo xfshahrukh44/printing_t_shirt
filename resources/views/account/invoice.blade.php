@@ -173,7 +173,8 @@
                                         Shipping
                                     </div>
                                     <div class="col-5">
-                                        <span class="text-110 text-secondary-d1">${{$order->order_shipping}}</span>
+{{--                                        <span class="text-110 text-secondary-d1">${{$order->order_shipping}}</span>--}}
+                                        <span class="text-110 text-secondary-d1">$10.00</span>
                                     </div>
                                 </div>
                                 @endif
@@ -206,7 +207,7 @@
                                         <?php
                                             $shipping = $order->order_shipping ;
                                         ?>
-                                        <span class="text-150 text-success-d3 opacity-2">${{$order->order_total  + $shipping }}</span>
+                                        <span class="text-150 text-success-d3 opacity-2">${{$order->order_total  + $shipping + 10.00 }}</span>
                                     </div>
                                 </div>
                             </div>
