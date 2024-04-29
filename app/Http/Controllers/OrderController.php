@@ -425,7 +425,9 @@ class OrderController extends Controller
 				try {
 					$charge = \Stripe\Charge::create(array(
 						'customer' => $customer->id,
-						'amount'   => $total * 100,
+                        //amount + tax($10)
+//						'amount'   => $total * 100,
+                        'amount'   => ($total + 10.00) * 100,
 						'currency' => 'USD',
 						'description' => "Payment From Website",
 						'metadata' => array("name" => $request->first_name, "email" => $request->email),
