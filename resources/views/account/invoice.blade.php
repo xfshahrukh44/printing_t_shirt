@@ -105,6 +105,7 @@
                                 <div class="d-none d-sm-block col-1">{{ $count }}</div>
                                 <div class="d-none d-sm-block col-3">
                                     {{$order_product->order_products_name}}
+                                    {!! !is_null($order_product->colors) ? '<i class="fa fa-circle text-80" style="color: '.$order_product->colors.';"></i>' : '' !!}
                                     @php
                                         $temp_product = \App\Product::find($order_product->order_products_product_id);
                                     @endphp
