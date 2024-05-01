@@ -290,59 +290,333 @@ h3 strong{
                         <h1>Related Products</h1>
                     </div>
                 </div>
-                @foreach($related_products as $related_product)
-                    <div class="col-lg-3">
-                        <div class="product-slider">
-                            <div class="shirt-slides">
-                                <a href="{{route('product.detail2', $related_product->id)}}">
-                                    <div class="product-carousel owl-carousel owl-theme">
-                                        <div class="item">
-                                            <div class="shirt-dots">
-                                                <figure>
-                                                    <img src="{{asset( $related_product->image)}}" class="img-fluid" alt="">
-                                                </figure>
+                @foreach($related_products as $product)
+                    @if(count($product->product_prices) > 0)
+                        <div class="col-lg-3">
+                            <div class="product-slider">
+                                <div class="shirt-slides">
+                                    <a href="javascript:;">
+                                        <div class="shirt-dots" data-bs-toggle="modal"
+                                             data-bs-target="#exampleModal_{{$product->id}}">
+                                            <figure>
+                                                <img src="{{asset($product->image)}}" class="img-fluid"
+                                                     alt="">
+                                            </figure>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="product-discription">
+                                    <div class="rainbow-col">
+                                        <div class="pro-name">
+                                            {{--                                                                <p> RANDOM RHINESTONE <span--}}
+                                            {{--                                                                        class="d-block">CLEAR</span></p>--}}
+                                            <p>
+                                                {{$product->product_title}}
+                                            </p>
+                                            @php
+                                                $colors = (isset($product) && !is_null($product->colors)) ? json_decode($product->colors) : [];
+                                            @endphp
+                                            <div class="box-col">
+                                                @foreach($colors as $color)
+                                                    <span style="background: {{$color}} !important; color: {{$color}} !important;" data-color="{{$color}}" class="span_select_color" title="Select color">.</span>
+                                                @endforeach
                                             </div>
                                         </div>
-                                        @php
-                                            $product_images = DB::table('product_imagess')
-                                              ->where('product_id', $related_product->id)
-                                              ->orderBy('id', 'DESC')
-                                              ->get();
-                                        @endphp
-                                        @foreach($product_images as $product_image)
+                                    </div>
+                                    <div class="item-size">
+                                        <p>Item #: {{$product->sku}}
+                                            <span> Size: {{$product->size}}</span>
+                                            Help
+                                        </p>
+                                    </div>
+
+                                    {{--pricing--}}
+                                    @php
+                                        if (count($product->product_prices) == 4) {
+                                            $ul_class = '';
+                                        } else if (count($product->product_prices) == 2) {
+                                            $ul_class = 'class="two-field"';
+                                        } else if (count($product->product_prices) == 3) {
+                                            $ul_class = 'class="three-field"';
+                                        } else if (count($product->product_prices) == 5) {
+                                            $ul_class = 'class="five-field"';
+                                        }
+                                    @endphp
+                                    <div class="item-sale">
+                                        <ul {!! $ul_class !!}>
+                                            @foreach($product->product_prices as $product_price)
+                                                <li>
+                                                    <span>{{$product_price->min}} {{$product_price->max == 99999999999999 ? '+' : '-'}} {{$product_price->max == 99999999999999 ? '' : $product_price->max}}</span>
+                                                </li>
+                                            @endforeach
+
+                                            @foreach($product->product_prices as $product_price)
+                                                <li>
+                                                    <span>${{$product_price->rate}}</span>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="stock-cart">
+                                        <div class="item-size">
+                                            {{--                                                                <p>Availability: In Stock</p>--}}
+                                            <p>Availability: {{$product->in_stock ? 'In Stock' : 'Not In Stock'}}</p>
+                                        </div>
+                                    </div>
+                                    <form class="form_save_cart" action="{{route('save_cart')}}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        <input type="hidden" name="color" class="color" value="">
+                                        <div class="cart-btn">
+                                            <div class="quantity-btn">
+                                                <label for="quantity">Qty
+                                                </label>
+                                                <input type="number" id="quantity" name="qty"
+                                                       min="1" max="100" value="1">
+                                                <input type="hidden" name="type_1_product">
+                                            </div>
+                                            <div class="heart-cart">
+                                                <button type="submit" class="btn btn-black">Add To
+                                                    Cart</button>
+                                                <a href="{{route('add.product.to.favourites', $product->id)}}">
+                                                    <i class="fa-{{in_array($product->id, session()->get('favourite_products')) ? 'solid' : 'regular'}} fa-heart"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                                <div class="modal-produc">
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal_{{$product->id}}" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="pro-img-modal">
+                                                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                                                             {{--                                                                                 class="swiper mySwiper4 mySwiper_{{$product->id}}">--}}
+                                                             class="swiper ms4_{{$product->id}}">
+                                                            <div
+                                                                    class="swiper-wrapper change-img">
+                                                                <div
+                                                                        class="swiper-slide off-white-back">
+                                                                    <div
+                                                                            class="shirt-dots">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide green-back">
+                                                                    <div
+                                                                            class="shirt-dots">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots blue-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots red-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots orange-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div thumbsSlider=""
+                                                             {{--                                                                                 class="swiper mySwiper3 select-img-slides">--}}
+                                                             class="swiper select-img-slides ms3_{{$product->id}}">
+                                                            <div class="swiper-wrapper">
+                                                                <div
+                                                                        class="swiper-slide off-white-back">
+                                                                    <div
+                                                                            class="shirt-dots">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots green-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots blue-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots red-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                        class="swiper-slide">
+                                                                    <div
+                                                                            class="shirt-dots orange-back">
+                                                                        <figure>
+                                                                            <img src="{{asset($product->image)}}"
+                                                                                 class="img-fluid"
+                                                                                 alt="">
+                                                                        </figure>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="discription-img-modal">
+                                                            {!! $product->description !!}
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    @else
+                        @php
+                            $product_images = DB::table('product_imagess')
+                              ->where('product_id', $product->id)
+                              ->orderBy('id', 'DESC')
+                              ->get();
+                        @endphp
+                        <div class="col-lg-3">
+                            <div class="product-slider">
+                                <div class="shirt-slides">
+                                    <a href="{{route('product.detail2', $product->id)}}">
+                                        <div class="product-carousel owl-carousel owl-theme">
                                             <div class="item">
                                                 <div class="shirt-dots">
                                                     <figure>
-                                                        <img src="{{asset( $related_product->image)}}" class="img-fluid" alt="">
+                                                        <img src="{{asset( $product->image ?? 'images/default.png')}}" class="img-fluid" alt="">
                                                     </figure>
                                                 </div>
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="product-discription">
-                                <div class="rainbow-col">
-                                    <div class="pro-name">
-                                        <p> {{$related_product->product_title}}</span>
-                                        </p>
-                                    </div>
-                                    <div class="box-col">
-                                        <span>.</span>
-                                        <span>.</span>
-                                        <span>.</span>
-                                    </div>
+                                            @foreach($product_images as $product_image)
+                                                <div class="item">
+                                                    <div class="shirt-dots">
+                                                        <figure>
+                                                            <img src="{{asset( $product_image->image ?? 'images/default.png')}}" class="img-fluid" alt="">
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="prod-price">
-                                    <h6>$ {{$related_product->price}}</h6>
-                                    <div class="cart-icon">
-                                        <a href="{{route('add.product.to.favourites', $related_product->id)}}"><i class="fa-solid fa-heart" {!! in_array($related_product->id, session()->get('favourite_products')) ? 'style="color: white !important; background: #f76c68 !important;"' : '' !!}></i></a>
-                                        <a href="{{route('product.detail2', $related_product->id)}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                                <div class="product-discription">
+                                    <div class="rainbow-col">
+                                        <div class="pro-name">
+                                            <p> {{$product->product_title}} <span class="d-block">Here</span></p>
+                                        </div>
+                                        @php
+                                            $colors = (isset($product) && !is_null($product->colors)) ? json_decode($product->colors) : [];
+                                        @endphp
+                                        <div class="box-col">
+                                            @foreach($colors as $color)
+                                                <span style="background: {{$color}} !important; color: {{$color}} !important;">.</span>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="prod-price">
+                                        <h6>${{$product->price}}</h6>
+                                        <div class="cart-icon">
+                                            <a href="{{route('add.product.to.favourites', $product->id)}}"><i class="fa-solid fa-heart" {!! in_array($product->id, session()->get('favourite_products')) ? 'style="color: white !important; background: #f76c68 !important;"' : '' !!}></i></a>
+                                            <a href="{{route('product.detail2', $product->id)}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -365,6 +639,25 @@ $(document).ready(function () {
     });
 
     $('#select_color').trigger('change');
+
+    $('body').on('click', '.span_select_color', function () {
+        $(this).parent().find('span').each((i, item) => {
+            $(item).css('border', '4px solid transparent');
+        });
+        $(this).css('border', '4px solid black');
+
+        toastr.success('Color selected!');
+        $(this).parent().parent().parent().parent().find('.color').val($(this).data('color'));
+    })
+
+    $('.form_save_cart').on('submit', function (e) {
+        if ($(this).find('.color').val() == "") {
+            e.preventDefault();
+            toastr.error('Please select a color first.');
+        } else {
+            $(this).submit();
+        }
+    });
 });
 
 $(document).ready(function () {
