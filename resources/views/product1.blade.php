@@ -453,6 +453,11 @@
             }
 
             $('body').on('click', '.span_select_color', function () {
+                $(this).parent().find('span').each((i, item) => {
+                    $(item).css('border', '4px solid transparent');
+                });
+                $(this).css('border', '4px solid black');
+
                 toastr.success('Color selected!');
                 $(this).parent().parent().parent().parent().find('.color').val($(this).data('color'));
             })
