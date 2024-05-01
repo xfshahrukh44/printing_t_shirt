@@ -180,7 +180,7 @@ h3 strong{
                                             <option value="{{$color}}" style="background: {{$color}};" {!! $key == 0 ? 'selected' : '' !!}></option>
                                         @endforeach
                                     </select>
-                                    <div style="width: 40px; height: 40px; background: transparent;" id="div_selected_color"></div>
+                                    <div style="width: 40px; height: 40px; background: transparent; border: 4px solid black;" id="div_selected_color"></div>
                                 @endif
 {{--                                variation--}}
                                 <div class="year-btn">
