@@ -140,7 +140,7 @@
                                                                     <p>Availability: {{$product->in_stock ? 'In Stock' : 'Not In Stock'}}</p>
                                                                 </div>
                                                             </div>
-                                                            <form action="{{route('save_cart')}}" method="POST">
+                                                            <form class="form_save_cart" action="{{route('save_cart')}}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                                                 <input type="hidden" name="color" class="color" value="">
@@ -461,6 +461,15 @@
                 toastr.success('Color selected!');
                 $(this).parent().parent().parent().parent().find('.color').val($(this).data('color'));
             })
+
+            $('.form_save_cart').on('submit', function (e) {
+                if ($(this).find('.color').val() == "") {
+                    e.preventDefault();
+                    toastr.error('Please select a color first.');
+                } else {
+                    $(this).submit();
+                }
+            });
         });
     </script>
 @endsection
