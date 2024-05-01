@@ -223,18 +223,18 @@ Route::post('update-content','HomeController@updateContent')->name('update-conte
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 Route::get('/temp', function() {
-    foreach (Product::where('category', '1')->get() as $product) {
-        $product->colors = json_encode([
-            "#e2dacd",
-            "#000000",
-            "#0e7055",
-            "#172f4b",
-            "#aa020b",
-            "#ec5b3e"
-        ]);
-
-        $product->save();
-    }
+//    foreach (Product::where('category', '1')->get() as $product) {
+//        $product->colors = json_encode([
+//            "#e2dacd",
+//            "#000000",
+//            "#0e7055",
+//            "#172f4b",
+//            "#aa020b",
+//            "#ec5b3e"
+//        ]);
+//
+//        $product->save();
+//    }
 //    $arr = [];
 //    for ($i = 0; $i < 10; $i++) {
 //        $arr[strval($i)] = 0;
