@@ -4,41 +4,54 @@
                <div class="col-md-3">
                     <div class="footer-link">
                          <img src="{{ asset($logo->img_path) }}" class="img-fluid" alt="">
-                         <ul>
-
-                             <li><a href="">{{App\Http\Traits\HelperTrait::returnFlag(519)}}</a></li>
-                              <li><a href="">{{App\Http\Traits\HelperTrait::returnFlagType(1964)}} {{App\Http\Traits\HelperTrait::returnFlag(1964)}}</a></li>
-                              <li><a href="">{{App\Http\Traits\HelperTrait::returnFlagType(1965)}} {{App\Http\Traits\HelperTrait::returnFlag(1965)}}</a></li>
-                              <li><a href="">{{App\Http\Traits\HelperTrait::returnFlag(59)}}</a></li>
-
-                         </ul>
+                        
                     </div>
                </div>
 
                <div class="col-md-3">
                     <div class="footer-link">
-                         <ul>
-                              <li><a href="">My Account</a></li>
-                              <li><a href="">Purchases & Returns</a></li>
-                              <li><a href="">Shipping Information</a></li>
-                              <li><a href="">Help & Support</a></li>
-                              <li><a href="">Sales Tax Info</a></li>
-                              <li><a href="">Contact us</a></li>
-                              <li><a href="">About Us</a></li>
+                         <!--<ul>-->
+                         <!--     <li><a href="javascript:void(0)">Purchases & Returns</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Shipping Information</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Help & Support</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Sales Tax Info</a></li>-->
+                         <!--     <li><a href="{{ route('contact') }}">Contact us</a></li>-->
+                         <!--     <li><a href="{{ route('about') }}">About Us</a></li>-->
+                         <!--</ul>-->
+                         
+                         
+                          <ul>
+
+                             <li><a style="color:#777777;" >{{App\Http\Traits\HelperTrait::returnFlag(519)}}</a></li>
+                              <li><a style="color:#777777;" >{{App\Http\Traits\HelperTrait::returnFlagType(1964)}} {{App\Http\Traits\HelperTrait::returnFlag(1964)}}</a></li>
+                              <li><a style="color:#777777;" >{{App\Http\Traits\HelperTrait::returnFlagType(1965)}} {{App\Http\Traits\HelperTrait::returnFlag(1965)}}</a></li>
+                              <li><a style="color:#777777;" >{{App\Http\Traits\HelperTrait::returnFlag(59)}}</a></li>
+
                          </ul>
+                         
                     </div>
                </div>
                <div class="col-md-3">
                     <div class="footer-link">
-                         <ul>
-                              <li><a href="">Partner Program</a></li>
-                              <li><a href="">Getting Into Business</a></li>
-                              <li><a href="">Sublimation 101</a></li>
-                              <li><a href="">T-Shirt Iron-Ons</a></li>
-                              <li><a href="">Why Order from Us</a></li>
-                              <li><a href="">PW Reward Points</a></li>
-                              <li><a href="">Siser Offers</a></li>
+                         <!--<ul>-->
+                         <!--     <li><a href="javascript:void(0)">Partner Program</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Getting Into Business</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Sublimation 101</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">T-Shirt Iron-Ons</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Why Order from Us</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">PW Reward Points</a></li>-->
+                         <!--     <li><a href="javascript:void(0)">Siser Offers</a></li>-->
+                         <!--</ul>-->
+                         
+                         
+                          <ul>
+
+                             <li><a href="{{ route('contact') }}">Contact us</a></li>-->
+                              <li><a href="{{ route('about') }}">About Us</a></li>
+                              <li><a href="{{ URL('signin') }}">Signin</a></li>
+                             
                          </ul>
+                         
                     </div>
                </div>
                <div class="col-md-3">
@@ -69,8 +82,8 @@
 
                     <div class="col-md-4">
                          <div class="footer-anchor">
-                              <a href="">terms of services</a>
-                              <a href="">privacy policy</a>
+                              <a href="{{ URL('terms-and-condition') }}">terms of services</a>
+                              <a href="{{ URL('privacy-policy') }}">privacy policy</a>
                          </div>
                     </div>
                </div>

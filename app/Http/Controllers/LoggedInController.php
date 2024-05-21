@@ -8,6 +8,7 @@ use App\inquiry;
 use App\newsletter;
 use App\Program;
 use App\imagetable;
+use App\Models\Wishlist;
 use App\Banner;
 use DB;
 use View;
@@ -225,6 +226,18 @@ class LoggedInController extends Controller
 		return view('account.password');
 
 	}
+	
+	public function favorite()
+    {
+        $favorite = Wishlist::with('product')->where('user_id', Auth::id())->where('favorite', 1)->get();
+        return view('account.favorite', compact('favorite'));
+    }
+    
+    public function favorite_delete($id)
+    {
+        $favorite = Wishlist::destroy($id);
+        return redirect()->back();
+    }
 
 }
 

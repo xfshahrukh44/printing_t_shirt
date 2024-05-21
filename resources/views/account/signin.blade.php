@@ -98,6 +98,8 @@ h1{
                     <small class="alert alert-danger w-100 d-block p-2 mt-2">{{ $errors->registerForm->first('password_confirmation') }}</small>
                     @endif
                 </div> -->
+                
+                <br>
 
                 <button class="btn proceed_button3" type="submit">Sign Up</button>
 
@@ -131,6 +133,9 @@ h1{
                     <!-- <label class="remember"><input type="checkbox"> Remember me </label> -->
                     <!-- <a href="{{ url('password/reset') }}" class="pull-right forg_text"> Forgot password? </a> -->
                 <!-- </div> -->
+                
+                 <br>
+                 
                 <button class="btn proceed_button3" type="submit">Login</button>
                 <!-- <span>or</span>
                 <div class="social-group">

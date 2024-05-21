@@ -25,7 +25,7 @@
                                     <div class="category-inner">
                                         <ul>
                                             <li class="category-mian-li">
-                                                <a href="#" id="btn_all_categories">
+                                                <a href="javascript:void(0)" id="btn_all_categories">
                                                     <i class="fa-solid fa-angle-right"></i>
                                                     All
                                                 </a>
@@ -47,7 +47,7 @@
                                                                 @foreach($subcategory->child_sub_categories as $child_sub_category)
                                                                     @if($child_sub_category->products->isNotEmpty())
                                                                         <li class="li_child_sub_category" data-child="{{$child_sub_category->id}}">
-                                                                            <a href="#" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
+                                                                            <a href="javascript:void(0)" data-sub="{{$subcategory->id}}" data-child="{{$child_sub_category->id}}" class="anchor_child_sub_category">
                                                                                 <i class="fa-solid fa-angle-right"></i>
                                                                                 {{$child_sub_category->childsubcategory}}
                                                                             </a>
@@ -146,9 +146,19 @@
                                                                     <div class="heart-cart">
                                                                         <button type="submit" class="btn btn-black">Add To
                                                                             Cart</button>
-                                                                        <a href="{{route('add.product.to.favourites', $product->id)}}">
-                                                                            <i class="fa-{{in_array($product->id, session()->get('favourite_products')) ? 'solid' : 'regular'}} fa-heart"></i>
-                                                                        </a>
+                                                                        @if (Auth::user() && Auth::user()->role != 1)
+                                                                          @php
+                                                                          $isFavorite = App\Models\Wishlist::where('user_id', Auth::user()->id)->where('product_id', $product->id)->first();
+                                                                          $check_f = $isFavorite->favorite == 1 ? 0 : 1;
+                                                                          @endphp
+                                                                            <a href="{{ route('add.product.to.favourites', ['product_id' => $product->id, 'fav' => $check_f]) }}">
+                                                                                <i class="fa-{{ ($isFavorite->favorite == 1) ? 'solid' : 'regular'}} fa-heart"></i>
+                                                                            </a>
+                                                                          @else
+                                                                          <a href="{{route('signin')}}">
+                                                                                <i class="fa-regular fa-heart"></i>
+                                                                            </a>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </form>

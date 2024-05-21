@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 {!! Form::label('image', 'Image') !!}
-                <input class="form-control dropify" name="image" type="file" id="image" {{ ($page->image != '') ? "data-default-file = /$page->image" : ''}} {{ ($page->image == '') ? "required" : ''}} value="{{$page->image}}">
+                <input class="form-control dropify" name="image" type="file" id="image" data-default-file="{{ asset($page->image) }}" value="{{$page->image}}">
             </div>
         </div>
         @foreach($page->sections as $section)
@@ -44,7 +44,7 @@
                 @elseif($section->type == 'video')
                 <img alt="" class="img-responsive" id="banner1" 
                 src="{{ asset($section->value) }}" style=" width: 30%; "> 
-                <input type="file" name="{{$section->slug}}" class="dropify" {{ ($section->value != '') ? "data-default-file = /$section->value" : ''}} {{ ($section->value == '') ? "required" : ''}} value="{{$section->value}}">
+                <input type="file" name="{{$section->slug}}" class="dropify"  data-default-file = "{{ asset($section->value) }}" value="{{$section->value}}">
                 @else($section->type == 'text')
                 <input type="text" name="{{$section->slug}}" value="{{$section->value}}" class="form-control">
                 @endif

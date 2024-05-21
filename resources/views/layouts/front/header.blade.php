@@ -7,7 +7,7 @@
                     <div class="top-menu">
                          <div class="same-elevate">
                               <h5>New look, same Elevate!</h5>
-                              <h6>(USD $)</h6>
+                              <!--<h6>(USD $)</h6>-->
                          </div>
                     </div>
                </div>

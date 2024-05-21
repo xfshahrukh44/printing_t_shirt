@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="inner-headings">
-                    <h2>ABOUT</h2>
+                    <h2>TERMS AND CONDITION</h2>
                 </div>
             </div>
         </div>
@@ -48,9 +48,9 @@
             <div class="col-lg-12">
             
                         
-            About Us
+            Terms And Condition
 
-About Printing T-Shirt
+ Terms And Condition
 
 At Printing T-Shirt, we specialize in creating custom apparel that lets you express your unique style. Founded in 2012, we have grown into a leading provider of personalized t-shirts and business apparel. Our state-of-the-art printing technology ensures that every product we produce meets the highest standards of quality.
 

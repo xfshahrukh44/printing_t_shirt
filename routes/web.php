@@ -20,9 +20,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+// Clear application cache:
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return 'Application cache has been cleared';
+});
+
+//Clear route cache:
+Route::get('/route-cache', function() {
+	Artisan::call('route:cache');
+    return 'Routes cache has been cleared';
+});
+
+//Clear config cache:
+Route::get('/config-cache', function() {
+ 	Artisan::call('config:cache');
+ 	return 'Config cache has been cleared';
+}); 
+
+// Clear view cache:
+Route::get('/view-clear', function() {
+    Artisan::call('view:clear');
+    return 'View cache has been cleared';
+});    
+
+
+
 if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
     error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
 }
+
 
 
 //===================== Admin Routes =====================//
@@ -162,6 +191,8 @@ Route::get('signup','GuestController@signup')->name('signup');
 Route::get('account','LoggedInController@account')->name('account');
 Route::get('orders','LoggedInController@orders')->name('orders');
 Route::get('account-detail','LoggedInController@accountDetail')->name('accountDetail');
+Route::get('favorite','LoggedInController@favorite')->name('favorite');
+Route::get('favorite-delete/{id}','LoggedInController@favorite_delete')->name('favorite-delete');
 
 Route::post('update/account','LoggedInController@updateAccount')->name('update.account');
 Route::get('signout', function() {
@@ -186,7 +217,7 @@ Route::post('update/profile','LoggedInController@update_profile')->name('update_
 Route::post('update/uploadPicture','LoggedInController@uploadPicture')->name('uploadPicture');
 
 
-//===================== Front Routes =====================//
+//===================== Front Routes =====================/
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('/about','HomeController@about')->name('about');
@@ -195,6 +226,12 @@ Route::get('/product_detail/{id?}/{cat?}/{subcat?}/{childsubcat?}','HomeControll
 Route::get('/blog','HomeController@blog')->name('blog');
 Route::get('/blog_detail/{id?}','HomeController@blog_detail')->name('blog_detail');
 Route::get('/contact','HomeController@contact')->name('contact');
+
+
+
+Route::get('/privacy-policy','HomeController@privacy_policy')->name('privacy_policy');
+Route::get('/terms-and-condition','HomeController@terms_and_condition')->name('terms_and_condition');
+
 
 Route::get('/set_sub_category','Admin\ProductController@set_sub_category')->name('set_sub_category');
 Route::get('/set_child_sub_category','Admin\ProductController@set_child_sub_category')->name('set_child_sub_category');
@@ -210,7 +247,7 @@ Route::post('/category-identifier','HomeController@categoryIdentifier')->name('c
 Route::get('/category-identifier-by-text','HomeController@categoryIdentifierByText')->name('category.identifier.by.text');
 
 //
-Route::get('/add-product-to-favourites/{product_id}','HomeController@addProductToFavourites')->name('add.product.to.favourites');
+Route::get('/add-product-to-favourites/{product_id}/{fav?}','HomeController@addProductToFavourites')->name('add.product.to.favourites');
 
 
 

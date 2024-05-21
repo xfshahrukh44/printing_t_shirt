@@ -149,7 +149,7 @@ h3 strong{
                     <div class="productg-price">
                         <div class="starting-price">
                             <h4><span class="d-block"></span>${{$product->price}}</h4>
-{{--                            <h5><span class="d-block">Regular Price</span>$1,299.00</h5>--}}
+                        {{--<h5><span class="d-block">Regular Price</span>$1,299.00</h5>--}}
                         </div>
                         <div class="info-product">
                             @php
@@ -378,9 +378,19 @@ h3 strong{
                                             <div class="heart-cart">
                                                 <button type="submit" class="btn btn-black">Add To
                                                     Cart</button>
-                                                <a href="{{route('add.product.to.favourites', $product->id)}}">
-                                                    <i class="fa-{{in_array($product->id, session()->get('favourite_products')) ? 'solid' : 'regular'}} fa-heart"></i>
-                                                </a>
+                                                @if (Auth::user() && Auth::user()->role != 1)
+                                                  @php
+                                                  $isFavorite = App\Models\Wishlist::where('user_id', Auth::user()->id)->where('product_id', $product->id)->first();
+                                                  $check_f = $isFavorite->favorite == 1 ? 0 : 1;
+                                                  @endphp
+                                                    <a href="{{ route('add.product.to.favourites', ['product_id' => $product->id, 'fav' => $check_f]) }}">
+                                                        <i class="fa-{{ ($isFavorite->favorite == 1) ? 'solid' : 'regular'}} fa-heart"></i>
+                                                    </a>
+                                                  @else
+                                                  <a href="{{route('signin')}}">
+                                                        <i class="fa-regular fa-heart"></i>
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                     </form>

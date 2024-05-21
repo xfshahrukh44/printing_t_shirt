@@ -4,26 +4,27 @@
 <?php $segment = Request::segments(); ?>
 
 
-<section class="heading-sec">
+<section class="rent-sec about-inner">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="inner-headings">
-                    <h2> INVOICE DETAILS </h2>
+                <div class="equipment">
+                    <h1><span class="d-block">Invoice</span></h1>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
 
-<section class="" style="background-color:#fff;" >
+
+<section class="invoice">
     <div class="page-content container">
         <div class="container px-0">
             <div class="row">
                 <div class="col-12 col-lg-10 offset-lg-1">
                     <div class="row">
                         <div class="col-12">
-                            <br><br><br><br>
                             <div class="text-center text-150">
                                 <div class="section-heading dark-color">
                                     <h3>Invoice
@@ -74,13 +75,13 @@
                                     Invoice
                                 </div>
 
-                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">ID:</span> #{{$order->invoice_number}}</div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">ID:</span> #{{$order->invoice_number}}</div>
 
-                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Order Date:</span> {{date('d F, Y',strtotime($order->created_at))}}</div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Order Date:</span> {{date('d F, Y',strtotime($order->created_at))}}</div>
 
-                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> <span class="badge badge-warning badge-pill px-25" style="color: black !important;">{{$order->order_status}}</span></div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Status:</span> <span class="badge badge-warning badge-pill px-25">{{$order->order_status}}</span></div>
                                 @if($order->transaction_id != '')
-                                <div class="my-2"><i style="color: #07c4f4 !important;" class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Transaction ID:</span> {{$order->transaction_id}}</div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Transaction ID:</span> {{$order->transaction_id}}</div>
                                 @endif
                             </div>
                         </div>
@@ -90,11 +91,10 @@
                     <div class="mt-4">
                         <div class="row text-600 text-white bgc-default-tp1 py-25">
                             <div class="d-none d-sm-block col-1">#</div>
-                            <div class="d-none d-sm-block col-3">Description</div>
-                            <div class="d-none d-sm-block col-3">Variations</div>
-                            <div class="d-none d-sm-block col-1">Qty</div>
-                            <div class="d-none d-sm-block col-2">Unit Price</div>
-                            <div class="d-none d-sm-block col-2">Amount</div>
+                            <div class="col-9 col-sm-5">Description</div>
+                            <div class="d-none d-sm-block col-4 col-sm-2">Qty</div>
+                            <div class="d-none d-sm-block col-sm-2">Unit Price</div>
+                            <div class="col-2">Amount</div>
                         </div>
 
                         <div class="text-95 text-secondary-d3">
@@ -103,48 +103,10 @@
                             @foreach($order_products as $order_product)
                             <div class="row mb-2 mb-sm-0 py-25">
                                 <div class="d-none d-sm-block col-1">{{ $count }}</div>
-                                <div class="d-none d-sm-block col-3">
-                                    {{$order_product->order_products_name}}
-                                    {!! !is_null($order_product->colors) ? '<i class="fa fa-circle text-80" style="color: '.$order_product->colors.';"></i>' : '' !!}
-                                    @php
-                                        $temp_product = \App\Product::find($order_product->order_products_product_id);
-                                    @endphp
-
-{{--                                    @dd($temp_product->can_download_product($order->id))--}}
-                                    @if($temp_product->zip)
-                                        @if($temp_product->can_download_product($order->id))
-                                            <button class="btn btn-info text-white" target="_blank" href="{{asset($temp_product->zip)}}" title="Download zip">
-                                                <i class="fas fa-download"></i> Download zip file
-                                            </button>
-                                            <h6>
-                                                <b>Link expires in: {{$temp_product->product_download_expiry}} hr(s)</b>
-                                            </h6>
-                                        @else
-                                            <button class="btn btn-danger text-white" href="#" title="Link expired" disabled>
-                                                <i class="fas fa-download"></i> Link expired
-                                            </button>
-                                        @endif
-                                    @endif
-                                </div>
-                                <div class="d-none d-sm-block col-3">
-
-                                    <?php
-
-                                        $variants = json_decode($order_product->variants);
-
-                                    ?>
-
-                                    @foreach($variants as $key => $value)
-
-                                    <p class="mb-0" style="font-size:11px;"> {{ $value->attribute }} - {{ $value->attribute_val }} - ${{$value->attribute_price}}</p>
-
-                                    @endforeach
-
-
-                                </div>
-                                <div class="d-none d-sm-block col-1">{{$order_product->order_products_qty}}</div>
-                                <div class="d-none d-sm-block col-2">${{$order_product->order_products_price}}</div>
-                                <div class="d-none d-sm-block col-2">${{$order_product->order_products_subtotal}}</div>
+                                <div class="col-9 col-sm-5">{{$order_product->order_products_name}}</div>
+                                <div class="d-none d-sm-block col-2">{{$order_product->order_products_qty}}</div>
+                                <div class="d-none d-sm-block col-2 text-95">${{$order_product->order_products_price}}</div>
+                                <div class="col-2 text-secondary-d2">${{$order_product->order_products_subtotal}}</div>
                             </div>
                             <?php $subtotal+= $order_product->order_products_qty * $order_product->order_products_price; ?>
                             <?php $count++ ;?>
@@ -173,8 +135,7 @@
                                         Shipping
                                     </div>
                                     <div class="col-5">
-{{--                                        <span class="text-110 text-secondary-d1">${{$order->order_shipping}}</span>--}}
-                                        <span class="text-110 text-secondary-d1">$10.00</span>
+                                        <span class="text-110 text-secondary-d1">${{$order->order_shipping}}</span>
                                     </div>
                                 </div>
                                 @endif
@@ -188,17 +149,6 @@
                                     </div>
                                 </div>
 
-
-                                <div class="row my-2">
-                                    <div class="col-7 text-right">
-                                        Variations Amount
-                                    </div>
-                                    <div class="col-5">
-                                        <span class="text-110 text-secondary-d1">${{$order_product->t_variation_price}}</span>
-                                    </div>
-                                </div>
-
-
                                 <div class="row my-2 align-items-center bgc-primary-l3 p-2">
                                     <div class="col-7 text-right">
                                         Total Amount
@@ -207,16 +157,13 @@
                                         <?php
                                             $shipping = $order->order_shipping ;
                                         ?>
-                                        <span class="text-150 text-success-d3 opacity-2">${{$order->order_total  + $shipping + 10.00 }}</span>
+                                        <span class="text-150 text-success-d3 opacity-2">${{$order->order_total  + $shipping }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <hr />
-
-                        <br><br><br><br>
-
                     </div>
                 </div>
             </div>
@@ -233,6 +180,11 @@
 section.invoice {
     margin: 60px;
 }
+
+#footer-form{
+    display: none;
+}
+
 .page-header {
     margin: 0 0 1rem;
     padding-bottom: 1rem;
@@ -283,7 +235,7 @@ hr {
     font-size: 110%!important;
 }
 .text-blue {
-    color: #07c4f4;
+    color: #c91d22;
 }
 .pb-25, .py-25 {
     padding-bottom: .75rem!important;
@@ -292,9 +244,7 @@ hr {
 .pt-25, .py-25 {
     padding-top: .75rem!important;
 }
-.bgc-default-tp1 {
-    background-color: #07c4f4;
-}
+.bgc-default-tp1 {background: var(--blue-color);}
 .bgc-default-l4, .bgc-h-default-l4:hover {
     background-color: #f3f8fa!important;
 }
@@ -327,7 +277,7 @@ hr {
     color: #dd4949!important;
 }
 .text-blue-m2 {
-    color: #c91d22;
+    color:#11A4EC;
 }
 .text-150 {
     font-size: 150%!important;
@@ -341,6 +291,7 @@ hr {
 .align-bottom {
     vertical-align: bottom!important;
 }
+
 
 </style>
 @endsection

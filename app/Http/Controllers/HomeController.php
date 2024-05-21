@@ -21,6 +21,7 @@ use Auth;
 use App\Profile;
 use App\Page;
 use Image;
+use App\Models\Wishlist;
 
 class HomeController extends Controller
 {
@@ -77,6 +78,8 @@ class HomeController extends Controller
        $popular_heat_transfers = Product::whereHas('childsubcategorys', function ($q) {
            return $q->where('id', 35);
        })->orderBy('id', 'DESC')->take(4)->get();
+      
+      
 
        return view('welcome', compact('page', 'section', 'banner', 'blog', 'instagram', 'get_product', 'popular_categories', 'popular_specialty_materials', 'popular_heat_transfers'));
 
@@ -132,6 +135,27 @@ class HomeController extends Controller
        return view('product2', compact('page', 'get_product'));
 
     }
+
+
+
+
+
+    public function privacy_policy()
+    {
+
+        
+       return view('privacy_policy');
+    }
+    
+    
+    public function terms_and_condition()
+    {
+
+
+       return view('terms_and_condition');
+    }
+    
+    
 
 
     public function product_detail($id = '' , $cat = "" , $subcat = "", $childsubcat = "")
@@ -196,6 +220,16 @@ class HomeController extends Controller
             $inquiry = new newsletter;
             $inquiry->newsletter_email = $request->newsletter_email;
             $inquiry->save();
+            //$data = [
+              //'user_email' => $user->email
+
+           // ];
+          //$emails = $inquiry->newsletter_email;
+          //$subject = 'Subscribed a new user.';
+          //Mail::send('subscribe', $data, function ($message) use ($emails, $subject) {
+            //$message->from(config('services.mail.username'), 'Subscribed a new user.');
+           // $message->to('info@templatesandtransfers.com')->subject($subject);
+          //});
             return response()->json(['message'=>'Thank you for contacting us. We will get back to you asap', 'status' => true]);
 
         }else{
@@ -284,28 +318,22 @@ class HomeController extends Controller
         return redirect(route($page) . ($http_build_query != "" ? ('?' . $http_build_query) : ''));
     }
 
-    public function addProductToFavourites (Request $request, $product_id)
+    public function addProductToFavourites (Request $request, $product_id, $fav)
     {
 //        $previous_route_name = Route::getRoutes()->match(Request::create(URL::previous()))->getName();
 //        dd($previous_route_name);
-
-        if (!session()->has('favourite_products')) {
-            session()->put('favourite_products', []);
-        }
-
-        $favourite_products = session()->get('favourite_products');
-
-        if (in_array($product_id, $favourite_products)) {
-            unset($favourite_products[array_search($product_id, $favourite_products)]);
-            $favourite_products = array_values($favourite_products);
-        } else {
-            $favourite_products []= $product_id;
-        }
-
-        session()->put('favourite_products', $favourite_products);
-
-//        return redirect()->route($previous_route_name);
+      if (Auth::check()) {
+          $user_id = Auth::id();
+          $data = Wishlist::updateOrCreate(
+              ['user_id' => $user_id, 'product_id' => $product_id],
+              ['favorite' => $fav]
+          );
         return redirect()->back();
+      } else {
+          return redirect()->route('signin'); 
+      }
+
+        
     }
 
 }

@@ -300,7 +300,7 @@ header:after {
   padding-left: 30px;
   padding-bottom: 30px;
   position: relative;
-  z-index: -1;
+  z-index: 0;
 }
 .digital-print h1 {
   color: var(--white-color);

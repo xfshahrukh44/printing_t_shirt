@@ -99,35 +99,35 @@
                                                                    <div class="col-lg-12">
                                                                        <div class="single-input-item">
                                                                            <label for="new-pwd" class="required">Address *</label>
-                                                                           <input type="text" id="new-pwd" placeholder="Address *" name="profile_data[address]" value="{{$profile->address}}">
+                                                                           <input type="text" id="new-pwd" placeholder="Address *" name="profile_data[address]" value="{{$profile->address}}" required>
                                                                        </div>
                                                                    </div>
 
                                                                    <div class="col-lg-12">
                                                                        <div class="single-input-item">
                                                                            <label for="new-pwd" class="required">Town / City *</label>
-                                                                           <input type="text" id="new-pwd" placeholder="Town / City *" name="profile_data[city]" value="{{$profile->city}}">
+                                                                           <input type="text" id="new-pwd" placeholder="Town / City *" name="profile_data[city]" value="{{$profile->city}}" required>
                                                                        </div>
                                                                    </div>
 
                                                                    <div class="col-lg-12">
                                                                        <div class="single-input-item">
                                                                            <label for="new-pwd" class="required">Country</label>
-                                                                           <input type="text" id="new-pwd" placeholder="Country" name="profile_data[country]" value="{{$profile->country}}">
+                                                                           <input type="text" id="new-pwd" placeholder="Country" name="profile_data[country]" value="{{$profile->country}}" required>
                                                                        </div>
                                                                    </div>
 
                                                                    <div class="col-lg-12">
                                                                        <div class="single-input-item">
                                                                            <label for="new-pwd" class="required">Phone *</label>
-                                                                           <input type="text" id="new-pwd" placeholder="Phone *" name="profile_data[phone]" value="{{$profile->phone}}">
+                                                                           <input type="number" id="new-pwd" placeholder="Phone *" name="profile_data[phone]" value="{{$profile->phone}}" required>
                                                                        </div>
                                                                    </div>
 
                                                                    <div class="col-lg-12">
                                                                        <div class="single-input-item">
                                                                            <label for="new-pwd" class="required">Postcode</label>
-                                                                           <input type="text" id="new-pwd" placeholder="Postcode" name="profile_data[postal]" value="{{$profile->postal}}">
+                                                                           <input type="text" id="new-pwd" placeholder="Postcode" name="profile_data[postal]" value="{{$profile->postal}}" required>
                                                                        </div>
                                                                    </div>
                                                                </div>
@@ -172,9 +172,9 @@
 
 <script type="text/javascript">
 
- $(document).on('click', "#updateProfile", function(e){
-        $('#accountForm').submit();
-  });
+//  $(document).on('click', "#updateProfile", function(e){
+//         $('#accountForm').submit();
+//   });
 
 </script>
 

@@ -18,33 +18,22 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="digital-print"
-                         style="background-image: url({{asset($page->sections[0]->value ?? '')}}) !important;">
-                        {{--                        <div class="down-top" data-aos="fade-down" data-aos-duration="2000">--}}
-                        {{--                             <h1>Digital Printing T Shirt</h1>--}}
-                        {{--                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor--}}
-                        {{--                                  incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.</p>--}}
-                        {{--                             <a href="#" class="btn light-blue-btn">--}}
-                        {{--                                  <div class="rotate-z">Send Message</div>--}}
-                        {{--                             </a>--}}
-                        {{--                         </div>--}}
-
-                        {!! $page->sections[1]->value ?? '' !!}
+                         style="background-image: url({{asset($page->sections[0]->value ?? '')}}) !im\portant;">
+                        <div class="down-top" data-aos="fade-down" data-aos-duration="2000">
+                            {!! $page->sections[1]->value ?? '' !!}
+                          <div class="rotate-z"><a class="btn light-blue-btn" href="{{ route('contact') }}">Send Message</a></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="digital-art">
                         <div class="row  align-items-center">
                             <div class="col-lg-6">
-                                {{--                                   <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">--}}
-                                {{--                                        <h2>Save $50 <span class="d-block">Digital Art T Shirt </span></h2>--}}
-                                {{--                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod--}}
-                                {{--                                             tempor incididunt ut labore et dolore magna aliqua. Quis </p>--}}
-                                {{--                                        <a href="#" class="btn light-blue-btn">--}}
-                                {{--                                             <div class="rotate-z">Send Message</div>--}}
-                                {{--                                        </a>--}}
-                                {{--                                   </div>--}}
+                                <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">
 
                                 {!! $page->sections[3]->value ?? '' !!}
+                                <div class="rotate-z"><a class="btn light-blue-btn" href="{{ route('contact') }}">Send Message</a></div>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
@@ -60,16 +49,11 @@
                     <div class="digital-art">
                         <div class="row  align-items-center">
                             <div class="col-lg-6">
-                                {{--                                   <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">--}}
-                                {{--                                        <h2>20% OFF <span class="d-block">Sublimation Products </span></h2>--}}
-                                {{--                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod--}}
-                                {{--                                             tempor incididunt ut labore et dolore magna aliqua. Quis </p>--}}
-                                {{--                                        <a href="#" class="btn light-blue-btn">--}}
-                                {{--                                             <div class="rotate-z">Send Message</div>--}}
-                                {{--                                        </a>--}}
-                                {{--                                   </div>--}}
-
+                                <div class="save-t-shirt" data-aos="fade-right" data-aos-duration="2000">
                                 {!! $page->sections[5]->value ?? '' !!}
+
+                                    <div class="rotate-z"><a class="btn light-blue-btn" href="{{ route('contact') }}">Send Message</a></div>
+                                    </div>
                             </div>
                             <div class="col-lg-6">
                                 <div>
@@ -128,7 +112,7 @@
                     <div class="main-art">
                         @foreach($popular_categories_1 as $key => $popular_category)
                             <div class="shirt-art" data-aos="flip-left" data-aos-duration="2000">
-                                <a href="#" data-sub="{{$popular_category->subcategory}}"
+                                <a href="javascript:void(0)" data-sub="{{$popular_category->subcategory}}"
                                    data-child="{{$popular_category->id}}" class="anchor_child_sub_category">
                                     <div class="shirt-art-img">
                                         <figure>
@@ -145,7 +129,7 @@
                     <div class="main-art">
                         @foreach($popular_categories_2 as $key => $popular_category)
                             <div class="shirt-art" data-aos="flip-right" data-aos-duration="2000">
-                                <a href="#" data-sub="{{$popular_category->subcategory}}"
+                                <a href="javascript:void(0)" data-sub="{{$popular_category->subcategory}}"
                                    data-child="{{$popular_category->id}}" class="anchor_child_sub_category">
                                     <div class="shirt-art-img">
                                         <figure>
@@ -266,9 +250,19 @@
                                             <div class="heart-cart">
                                                 <button type="submit" class="btn btn-black">Add To
                                                     Cart</button>
-                                                <a href="{{route('add.product.to.favourites', $product->id)}}">
-                                                    <i class="fa-{{in_array($product->id, session()->get('favourite_products')) ? 'solid' : 'regular'}} fa-heart"></i>
+                                              @if (Auth::user() && Auth::user()->role != 1)
+                                              @php
+                                              $isFavorite = App\Models\Wishlist::where('user_id', Auth::user()->id)->where('product_id', $product->id)->first();
+                                              $check_f = $isFavorite->favorite == 1 ? 0 : 1;
+                                              @endphp
+                                                <a href="{{ route('add.product.to.favourites', ['product_id' => $product->id, 'fav' => $check_f]) }}">
+                                                    <i class="fa-{{ ($isFavorite->favorite == 1) ? 'solid' : 'regular'}} fa-heart"></i>
                                                 </a>
+                                              @else
+                                              <a href="{{route('signin')}}">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                </a>
+                                              @endif
                                             </div>
                                         </div>
                                     </form>
@@ -844,7 +838,7 @@
                                     <div class="prod-price">
                                         <h6>${{$product->price}}</h6>
                                         <div class="cart-icon">
-                                            <a href="{{route('add.product.to.favourites', $product->id)}}"><i class="fa-solid fa-heart" {!! in_array($product->id, session()->get('favourite_products')) ? 'style="color: white !important; background: #f76c68 !important;"' : '' !!}></i></a>
+                                            <!--<a href="{{route('add.product.to.favourites', $product->id)}}"><i class="fa-solid fa-heart" {!! in_array($product->id, session()->get('favourite_products')) ? 'style="color: white !important; background: #f76c68 !important;"' : '' !!}></i></a>-->
                                             <a href="{{route('product.detail2', $product->id)}}"><i class="fa-solid fa-cart-shopping"></i></a>
                                         </div>
                                     </div>

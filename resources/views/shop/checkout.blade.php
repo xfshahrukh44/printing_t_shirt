@@ -3,6 +3,161 @@
 @section('css')
     <style>
 
+
+.checkout-side-bar {
+    background: var(--grey-color);
+    margin-top: 0px !important;
+}
+
+
+     .StripeElement {
+            box-sizing: border-box;
+            height: 40px;
+            padding: 10px 12px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background-color: white;
+            box-shadow: 0 1px 3px 0 #e6ebf1;
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
+            border-width: 1px;
+            border-color: rgb(150, 163, 218);
+            border-style: solid;
+            margin-bottom: 10px;
+        }
+
+        .StripeElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
+
+        .StripeElement--invalid {
+            border-color: #fa755a;
+        }
+
+        .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
+
+        div#card-errors {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            display: block;
+            width: 100%;
+
+            font-size: 15px;
+            padding: 5px 15px;
+            border-radius: 6px;
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .rent-sec {
+            background-image: url('{{ asset('/images/2.png') }}') !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 800px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 0;
+        }
+
+        .about-inner {
+            height: 400px;
+            align-items: end;
+        }
+
+
+
+        /* #stripe-submit {
+                margin-left: 315px;
+
+            } */
+
+        .tabs-sign {
+            position: relative;
+        }
+
+        .radio {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .radio-1 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tabs-sign input[type="radio"],
+        .tabs-sign input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+
+        .radio.active {
+            background: var(--blue-color);
+            width: 100%;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: white !important;
+        }
+
+        .radio-1.active {
+            background: var(--blue-color);
+            width: 100%;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            color: white !important;
+        }
+
+        .radio-1.active label {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .radio-1.active label {
+            position: relative;
+        }
+
+
+
+
+
+        .radio.active label {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .cardss {
+            float: right;
+            margin-top: 12px;
+        }
+
+        .cardss img {
+            width: 240px;
+        }
+
+        a.cart_icons {
+            pointer-events: none;
+        }
+
     </style>
 @endsection
 
@@ -109,7 +264,7 @@
                                                     <br>
                                                     <div class="form-group">
                                                         <input class="form-control right" placeholder="Phone *"
-                                                               name="phone_no" type="text" value="{{old('phone_no')}}"
+                                                               name="phone_no" type="number"
                                                                required value="{{$profile->phone}}">
                                                         <span
                                                             class="invalid-feedback {{ ($errors->first('phone_no') ? 'd-block' : '') }}">
@@ -269,11 +424,11 @@
                                                 <li>
                                                     <h6>Variations <span>${{ $total_variation }}</span></h6>
                                                 </li>
+                                                <!--<li>-->
+                                                <!--    <h6>Shipping <span>$10.00</span></h6>-->
+                                                <!--</li>-->
                                                 <li>
-                                                    <h6>Shipping <span>$10.00</span></h6>
-                                                </li>
-                                                <li>
-                                                    <h6>Order Total <span>${{ $subtotal + $total_variation + 10.00 }}</span></h6>
+                                                    <h6>Order Total <span>${{ $subtotal + $total_variation }}</span></h6>
                                                 </li>
                                             </ul>
 
@@ -973,10 +1128,10 @@
 {{--                                                </div>--}}
 {{--                                            </div>--}}
                                         </div>
-                                        <div class="summary-bar">
-                                            <button type="submit" class="btn light-blue-btn btn_checkout">Checkout
-                                            </button>
-                                        </div>
+                                        <!--<div class="summary-bar">-->
+                                        <!--    <button type="submit" class="btn light-blue-btn btn_checkout">Checkout-->
+                                        <!--    </button>-->
+                                        <!--</div>-->
                                     </div>
                                 </div>
                             </div>

@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="inner-headings">
-                    <h2>ABOUT</h2>
+                    <h2>PRIVACY POLICY</h2>
                 </div>
             </div>
         </div>
@@ -46,13 +46,10 @@
         <div class="row align-items-center">
             
             <div class="col-lg-12">
-            
-                        
-            About Us
+        
+Privacy Policy
 
-About Printing T-Shirt
-
-At Printing T-Shirt, we specialize in creating custom apparel that lets you express your unique style. Founded in 2012, we have grown into a leading provider of personalized t-shirts and business apparel. Our state-of-the-art printing technology ensures that every product we produce meets the highest standards of quality.
+At Privacy Policy, we specialize in creating custom apparel that lets you express your unique style. Founded in 2012, we have grown into a leading provider of personalized t-shirts and business apparel. Our state-of-the-art printing technology ensures that every product we produce meets the highest standards of quality.
 
 Our mission is to make custom printing accessible and affordable for everyone. Whether you're ordering one t-shirt or one thousand, we promise to deliver outstanding results and excellent customer service.
 

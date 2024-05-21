@@ -208,13 +208,13 @@ class ProductController extends Controller
 		$cartCount = COUNT(Session::get('cart'));
 		$language = Session::get('language');
 		$product_detail = DB::table('products')->first();
-		if (Session::get('cart') && count(Session::get('cart')) > 0) {
+		//if (Session::get('cart') && count(Session::get('cart')) > 0) {
 			return view('shop.cart', ['cart' => Session::get('cart'), 'language' => $language, 'product_detail' => $product_detail, 'page' => $page]);
-		} else {
-			Session::flash('flash_message', 'No Product found');
-			Session::flash('alert-class', 'alert-success');
-			return redirect('/');
-		}
+		//} else {
+			//Session::flash('flash_message', 'No Product found');
+			//Session::flash('alert-class', 'alert-success');
+			//return redirect('/');
+		//}
 	}
 
 	public function saveCart(Request $request)
