@@ -47,7 +47,7 @@
                                              Account</a>
                                         <div class="side-top-maodal">
                                             @php
-                                                $cart = Session::get('cart');
+                                                $cart = Session::get('cart') ?? [];
                                                 $cart_count = count($cart);
                                                 $subtotal = 0;
                                                 $total_variation = 0;
