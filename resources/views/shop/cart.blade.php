@@ -66,7 +66,7 @@
                                                             @endif
 
                                                             <br>
-                                                            @if (count($value['variation']))
+                                                            @if (count($value['variation'] ?? []))
                                                                 <h6> <b>Variations</b> </h6>
                                                             @endif
                                                             @foreach ($value['variation'] as $key => $values)
@@ -179,7 +179,7 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="checkout-side-bar">
-                                        
+
 
                                         <div class="summary-bar">
                                             <button type="submit" class="btn light-blue-btn btn_proceed_to_checkout">Proceed to
